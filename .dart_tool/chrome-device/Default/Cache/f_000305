@@ -1,0 +1,407 @@
+define(['dart_sdk', 'packages/faker/src/random_generator.dart', 'packages/faker/src/data/vehicles/vin_manufacturers.dart', 'packages/faker/src/data/vehicles/vin_years.dart', 'packages/faker/src/address.dart', 'packages/faker/src/person.dart', 'packages/faker/src/conference.dart', 'packages/faker/src/company.dart', 'packages/faker/src/currency.dart', 'packages/faker/src/food.dart', 'packages/faker/src/guid.dart', 'packages/faker/src/image.dart', 'packages/faker/src/internet.dart', 'packages/faker/src/job.dart', 'packages/faker/src/jwt.dart', 'packages/faker/src/lorem.dart', 'packages/faker/src/providers/default_providers.dart', 'packages/faker/src/sport.dart', 'packages/faker/src/date.dart', 'packages/faker/src/phone_number.dart', 'packages/faker/src/providers/base_providers.dart', 'packages/faker/src/providers/fa_providers.dart'], (function load__packages__faker__src__data__vehicles__vehicles_dart(dart_sdk, packages__faker__src__random_generator$46dart, packages__faker__src__data__vehicles__vin_manufacturers$46dart, packages__faker__src__data__vehicles__vin_years$46dart, packages__faker__src__address$46dart, packages__faker__src__person$46dart, packages__faker__src__conference$46dart, packages__faker__src__company$46dart, packages__faker__src__currency$46dart, packages__faker__src__food$46dart, packages__faker__src__guid$46dart, packages__faker__src__image$46dart, packages__faker__src__internet$46dart, packages__faker__src__job$46dart, packages__faker__src__jwt$46dart, packages__faker__src__lorem$46dart, packages__faker__src__providers__default_providers$46dart, packages__faker__src__sport$46dart, packages__faker__src__date$46dart, packages__faker__src__phone_number$46dart, packages__faker__src__providers__base_providers$46dart, packages__faker__src__providers__fa_providers$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _interceptors = dart_sdk._interceptors;
+  const _js_helper = dart_sdk._js_helper;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const random_generator = packages__faker__src__random_generator$46dart.src__random_generator;
+  const vin_manufacturers = packages__faker__src__data__vehicles__vin_manufacturers$46dart.src__data__vehicles__vin_manufacturers;
+  const vin_years = packages__faker__src__data__vehicles__vin_years$46dart.src__data__vehicles__vin_years;
+  const address = packages__faker__src__address$46dart.src__address;
+  const person = packages__faker__src__person$46dart.src__person;
+  const conference = packages__faker__src__conference$46dart.src__conference;
+  const company = packages__faker__src__company$46dart.src__company;
+  const currency = packages__faker__src__currency$46dart.src__currency;
+  const food = packages__faker__src__food$46dart.src__food;
+  const guid = packages__faker__src__guid$46dart.src__guid;
+  const image = packages__faker__src__image$46dart.src__image;
+  const internet = packages__faker__src__internet$46dart.src__internet;
+  const job = packages__faker__src__job$46dart.src__job;
+  const jwt = packages__faker__src__jwt$46dart.src__jwt;
+  const lorem = packages__faker__src__lorem$46dart.src__lorem;
+  const default_providers = packages__faker__src__providers__default_providers$46dart.src__providers__default_providers;
+  const sport = packages__faker__src__sport$46dart.src__sport;
+  const date = packages__faker__src__date$46dart.src__date;
+  const phone_number = packages__faker__src__phone_number$46dart.src__phone_number;
+  const base_providers = packages__faker__src__providers__base_providers$46dart.src__providers__base_providers;
+  const fa_providers = packages__faker__src__providers__fa_providers$46dart.src__providers__fa_providers;
+  var vehicles = Object.create(dart.library);
+  var vehicle$ = Object.create(dart.library);
+  var vehicle = Object.create(dart.library);
+  var faker = Object.create(dart.library);
+  var faker$ = Object.create(dart.library);
+  var $toString = dartx.toString;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    JSArrayOfVehicleYMM: () => (T.JSArrayOfVehicleYMM = dart.constFn(_interceptors.JSArray$(vehicle$.VehicleYMM)))(),
+    IdentityMapOfString$dynamic: () => (T.IdentityMapOfString$dynamic = dart.constFn(_js_helper.IdentityMap$(core.String, dart.dynamic)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  var I = [
+    "file:///C:/Users/AFK/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/faker-2.0.0/lib/src/data/vehicles/models/vehicle.dart",
+    "package:faker/src/data/vehicles/models/vehicle.dart",
+    "package:faker/src/vehicle.dart",
+    "file:///C:/Users/AFK/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/faker-2.0.0/lib/src/faker.dart",
+    "package:faker/src/faker.dart"
+  ];
+  dart.defineLazy(vehicles, {
+    /*vehicles.randomGenerator*/get randomGenerator() {
+      return new random_generator.RandomGenerator.new();
+    },
+    set randomGenerator(_) {},
+    /*vehicles.vehicles*/get vehicles() {
+      return T.JSArrayOfVehicleYMM().of([new vehicle$.VehicleYMM.new({model: "A4", make: "Audi"}), new vehicle$.VehicleYMM.new({model: "A4 allroad", make: "Audi"}), new vehicle$.VehicleYMM.new({model: "A5", make: "Audi"}), new vehicle$.VehicleYMM.new({model: "A6", make: "Audi"}), new vehicle$.VehicleYMM.new({model: "A6 allroad", make: "Audi"}), new vehicle$.VehicleYMM.new({model: "A7", make: "Audi"}), new vehicle$.VehicleYMM.new({model: "A8", make: "Audi"}), new vehicle$.VehicleYMM.new({model: "Acadia", make: "GMC"}), new vehicle$.VehicleYMM.new({model: "Accent", make: "Hyundai"}), new vehicle$.VehicleYMM.new({model: "Accord", make: "Honda"}), new vehicle$.VehicleYMM.new({model: "Accord Hybrid", make: "Honda"}), new vehicle$.VehicleYMM.new({model: "A-Class", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Altima", make: "Nissan"}), new vehicle$.VehicleYMM.new({model: "Armada", make: "Nissan"}), new vehicle$.VehicleYMM.new({model: "Arteon", make: "Volkswagen"}), new vehicle$.VehicleYMM.new({model: "Ascent", make: "Subaru"}), new vehicle$.VehicleYMM.new({model: "Atlas", make: "Volkswagen"}), new vehicle$.VehicleYMM.new({model: "Atlas Cross Sport", make: "Volkswagen"}), new vehicle$.VehicleYMM.new({model: "ATS", make: "Cadillac"}), new vehicle$.VehicleYMM.new({model: "ATS-V", make: "Cadillac"}), new vehicle$.VehicleYMM.new({model: "Avalon", make: "Toyota"}), new vehicle$.VehicleYMM.new({model: "Avalon Hybrid", make: "Toyota"}), new vehicle$.VehicleYMM.new({model: "Aventador", make: "Lamborghini"}), new vehicle$.VehicleYMM.new({model: "Aviator", make: "Lincoln"}), new vehicle$.VehicleYMM.new({model: "Beetle", make: "Volkswagen"}), new vehicle$.VehicleYMM.new({model: "Bentayga", make: "Bentley"}), new vehicle$.VehicleYMM.new({model: "Blazer", make: "Chevrolet"}), new vehicle$.VehicleYMM.new({model: "Bolt EV", make: "Chevrolet"}), new vehicle$.VehicleYMM.new({model: "Bronco Sport", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "BRZ", make: "Subaru"}), new vehicle$.VehicleYMM.new({model: "Cadenza", make: "Kia"}), new vehicle$.VehicleYMM.new({model: "Camaro", make: "Chevrolet"}), new vehicle$.VehicleYMM.new({model: "Camry", make: "Toyota"}), new vehicle$.VehicleYMM.new({model: "Camry Hybrid", make: "Toyota"}), new vehicle$.VehicleYMM.new({model: "Canyon Crew Cab", make: "GMC"}), new vehicle$.VehicleYMM.new({model: "Canyon Extended Cab", make: "GMC"}), new vehicle$.VehicleYMM.new({model: "Cascada", make: "Buick"}), new vehicle$.VehicleYMM.new({model: "Cayenne", make: "Porsche"}), new vehicle$.VehicleYMM.new({model: "Cayenne Coupe", make: "Porsche"}), new vehicle$.VehicleYMM.new({model: "C-Class", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Challenger", make: "Dodge"}), new vehicle$.VehicleYMM.new({model: "Charger", make: "Dodge"}), new vehicle$.VehicleYMM.new({model: "Cherokee", make: "Jeep"}), new vehicle$.VehicleYMM.new({model: "C-HR", make: "Toyota"}), new vehicle$.VehicleYMM.new({model: "Civic", make: "Honda"}), new vehicle$.VehicleYMM.new({model: "Civic Type R", make: "Honda"}), new vehicle$.VehicleYMM.new({model: "CLA", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Clarity Electric", make: "Honda"}), new vehicle$.VehicleYMM.new({model: "Clarity Fuel Cell", make: "Honda"}), new vehicle$.VehicleYMM.new({model: "Clarity Plug-in Hybrid", make: "Honda"}), new vehicle$.VehicleYMM.new({model: "CLS", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Clubman", make: "MINI"}), new vehicle$.VehicleYMM.new({model: "Colorado Crew Cab", make: "Chevrolet"}), new vehicle$.VehicleYMM.new({model: "Colorado Extended Cab", make: "Chevrolet"}), new vehicle$.VehicleYMM.new({model: "Compass", make: "Jeep"}), new vehicle$.VehicleYMM.new({model: "Continental", make: "Lincoln"}), new vehicle$.VehicleYMM.new({model: "Continental", make: "Bentley"}), new vehicle$.VehicleYMM.new({model: "Convertible", make: "MINI"}), new vehicle$.VehicleYMM.new({model: "Corolla", make: "Toyota"}), new vehicle$.VehicleYMM.new({model: "Corolla Hatchback", make: "Toyota"}), new vehicle$.VehicleYMM.new({model: "Corolla Hybrid", make: "Toyota"}), new vehicle$.VehicleYMM.new({model: "Corsair", make: "Lincoln"}), new vehicle$.VehicleYMM.new({model: "Corvette", make: "Chevrolet"}), new vehicle$.VehicleYMM.new({model: "Countryman", make: "MINI"}), new vehicle$.VehicleYMM.new({model: "Crosstrek", make: "Subaru"}), new vehicle$.VehicleYMM.new({model: "Cruze", make: "Chevrolet"}), new vehicle$.VehicleYMM.new({model: "CR-V", make: "Honda"}), new vehicle$.VehicleYMM.new({model: "CR-V Hybrid", make: "Honda"}), new vehicle$.VehicleYMM.new({model: "CT4", make: "Cadillac"}), new vehicle$.VehicleYMM.new({model: "CT5", make: "Cadillac"}), new vehicle$.VehicleYMM.new({model: "CT6", make: "Cadillac"}), new vehicle$.VehicleYMM.new({model: "CT6-V", make: "Cadillac"}), new vehicle$.VehicleYMM.new({model: "CTS", make: "Cadillac"}), new vehicle$.VehicleYMM.new({model: "CTS-V", make: "Cadillac"}), new vehicle$.VehicleYMM.new({model: "Cullinan", make: "Rolls-Royce"}), new vehicle$.VehicleYMM.new({model: "CX-3", make: "MAZDA"}), new vehicle$.VehicleYMM.new({model: "CX-30", make: "MAZDA"}), new vehicle$.VehicleYMM.new({model: "CX-5", make: "MAZDA"}), new vehicle$.VehicleYMM.new({model: "CX-9", make: "MAZDA"}), new vehicle$.VehicleYMM.new({model: "Dawn", make: "Rolls-Royce"}), new vehicle$.VehicleYMM.new({model: "DB11", make: "Aston Martin"}), new vehicle$.VehicleYMM.new({model: "DBS Superleggera", make: "Aston Martin"}), new vehicle$.VehicleYMM.new({model: "Defender 110", make: "Land Rover"}), new vehicle$.VehicleYMM.new({model: "Defender 90", make: "Land Rover"}), new vehicle$.VehicleYMM.new({model: "Discovery", make: "Land Rover"}), new vehicle$.VehicleYMM.new({model: "Discovery Sport", make: "Land Rover"}), new vehicle$.VehicleYMM.new({model: "Durango", make: "Dodge"}), new vehicle$.VehicleYMM.new({model: "E-Class", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Eclipse Cross", make: "Mitsubishi"}), new vehicle$.VehicleYMM.new({model: "EcoSport", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "Edge", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "e-Golf", make: "Volkswagen"}), new vehicle$.VehicleYMM.new({model: "Elantra", make: "Hyundai"}), new vehicle$.VehicleYMM.new({model: "Elantra GT", make: "Hyundai"}), new vehicle$.VehicleYMM.new({model: "Enclave", make: "Buick"}), new vehicle$.VehicleYMM.new({model: "Encore", make: "Buick"}), new vehicle$.VehicleYMM.new({model: "Encore GX", make: "Buick"}), new vehicle$.VehicleYMM.new({model: "Envision", make: "Buick"}), new vehicle$.VehicleYMM.new({model: "E-PACE", make: "Jaguar"}), new vehicle$.VehicleYMM.new({model: "Equinox", make: "Chevrolet"}), new vehicle$.VehicleYMM.new({model: "ES", make: "Lexus"}), new vehicle$.VehicleYMM.new({model: "Escalade", make: "Cadillac"}), new vehicle$.VehicleYMM.new({model: "Escalade ESV", make: "Cadillac"}), new vehicle$.VehicleYMM.new({model: "Escape", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "e-tron", make: "Audi"}), new vehicle$.VehicleYMM.new({model: "Expedition", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "Expedition MAX", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "Explorer", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "Express 2500 Cargo", make: "Chevrolet"}), new vehicle$.VehicleYMM.new({model: "Express 2500 Passenger", make: "Chevrolet"}), new vehicle$.VehicleYMM.new({model: "Express 3500 Cargo", make: "Chevrolet"}), new vehicle$.VehicleYMM.new({model: "Express 3500 Passenger", make: "Chevrolet"}), new vehicle$.VehicleYMM.new({model: "F150 Regular Cab", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "F150 Super Cab", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "F150 SuperCrew Cab", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "F250 Super Duty Crew Cab", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "F250 Super Duty Regular Cab", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "F250 Super Duty Super Cab", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "F350 Super Duty Crew Cab", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "F350 Super Duty Regular Cab", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "F350 Super Duty Super Cab", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "F450 Super Duty Crew Cab", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "F450 Super Duty Regular Cab", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "Fiesta", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "Fit", make: "Honda"}), new vehicle$.VehicleYMM.new({model: "Flex", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "Forester", make: "Subaru"}), new vehicle$.VehicleYMM.new({model: "Forte", make: "Kia"}), new vehicle$.VehicleYMM.new({model: "fortwo electric drive", make: "smart"}), new vehicle$.VehicleYMM.new({model: "fortwo electric drive cabrio", make: "smart"}), new vehicle$.VehicleYMM.new({model: "fortwo EQ cabrio", make: "smart"}), new vehicle$.VehicleYMM.new({model: "fortwo EQ coupe", make: "smart"}), new vehicle$.VehicleYMM.new({model: "F-PACE", make: "Jaguar"}), new vehicle$.VehicleYMM.new({model: "Frontier Crew Cab", make: "Nissan"}), new vehicle$.VehicleYMM.new({model: "Frontier King Cab", make: "Nissan"}), new vehicle$.VehicleYMM.new({model: "F-TYPE", make: "Jaguar"}), new vehicle$.VehicleYMM.new({model: "Fusion", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "Fusion Energi", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "Fusion Plug-in Hybrid", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "G70", make: "Genesis"}), new vehicle$.VehicleYMM.new({model: "G80", make: "Genesis"}), new vehicle$.VehicleYMM.new({model: "G90", make: "Genesis"}), new vehicle$.VehicleYMM.new({model: "G-Class", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Ghibli", make: "Maserati"}), new vehicle$.VehicleYMM.new({model: "Ghost", make: "Rolls-Royce"}), new vehicle$.VehicleYMM.new({model: "Giulia", make: "Alfa Romeo"}), new vehicle$.VehicleYMM.new({model: "GLA", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Gladiator", make: "Jeep"}), new vehicle$.VehicleYMM.new({model: "GLB", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "GLC", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "GLC Coupe", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "GLE", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "GLS", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Golf", make: "Volkswagen"}), new vehicle$.VehicleYMM.new({model: "Golf Alltrack", make: "Volkswagen"}), new vehicle$.VehicleYMM.new({model: "Golf GTI", make: "Volkswagen"}), new vehicle$.VehicleYMM.new({model: "Golf R", make: "Volkswagen"}), new vehicle$.VehicleYMM.new({model: "Golf SportWagen", make: "Volkswagen"}), new vehicle$.VehicleYMM.new({model: "GR Supra", make: "Toyota"}), new vehicle$.VehicleYMM.new({model: "Grand Caravan Passenger", make: "Dodge"}), new vehicle$.VehicleYMM.new({model: "Grand Cherokee", make: "Jeep"}), new vehicle$.VehicleYMM.new({model: "GranTurismo", make: "Maserati"}), new vehicle$.VehicleYMM.new({model: "GS", make: "Lexus"}), new vehicle$.VehicleYMM.new({model: "GTC4Lusso", make: "Ferrari"}), new vehicle$.VehicleYMM.new({model: "GT-R", make: "Nissan"}), new vehicle$.VehicleYMM.new({model: "GV80", make: "Genesis"}), new vehicle$.VehicleYMM.new({model: "GX", make: "Lexus"}), new vehicle$.VehicleYMM.new({model: "Hardtop 2 Door", make: "MINI"}), new vehicle$.VehicleYMM.new({model: "Hardtop 4 Door", make: "MINI"}), new vehicle$.VehicleYMM.new({model: "Highlander", make: "Toyota"}), new vehicle$.VehicleYMM.new({model: "Highlander Hybrid", make: "Toyota"}), new vehicle$.VehicleYMM.new({model: "HR-V", make: "Honda"}), new vehicle$.VehicleYMM.new({model: "Huracan", make: "Lamborghini"}), new vehicle$.VehicleYMM.new({model: "ILX", make: "Acura"}), new vehicle$.VehicleYMM.new({model: "Impala", make: "Chevrolet"}), new vehicle$.VehicleYMM.new({model: "Impreza", make: "Subaru"}), new vehicle$.VehicleYMM.new({model: "Insight", make: "Honda"}), new vehicle$.VehicleYMM.new({model: "Ioniq Electric", make: "Hyundai"}), new vehicle$.VehicleYMM.new({model: "Ioniq Hybrid", make: "Hyundai"}), new vehicle$.VehicleYMM.new({model: "Ioniq Plug-in Hybrid", make: "Hyundai"}), new vehicle$.VehicleYMM.new({model: "I-PACE", make: "Jaguar"}), new vehicle$.VehicleYMM.new({model: "IS", make: "Lexus"}), new vehicle$.VehicleYMM.new({model: "Jetta", make: "Volkswagen"}), new vehicle$.VehicleYMM.new({model: "Jetta GLI", make: "Volkswagen"}), new vehicle$.VehicleYMM.new({model: "Journey", make: "Dodge"}), new vehicle$.VehicleYMM.new({model: "K900", make: "Kia"}), new vehicle$.VehicleYMM.new({model: "Kicks", make: "Nissan"}), new vehicle$.VehicleYMM.new({model: "Kona", make: "Hyundai"}), new vehicle$.VehicleYMM.new({model: "Kona Electric", make: "Hyundai"}), new vehicle$.VehicleYMM.new({model: "LaCrosse", make: "Buick"}), new vehicle$.VehicleYMM.new({model: "Land Cruiser", make: "Toyota"}), new vehicle$.VehicleYMM.new({model: "LC", make: "Lexus"}), new vehicle$.VehicleYMM.new({model: "LEAF", make: "Nissan"}), new vehicle$.VehicleYMM.new({model: "Legacy", make: "Subaru"}), new vehicle$.VehicleYMM.new({model: "Levante", make: "Maserati"}), new vehicle$.VehicleYMM.new({model: "LS", make: "Lexus"}), new vehicle$.VehicleYMM.new({model: "LX", make: "Lexus"}), new vehicle$.VehicleYMM.new({model: "Macan", make: "Porsche"}), new vehicle$.VehicleYMM.new({model: "Malibu", make: "Chevrolet"}), new vehicle$.VehicleYMM.new({model: "Maxima", make: "Nissan"}), new vehicle$.VehicleYMM.new({model: "MAZDA3", make: "MAZDA"}), new vehicle$.VehicleYMM.new({model: "MAZDA6", make: "MAZDA"}), new vehicle$.VehicleYMM.new({model: "MDX", make: "Acura"}), new vehicle$.VehicleYMM.new({model: "MDX Sport Hybrid", make: "Acura"}), new vehicle$.VehicleYMM.new({model: "Mercedes-AMG A-Class", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Mercedes-AMG C-Class", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Mercedes-AMG CLA", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Mercedes-AMG CLS", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Mercedes-AMG E-Class", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Mercedes-AMG G-Class", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Mercedes-AMG GLA", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Mercedes-AMG GLC", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Mercedes-AMG GLC Coupe", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Mercedes-AMG GLE", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Mercedes-AMG GLE Coupe", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Mercedes-AMG GLS", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Mercedes-AMG GT", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Mercedes-AMG S-Class", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Mercedes-AMG SL", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Mercedes-AMG SLC", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Mercedes-Maybach S-Class", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Metris Cargo", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Metris Passenger", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Metris WORKER Cargo", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Metris WORKER Passenger", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Mirage", make: "Mitsubishi"}), new vehicle$.VehicleYMM.new({model: "Mirage G4", make: "Mitsubishi"}), new vehicle$.VehicleYMM.new({model: "Mirai", make: "Toyota"}), new vehicle$.VehicleYMM.new({model: "MKC", make: "Lincoln"}), new vehicle$.VehicleYMM.new({model: "MKT", make: "Lincoln"}), new vehicle$.VehicleYMM.new({model: "MKZ", make: "Lincoln"}), new vehicle$.VehicleYMM.new({model: "Model 3", make: "Tesla"}), new vehicle$.VehicleYMM.new({model: "Model S", make: "Tesla"}), new vehicle$.VehicleYMM.new({model: "Model X", make: "Tesla"}), new vehicle$.VehicleYMM.new({model: "Model Y", make: "Tesla"}), new vehicle$.VehicleYMM.new({model: "Mulsanne", make: "Bentley"}), new vehicle$.VehicleYMM.new({model: "Murano", make: "Nissan"}), new vehicle$.VehicleYMM.new({model: "Mustang", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "MX-5 Miata", make: "MAZDA"}), new vehicle$.VehicleYMM.new({model: "MX-5 Miata RF", make: "MAZDA"}), new vehicle$.VehicleYMM.new({model: "Nautilus", make: "Lincoln"}), new vehicle$.VehicleYMM.new({model: "Navigator", make: "Lincoln"}), new vehicle$.VehicleYMM.new({model: "Navigator L", make: "Lincoln"}), new vehicle$.VehicleYMM.new({model: "NEXO", make: "Hyundai"}), new vehicle$.VehicleYMM.new({model: "Niro", make: "Kia"}), new vehicle$.VehicleYMM.new({model: "Niro EV", make: "Kia"}), new vehicle$.VehicleYMM.new({model: "Niro Plug-in Hybrid", make: "Kia"}), new vehicle$.VehicleYMM.new({model: "NSX", make: "Acura"}), new vehicle$.VehicleYMM.new({model: "NV1500 Cargo", make: "Nissan"}), new vehicle$.VehicleYMM.new({model: "NV200", make: "Nissan"}), new vehicle$.VehicleYMM.new({model: "NV2500 HD Cargo", make: "Nissan"}), new vehicle$.VehicleYMM.new({model: "NV3500 HD Cargo", make: "Nissan"}), new vehicle$.VehicleYMM.new({model: "NV3500 HD Passenger", make: "Nissan"}), new vehicle$.VehicleYMM.new({model: "NX", make: "Lexus"}), new vehicle$.VehicleYMM.new({model: "Odyssey", make: "Honda"}), new vehicle$.VehicleYMM.new({model: "Optima", make: "Kia"}), new vehicle$.VehicleYMM.new({model: "Optima Hybrid", make: "Kia"}), new vehicle$.VehicleYMM.new({model: "Optima Plug-in Hybrid", make: "Kia"}), new vehicle$.VehicleYMM.new({model: "Outback", make: "Subaru"}), new vehicle$.VehicleYMM.new({model: "Outlander", make: "Mitsubishi"}), new vehicle$.VehicleYMM.new({model: "Outlander PHEV", make: "Mitsubishi"}), new vehicle$.VehicleYMM.new({model: "Outlander Sport", make: "Mitsubishi"}), new vehicle$.VehicleYMM.new({model: "Pacifica", make: "Chrysler"}), new vehicle$.VehicleYMM.new({model: "Pacifica Hybrid", make: "Chrysler"}), new vehicle$.VehicleYMM.new({model: "Palisade", make: "Hyundai"}), new vehicle$.VehicleYMM.new({model: "Panamera", make: "Porsche"}), new vehicle$.VehicleYMM.new({model: "Passat", make: "Volkswagen"}), new vehicle$.VehicleYMM.new({model: "Passport", make: "Honda"}), new vehicle$.VehicleYMM.new({model: "Pathfinder", make: "Nissan"}), new vehicle$.VehicleYMM.new({model: "Phantom", make: "Rolls-Royce"}), new vehicle$.VehicleYMM.new({model: "Pilot", make: "Honda"}), new vehicle$.VehicleYMM.new({model: "Prius", make: "Toyota"}), new vehicle$.VehicleYMM.new({model: "Prius c", make: "Toyota"}), new vehicle$.VehicleYMM.new({model: "Prius Prime", make: "Toyota"}), new vehicle$.VehicleYMM.new({model: "ProMaster Cargo Van", make: "Ram"}), new vehicle$.VehicleYMM.new({model: "ProMaster City", make: "Ram"}), new vehicle$.VehicleYMM.new({model: "ProMaster Window Van", make: "Ram"}), new vehicle$.VehicleYMM.new({model: "Q3", make: "Audi"}), new vehicle$.VehicleYMM.new({model: "Q5", make: "Audi"}), new vehicle$.VehicleYMM.new({model: "Q50", make: "INFINITI"}), new vehicle$.VehicleYMM.new({model: "Q60", make: "INFINITI"}), new vehicle$.VehicleYMM.new({model: "Q7", make: "Audi"}), new vehicle$.VehicleYMM.new({model: "Q70", make: "INFINITI"}), new vehicle$.VehicleYMM.new({model: "Q8", make: "Audi"}), new vehicle$.VehicleYMM.new({model: "Quattroporte", make: "Maserati"}), new vehicle$.VehicleYMM.new({model: "QX30", make: "INFINITI"}), new vehicle$.VehicleYMM.new({model: "QX50", make: "INFINITI"}), new vehicle$.VehicleYMM.new({model: "QX60", make: "INFINITI"}), new vehicle$.VehicleYMM.new({model: "QX80", make: "INFINITI"}), new vehicle$.VehicleYMM.new({model: "R1S", make: "Rivian"}), new vehicle$.VehicleYMM.new({model: "R1T", make: "Rivian"}), new vehicle$.VehicleYMM.new({model: "R8", make: "Audi"}), new vehicle$.VehicleYMM.new({model: "Range Rover", make: "Land Rover"}), new vehicle$.VehicleYMM.new({model: "Range Rover Evoque", make: "Land Rover"}), new vehicle$.VehicleYMM.new({model: "Range Rover Sport", make: "Land Rover"}), new vehicle$.VehicleYMM.new({model: "Range Rover Velar", make: "Land Rover"}), new vehicle$.VehicleYMM.new({model: "Ranger SuperCab", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "Ranger SuperCrew", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "RAV4", make: "Toyota"}), new vehicle$.VehicleYMM.new({model: "RAV4 Hybrid", make: "Toyota"}), new vehicle$.VehicleYMM.new({model: "RAV4 Prime", make: "Toyota"}), new vehicle$.VehicleYMM.new({model: "RC", make: "Lexus"}), new vehicle$.VehicleYMM.new({model: "RDX", make: "Acura"}), new vehicle$.VehicleYMM.new({model: "Regal Sportback", make: "Buick"}), new vehicle$.VehicleYMM.new({model: "Regal TourX", make: "Buick"}), new vehicle$.VehicleYMM.new({model: "Renegade", make: "Jeep"}), new vehicle$.VehicleYMM.new({model: "Ridgeline", make: "Honda"}), new vehicle$.VehicleYMM.new({model: "Rio", make: "Kia"}), new vehicle$.VehicleYMM.new({model: "RLX", make: "Acura"}), new vehicle$.VehicleYMM.new({model: "RLX Sport Hybrid", make: "Acura"}), new vehicle$.VehicleYMM.new({model: "Rogue", make: "Nissan"}), new vehicle$.VehicleYMM.new({model: "Rogue Sport", make: "Nissan"}), new vehicle$.VehicleYMM.new({model: "RS 3", make: "Audi"}), new vehicle$.VehicleYMM.new({model: "RS 5", make: "Audi"}), new vehicle$.VehicleYMM.new({model: "RX", make: "Lexus"}), new vehicle$.VehicleYMM.new({model: "S3", make: "Audi"}), new vehicle$.VehicleYMM.new({model: "S4", make: "Audi"}), new vehicle$.VehicleYMM.new({model: "S5", make: "Audi"}), new vehicle$.VehicleYMM.new({model: "S60", make: "Volvo"}), new vehicle$.VehicleYMM.new({model: "S8", make: "Audi"}), new vehicle$.VehicleYMM.new({model: "S90", make: "Volvo"}), new vehicle$.VehicleYMM.new({model: "Santa Fe", make: "Hyundai"}), new vehicle$.VehicleYMM.new({model: "Santa Fe XL", make: "Hyundai"}), new vehicle$.VehicleYMM.new({model: "Savana 2500 Cargo", make: "GMC"}), new vehicle$.VehicleYMM.new({model: "Savana 2500 Passenger", make: "GMC"}), new vehicle$.VehicleYMM.new({model: "Savana 3500 Cargo", make: "GMC"}), new vehicle$.VehicleYMM.new({model: "Savana 3500 Passenger", make: "GMC"}), new vehicle$.VehicleYMM.new({model: "S-Class", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Sedona", make: "Kia"}), new vehicle$.VehicleYMM.new({model: "Seltos", make: "Kia"}), new vehicle$.VehicleYMM.new({model: "Sentra", make: "Nissan"}), new vehicle$.VehicleYMM.new({model: "Sequoia", make: "Toyota"}), new vehicle$.VehicleYMM.new({model: "Sienna", make: "Toyota"}), new vehicle$.VehicleYMM.new({model: "Sierra 1500 Crew Cab", make: "GMC"}), new vehicle$.VehicleYMM.new({model: "Sierra 1500 Double Cab", make: "GMC"}), new vehicle$.VehicleYMM.new({model: "Sierra 1500 Limited Double Cab", make: "GMC"}), new vehicle$.VehicleYMM.new({model: "Sierra 1500 Regular Cab", make: "GMC"}), new vehicle$.VehicleYMM.new({model: "Sierra 2500 HD Crew Cab", make: "GMC"}), new vehicle$.VehicleYMM.new({model: "Sierra 2500 HD Double Cab", make: "GMC"}), new vehicle$.VehicleYMM.new({model: "Sierra 2500 HD Regular Cab", make: "GMC"}), new vehicle$.VehicleYMM.new({model: "Sierra 3500 HD Crew Cab", make: "GMC"}), new vehicle$.VehicleYMM.new({model: "Silverado 1500 Crew Cab", make: "Chevrolet"}), new vehicle$.VehicleYMM.new({model: "Silverado 1500 Double Cab", make: "Chevrolet"}), new vehicle$.VehicleYMM.new({model: "Silverado 1500 LD Double Cab", make: "Chevrolet"}), new vehicle$.VehicleYMM.new({model: "Silverado 1500 Regular Cab", make: "Chevrolet"}), new vehicle$.VehicleYMM.new({model: "Silverado 2500 HD Crew Cab", make: "Chevrolet"}), new vehicle$.VehicleYMM.new({model: "Silverado 2500 HD Double Cab", make: "Chevrolet"}), new vehicle$.VehicleYMM.new({model: "Silverado 2500 HD Regular Cab", make: "Chevrolet"}), new vehicle$.VehicleYMM.new({model: "Silverado 3500 HD Crew Cab", make: "Chevrolet"}), new vehicle$.VehicleYMM.new({model: "SL", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "SLC", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Sonata", make: "Hyundai"}), new vehicle$.VehicleYMM.new({model: "Sonata Hybrid", make: "Hyundai"}), new vehicle$.VehicleYMM.new({model: "Sonata Plug-in Hybrid", make: "Hyundai"}), new vehicle$.VehicleYMM.new({model: "Sonic", make: "Chevrolet"}), new vehicle$.VehicleYMM.new({model: "Sorento", make: "Kia"}), new vehicle$.VehicleYMM.new({model: "Soul", make: "Kia"}), new vehicle$.VehicleYMM.new({model: "Soul EV", make: "Kia"}), new vehicle$.VehicleYMM.new({model: "Spark", make: "Chevrolet"}), new vehicle$.VehicleYMM.new({model: "Sportage", make: "Kia"}), new vehicle$.VehicleYMM.new({model: "Sprinter 1500 Cargo", make: "Freightliner"}), new vehicle$.VehicleYMM.new({model: "Sprinter 1500 Cargo", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Sprinter 1500 Passenger", make: "Freightliner"}), new vehicle$.VehicleYMM.new({model: "Sprinter 1500 Passenger", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Sprinter 2500 Cargo", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Sprinter 2500 Cargo", make: "Freightliner"}), new vehicle$.VehicleYMM.new({model: "Sprinter 2500 Crew", make: "Freightliner"}), new vehicle$.VehicleYMM.new({model: "Sprinter 2500 Crew", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Sprinter 2500 Passenger", make: "Freightliner"}), new vehicle$.VehicleYMM.new({model: "Sprinter 2500 Passenger", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Sprinter 3500 Cargo", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Sprinter 3500 Cargo", make: "Freightliner"}), new vehicle$.VehicleYMM.new({model: "Sprinter 3500 Crew", make: "Freightliner"}), new vehicle$.VehicleYMM.new({model: "Sprinter 3500 Crew", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Sprinter 3500 XD Cargo", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Sprinter 3500 XD Crew", make: "Freightliner"}), new vehicle$.VehicleYMM.new({model: "Sprinter 3500 XD Crew", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Sprinter 3500XD Cargo", make: "Freightliner"}), new vehicle$.VehicleYMM.new({model: "Sprinter 4500 Cargo", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Sprinter 4500 Cargo", make: "Freightliner"}), new vehicle$.VehicleYMM.new({model: "Sprinter 4500 Crew", make: "Mercedes-Benz"}), new vehicle$.VehicleYMM.new({model: "Sprinter 4500 Crew", make: "Freightliner"}), new vehicle$.VehicleYMM.new({model: "SQ5", make: "Audi"}), new vehicle$.VehicleYMM.new({model: "Stelvio", make: "Alfa Romeo"}), new vehicle$.VehicleYMM.new({model: "Stinger", make: "Kia"}), new vehicle$.VehicleYMM.new({model: "Suburban", make: "Chevrolet"}), new vehicle$.VehicleYMM.new({model: "Tacoma Access Cab", make: "Toyota"}), new vehicle$.VehicleYMM.new({model: "Tacoma Double Cab", make: "Toyota"}), new vehicle$.VehicleYMM.new({model: "Tahoe", make: "Chevrolet"}), new vehicle$.VehicleYMM.new({model: "Taurus", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "Taycan", make: "Porsche"}), new vehicle$.VehicleYMM.new({model: "Telluride", make: "Kia"}), new vehicle$.VehicleYMM.new({model: "Terrain", make: "GMC"}), new vehicle$.VehicleYMM.new({model: "Tiguan", make: "Volkswagen"}), new vehicle$.VehicleYMM.new({model: "Titan Crew Cab", make: "Nissan"}), new vehicle$.VehicleYMM.new({model: "Titan King Cab", make: "Nissan"}), new vehicle$.VehicleYMM.new({model: "TITAN Single Cab", make: "Nissan"}), new vehicle$.VehicleYMM.new({model: "TITAN XD Crew Cab", make: "Nissan"}), new vehicle$.VehicleYMM.new({model: "TITAN XD King Cab", make: "Nissan"}), new vehicle$.VehicleYMM.new({model: "TITAN XD Single Cab", make: "Nissan"}), new vehicle$.VehicleYMM.new({model: "TLX", make: "Acura"}), new vehicle$.VehicleYMM.new({model: "Trailblazer", make: "Chevrolet"}), new vehicle$.VehicleYMM.new({model: "Transit 150 Cargo Van", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "Transit 150 Crew Van", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "Transit 150 Passenger Van", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "Transit 150 Van", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "Transit 150 Wagon", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "Transit 250 Cargo Van", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "Transit 250 Crew Van", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "Transit 250 Van", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "Transit 350 Cargo Van", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "Transit 350 HD Van", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "Transit 350 Passenger Van", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "Transit 350 Van", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "Transit 350 Wagon", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "Transit Connect Cargo", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "Transit Connect Cargo Van", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "Transit Connect Passenger", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "Transit Connect Passenger Wagon", make: "Ford"}), new vehicle$.VehicleYMM.new({model: "Traverse", make: "Chevrolet"}), new vehicle$.VehicleYMM.new({model: "Trax", make: "Chevrolet"}), new vehicle$.VehicleYMM.new({model: "TT", make: "Audi"}), new vehicle$.VehicleYMM.new({model: "Tucson", make: "Hyundai"}), new vehicle$.VehicleYMM.new({model: "Tundra CrewMax", make: "Toyota"}), new vehicle$.VehicleYMM.new({model: "Tundra Double Cab", make: "Toyota"}), new vehicle$.VehicleYMM.new({model: "Urus", make: "Lamborghini"}), new vehicle$.VehicleYMM.new({model: "UX", make: "Lexus"}), new vehicle$.VehicleYMM.new({model: "V60", make: "Volvo"}), new vehicle$.VehicleYMM.new({model: "V90", make: "Volvo"}), new vehicle$.VehicleYMM.new({model: "Vantage", make: "Aston Martin"}), new vehicle$.VehicleYMM.new({model: "Veloster", make: "Hyundai"}), new vehicle$.VehicleYMM.new({model: "Venue", make: "Hyundai"}), new vehicle$.VehicleYMM.new({model: "Venza", make: "Toyota"}), new vehicle$.VehicleYMM.new({model: "Versa", make: "Nissan"}), new vehicle$.VehicleYMM.new({model: "Versa Note", make: "Nissan"}), new vehicle$.VehicleYMM.new({model: "Volt", make: "Chevrolet"}), new vehicle$.VehicleYMM.new({model: "Voyager", make: "Chrysler"}), new vehicle$.VehicleYMM.new({model: "Wraith", make: "Rolls-Royce"}), new vehicle$.VehicleYMM.new({model: "Wrangler", make: "Jeep"}), new vehicle$.VehicleYMM.new({model: "Wrangler Unlimited", make: "Jeep"}), new vehicle$.VehicleYMM.new({model: "WRX", make: "Subaru"}), new vehicle$.VehicleYMM.new({model: "X3 M", make: "BMW"}), new vehicle$.VehicleYMM.new({model: "X6 M", make: "BMW"}), new vehicle$.VehicleYMM.new({model: "XC40", make: "Volvo"}), new vehicle$.VehicleYMM.new({model: "XC60", make: "Volvo"}), new vehicle$.VehicleYMM.new({model: "XC90", make: "Volvo"}), new vehicle$.VehicleYMM.new({model: "XE", make: "Jaguar"}), new vehicle$.VehicleYMM.new({model: "XF", make: "Jaguar"}), new vehicle$.VehicleYMM.new({model: "XJ", make: "Jaguar"}), new vehicle$.VehicleYMM.new({model: "XT4", make: "Cadillac"}), new vehicle$.VehicleYMM.new({model: "XT5", make: "Cadillac"}), new vehicle$.VehicleYMM.new({model: "XT6", make: "Cadillac"}), new vehicle$.VehicleYMM.new({model: "XTS", make: "Cadillac"}), new vehicle$.VehicleYMM.new({model: "Yaris", make: "Toyota"}), new vehicle$.VehicleYMM.new({model: "Yaris Hatchback", make: "Toyota"}), new vehicle$.VehicleYMM.new({model: "Yukon", make: "GMC"}), new vehicle$.VehicleYMM.new({model: "Yukon XL", make: "GMC"}), new vehicle$.VehicleYMM.new({model: "124 Spider", make: "FIAT"}), new vehicle$.VehicleYMM.new({model: "1500 Classic Crew Cab", make: "Ram"}), new vehicle$.VehicleYMM.new({model: "1500 Classic Quad Cab", make: "Ram"}), new vehicle$.VehicleYMM.new({model: "1500 Classic Regular Cab", make: "Ram"}), new vehicle$.VehicleYMM.new({model: "1500 Crew Cab", make: "Ram"}), new vehicle$.VehicleYMM.new({model: "1500 Quad Cab", make: "Ram"}), new vehicle$.VehicleYMM.new({model: "2 Series", make: "BMW"}), new vehicle$.VehicleYMM.new({model: "2500 Crew Cab", make: "Ram"}), new vehicle$.VehicleYMM.new({model: "2500 Mega Cab", make: "Ram"}), new vehicle$.VehicleYMM.new({model: "2500 Regular Cab", make: "Ram"}), new vehicle$.VehicleYMM.new({model: "3 Series", make: "BMW"}), new vehicle$.VehicleYMM.new({model: "300", make: "Chrysler"}), new vehicle$.VehicleYMM.new({model: "3500 Crew Cab", make: "Ram"}), new vehicle$.VehicleYMM.new({model: "3500 Mega Cab", make: "Ram"}), new vehicle$.VehicleYMM.new({model: "3500 Regular Cab", make: "Ram"}), new vehicle$.VehicleYMM.new({model: "370Z", make: "Nissan"}), new vehicle$.VehicleYMM.new({model: "4 Series", make: "BMW"}), new vehicle$.VehicleYMM.new({model: "488 GTB", make: "Ferrari"}), new vehicle$.VehicleYMM.new({model: "488 Spider", make: "Ferrari"}), new vehicle$.VehicleYMM.new({model: "4C Spider", make: "Alfa Romeo"}), new vehicle$.VehicleYMM.new({model: "4Runner", make: "Toyota"}), new vehicle$.VehicleYMM.new({model: "5 Series", make: "BMW"}), new vehicle$.VehicleYMM.new({model: "500", make: "FIAT"}), new vehicle$.VehicleYMM.new({model: "500 Abarth", make: "FIAT"}), new vehicle$.VehicleYMM.new({model: "500c", make: "FIAT"}), new vehicle$.VehicleYMM.new({model: "500c Abarth", make: "FIAT"}), new vehicle$.VehicleYMM.new({model: "500e", make: "FIAT"}), new vehicle$.VehicleYMM.new({model: "500L", make: "FIAT"}), new vehicle$.VehicleYMM.new({model: "500X", make: "FIAT"}), new vehicle$.VehicleYMM.new({model: "570GT", make: "McLaren"}), new vehicle$.VehicleYMM.new({model: "570S", make: "McLaren"}), new vehicle$.VehicleYMM.new({model: "6 Series", make: "BMW"}), new vehicle$.VehicleYMM.new({model: "600LT", make: "McLaren"}), new vehicle$.VehicleYMM.new({model: "7 Series", make: "BMW"}), new vehicle$.VehicleYMM.new({model: "718 Boxster", make: "Porsche"}), new vehicle$.VehicleYMM.new({model: "718 Cayman", make: "Porsche"}), new vehicle$.VehicleYMM.new({model: "718 Spyder", make: "Porsche"}), new vehicle$.VehicleYMM.new({model: "720S", make: "McLaren"}), new vehicle$.VehicleYMM.new({model: "8 Series", make: "BMW"}), new vehicle$.VehicleYMM.new({model: "812 Superfast", make: "Ferrari"}), new vehicle$.VehicleYMM.new({model: "86", make: "Toyota"}), new vehicle$.VehicleYMM.new({model: "911", make: "Porsche,"})]);
+    },
+    set vehicles(_) {}
+  }, false);
+  var make$ = dart.privateName(vehicle$, "VehicleYMM.make");
+  var model$ = dart.privateName(vehicle$, "VehicleYMM.model");
+  var year = dart.privateName(vehicle$, "VehicleYMM.year");
+  vehicle$.VehicleYMM = class VehicleYMM extends core.Object {
+    get make() {
+      return this[make$];
+    }
+    set make(value) {
+      super.make = value;
+    }
+    get model() {
+      return this[model$];
+    }
+    set model(value) {
+      super.model = value;
+    }
+    get year() {
+      return this[year];
+    }
+    set year(value) {
+      super.year = value;
+    }
+    toMap() {
+      return new (T.IdentityMapOfString$dynamic()).from(["Make", this.make, "Model", this.model, "Year", this.year]);
+    }
+  };
+  (vehicle$.VehicleYMM.new = function(opts) {
+    let make = opts && 'make' in opts ? opts.make : null;
+    if (make == null) dart.nullFailed(I[0], 8, 29, "make");
+    let model = opts && 'model' in opts ? opts.model : null;
+    if (model == null) dart.nullFailed(I[0], 8, 49, "model");
+    this[year] = vehicles.randomGenerator.integer(dart.notNull(new core.DateTime.now().year) + 1, {min: 1940});
+    this[make$] = make;
+    this[model$] = model;
+    ;
+  }).prototype = vehicle$.VehicleYMM.prototype;
+  dart.addTypeTests(vehicle$.VehicleYMM);
+  dart.addTypeCaches(vehicle$.VehicleYMM);
+  dart.setMethodSignature(vehicle$.VehicleYMM, () => ({
+    __proto__: dart.getMethods(vehicle$.VehicleYMM.__proto__),
+    toMap: dart.fnType(core.Map$(core.String, dart.dynamic), [])
+  }));
+  dart.setLibraryUri(vehicle$.VehicleYMM, I[1]);
+  dart.setFieldSignature(vehicle$.VehicleYMM, () => ({
+    __proto__: dart.getFields(vehicle$.VehicleYMM.__proto__),
+    make: dart.finalFieldType(core.String),
+    model: dart.finalFieldType(core.String),
+    year: dart.finalFieldType(core.int)
+  }));
+  var _vinChars = dart.privateName(vehicle, "Vehicle._vinChars");
+  var _vinChars$ = dart.privateName(vehicle, "_vinChars");
+  var _generateWmi = dart.privateName(vehicle, "_generateWmi");
+  var _generateVds = dart.privateName(vehicle, "_generateVds");
+  var _generateVis = dart.privateName(vehicle, "_generateVis");
+  vehicle.Vehicle = class Vehicle extends core.Object {
+    get [_vinChars$]() {
+      return this[_vinChars];
+    }
+    set [_vinChars$](value) {
+      super[_vinChars$] = value;
+    }
+    asVehicle() {
+      return random_generator.random.element(vehicle$.VehicleYMM, vehicles.vehicles);
+    }
+    make() {
+      return random_generator.random.element(vehicle$.VehicleYMM, vehicles.vehicles).make;
+    }
+    model() {
+      return random_generator.random.element(vehicle$.VehicleYMM, vehicles.vehicles).model;
+    }
+    year() {
+      return dart.toString(random_generator.random.element(vehicle$.VehicleYMM, vehicles.vehicles).year);
+    }
+    yearMakeModel() {
+      let vehicle = random_generator.random.element(vehicle$.VehicleYMM, vehicles.vehicles);
+      return dart.toString(vehicle.year) + " " + dart.str(vehicle.make) + " " + dart.str(vehicle.model);
+    }
+    vehicle() {
+      return random_generator.random.element(vehicle$.VehicleYMM, vehicles.vehicles).toMap();
+    }
+    vin() {
+      return dart.notNull(this[_generateWmi]()) + dart.notNull(this[_generateVds]()) + dart.notNull(this[_generateVis]());
+    }
+    [_generateWmi]() {
+      let wmi = random_generator.random.element(core.String, vin_manufacturers.manufacturers);
+      if (wmi.length === 2) {
+        wmi = dart.notNull(wmi) + "9";
+      }
+      return wmi;
+    }
+    [_generateVds]() {
+      let randomVds = random_generator.random.fromCharSet(this[_vinChars$], 5);
+      randomVds = dart.notNull(randomVds) + dart.toString(random_generator.random.integer(10));
+      return randomVds;
+    }
+    [_generateVis]() {
+      return core.String.as(dart.dsend(dart.dsend(random_generator.random.mapElementKey(dart.dynamic, vin_years.yearMap), '+', ["A"]), '+', [random_generator.random.fromCharSet(this[_vinChars$], 6)]));
+    }
+  };
+  (vehicle.Vehicle.new = function() {
+    this[_vinChars] = "ABCDEFGHJKLMNPRSTUVWXYZ0123456789";
+    ;
+  }).prototype = vehicle.Vehicle.prototype;
+  dart.addTypeTests(vehicle.Vehicle);
+  dart.addTypeCaches(vehicle.Vehicle);
+  dart.setMethodSignature(vehicle.Vehicle, () => ({
+    __proto__: dart.getMethods(vehicle.Vehicle.__proto__),
+    asVehicle: dart.fnType(vehicle$.VehicleYMM, []),
+    make: dart.fnType(core.String, []),
+    model: dart.fnType(core.String, []),
+    year: dart.fnType(core.String, []),
+    yearMakeModel: dart.fnType(core.String, []),
+    vehicle: dart.fnType(core.Map$(core.String, dart.dynamic), []),
+    vin: dart.fnType(core.String, []),
+    [_generateWmi]: dart.fnType(core.String, []),
+    [_generateVds]: dart.fnType(core.String, []),
+    [_generateVis]: dart.fnType(core.String, [])
+  }));
+  dart.setLibraryUri(vehicle.Vehicle, I[2]);
+  dart.setFieldSignature(vehicle.Vehicle, () => ({
+    __proto__: dart.getFields(vehicle.Vehicle.__proto__),
+    [_vinChars$]: dart.finalFieldType(core.String)
+  }));
+  var address$ = dart.privateName(faker, "Faker.address");
+  var conference$ = dart.privateName(faker, "Faker.conference");
+  var company$ = dart.privateName(faker, "Faker.company");
+  var currency$ = dart.privateName(faker, "Faker.currency");
+  var food$ = dart.privateName(faker, "Faker.food");
+  var guid$ = dart.privateName(faker, "Faker.guid");
+  var image$ = dart.privateName(faker, "Faker.image");
+  var internet$ = dart.privateName(faker, "Faker.internet");
+  var job$ = dart.privateName(faker, "Faker.job");
+  var jwt$ = dart.privateName(faker, "Faker.jwt");
+  var lorem$ = dart.privateName(faker, "Faker.lorem");
+  var person$ = dart.privateName(faker, "Faker.person");
+  var phoneNumber = dart.privateName(faker, "Faker.phoneNumber");
+  var sport$ = dart.privateName(faker, "Faker.sport");
+  var vehicle$0 = dart.privateName(faker, "Faker.vehicle");
+  var date$ = dart.privateName(faker, "Faker.date");
+  var randomGenerator = dart.privateName(faker, "Faker.randomGenerator");
+  faker.Faker = class Faker extends core.Object {
+    get address() {
+      return this[address$];
+    }
+    set address(value) {
+      super.address = value;
+    }
+    get conference() {
+      return this[conference$];
+    }
+    set conference(value) {
+      super.conference = value;
+    }
+    get company() {
+      return this[company$];
+    }
+    set company(value) {
+      super.company = value;
+    }
+    get currency() {
+      return this[currency$];
+    }
+    set currency(value) {
+      super.currency = value;
+    }
+    get food() {
+      return this[food$];
+    }
+    set food(value) {
+      super.food = value;
+    }
+    get guid() {
+      return this[guid$];
+    }
+    set guid(value) {
+      super.guid = value;
+    }
+    get image() {
+      return this[image$];
+    }
+    set image(value) {
+      super.image = value;
+    }
+    get internet() {
+      return this[internet$];
+    }
+    set internet(value) {
+      super.internet = value;
+    }
+    get job() {
+      return this[job$];
+    }
+    set job(value) {
+      super.job = value;
+    }
+    get jwt() {
+      return this[jwt$];
+    }
+    set jwt(value) {
+      super.jwt = value;
+    }
+    get lorem() {
+      return this[lorem$];
+    }
+    set lorem(value) {
+      super.lorem = value;
+    }
+    get person() {
+      return this[person$];
+    }
+    set person(value) {
+      super.person = value;
+    }
+    get phoneNumber() {
+      return this[phoneNumber];
+    }
+    set phoneNumber(value) {
+      super.phoneNumber = value;
+    }
+    get sport() {
+      return this[sport$];
+    }
+    set sport(value) {
+      super.sport = value;
+    }
+    get vehicle() {
+      return this[vehicle$0];
+    }
+    set vehicle(value) {
+      super.vehicle = value;
+    }
+    get date() {
+      return this[date$];
+    }
+    set date(value) {
+      super.date = value;
+    }
+    get randomGenerator() {
+      return this[randomGenerator];
+    }
+    set randomGenerator(value) {
+      super.randomGenerator = value;
+    }
+    static new(opts) {
+      let seed = opts && 'seed' in opts ? opts.seed : null;
+      let provider = opts && 'provider' in opts ? opts.provider : null;
+      return new faker.Faker.withGenerator(new random_generator.RandomGenerator.new({seed: seed}), {provider: provider});
+    }
+  };
+  (faker.Faker.withGenerator = function(random, opts) {
+    let t0, t0$;
+    if (random == null) dart.nullFailed(I[3], 44, 39, "random");
+    let provider = opts && 'provider' in opts ? opts.provider : null;
+    this[address$] = new address.Address.new(new person.Person.new(random));
+    this[conference$] = new conference.Conference.new(random);
+    this[company$] = new company.Company.new(new person.Person.new(random));
+    this[currency$] = new currency.Currency.new(random);
+    this[food$] = new food.Food.new(random);
+    this[guid$] = new guid.Guid.new(random);
+    this[image$] = new image.Image.new();
+    this[internet$] = new internet.Internet.new(random);
+    this[job$] = new job.Job.new(random);
+    this[jwt$] = new jwt.Jwt.new();
+    this[lorem$] = new lorem.Lorem.new(random, (t0$ = (t0 = provider, t0 == null ? null : t0.loremDataProvider), t0$ == null ? new default_providers.DefaultLoremDataProvider.new() : t0$));
+    this[person$] = new person.Person.new(random);
+    this[sport$] = new sport.Sport.new(random);
+    this[date$] = new date.Date.new(random);
+    this[phoneNumber] = new phone_number.PhoneNumber.new(random);
+    this[vehicle$0] = new vehicle.Vehicle.new();
+    this[randomGenerator] = random;
+    ;
+  }).prototype = faker.Faker.prototype;
+  dart.addTypeTests(faker.Faker);
+  dart.addTypeCaches(faker.Faker);
+  dart.setLibraryUri(faker.Faker, I[4]);
+  dart.setFieldSignature(faker.Faker, () => ({
+    __proto__: dart.getFields(faker.Faker.__proto__),
+    address: dart.finalFieldType(address.Address),
+    conference: dart.finalFieldType(conference.Conference),
+    company: dart.finalFieldType(company.Company),
+    currency: dart.finalFieldType(currency.Currency),
+    food: dart.finalFieldType(food.Food),
+    guid: dart.finalFieldType(guid.Guid),
+    image: dart.finalFieldType(image.Image),
+    internet: dart.finalFieldType(internet.Internet),
+    job: dart.finalFieldType(job.Job),
+    jwt: dart.finalFieldType(jwt.Jwt),
+    lorem: dart.finalFieldType(lorem.Lorem),
+    person: dart.finalFieldType(person.Person),
+    phoneNumber: dart.finalFieldType(phone_number.PhoneNumber),
+    sport: dart.finalFieldType(sport.Sport),
+    vehicle: dart.finalFieldType(vehicle.Vehicle),
+    date: dart.finalFieldType(date.Date),
+    randomGenerator: dart.finalFieldType(random_generator.RandomGenerator)
+  }));
+  var loremDataProvider$ = dart.privateName(faker, "FakerDataProvider.loremDataProvider");
+  faker.FakerDataProvider = class FakerDataProvider extends core.Object {
+    get loremDataProvider() {
+      return this[loremDataProvider$];
+    }
+    set loremDataProvider(value) {
+      super.loremDataProvider = value;
+    }
+  };
+  (faker.FakerDataProvider.new = function(opts) {
+    let loremDataProvider = opts && 'loremDataProvider' in opts ? opts.loremDataProvider : null;
+    this[loremDataProvider$] = loremDataProvider;
+    ;
+  }).prototype = faker.FakerDataProvider.prototype;
+  dart.addTypeTests(faker.FakerDataProvider);
+  dart.addTypeCaches(faker.FakerDataProvider);
+  dart.setLibraryUri(faker.FakerDataProvider, I[4]);
+  dart.setFieldSignature(faker.FakerDataProvider, () => ({
+    __proto__: dart.getFields(faker.FakerDataProvider.__proto__),
+    loremDataProvider: dart.finalFieldType(dart.nullable(base_providers.LoremDataProvider))
+  }));
+  faker.FakerDataProviderFa = class FakerDataProviderFa extends faker.FakerDataProvider {};
+  (faker.FakerDataProviderFa.new = function() {
+    faker.FakerDataProviderFa.__proto__.new.call(this, {loremDataProvider: new fa_providers.LoremDataProviderFa.new()});
+    ;
+  }).prototype = faker.FakerDataProviderFa.prototype;
+  dart.addTypeTests(faker.FakerDataProviderFa);
+  dart.addTypeCaches(faker.FakerDataProviderFa);
+  dart.setLibraryUri(faker.FakerDataProviderFa, I[4]);
+  dart.defineLazy(faker, {
+    /*faker.faker*/get faker() {
+      return new faker.Faker.withGenerator(random_generator.random);
+    }
+  }, false);
+  dart.trackLibraries("packages/faker/src/data/vehicles/vehicles.dart", {
+    "package:faker/src/data/vehicles/vehicles.dart": vehicles,
+    "package:faker/src/data/vehicles/models/vehicle.dart": vehicle$,
+    "package:faker/src/vehicle.dart": vehicle,
+    "package:faker/src/faker.dart": faker,
+    "package:faker/faker.dart": faker$
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["vehicles.dart","models/vehicle.dart","../../vehicle.dart","../../faker.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../../packages/faker/src/data/vehicles/vehicles.dart.lib.js"}');
+  // Exports:
+  return {
+    src__data__vehicles__vehicles: vehicles,
+    src__data__vehicles__models__vehicle: vehicle$,
+    src__vehicle: vehicle,
+    src__faker: faker,
+    faker: faker$
+  };
+}));
+
+//# sourceMappingURL=vehicles.dart.lib.js.map
