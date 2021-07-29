@@ -1,776 +1,1240 @@
-define(['dart_sdk', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/scheduler/binding.dart'], (function load__packages__flutter__src__painting__image_stream_dart(dart_sdk, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__scheduler__binding$46dart) {
+define(['dart_sdk', 'packages/flutter/src/gestures/recognizer.dart', 'packages/flutter/src/rendering/proxy_box.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/painting/basic_types.dart', 'packages/flutter/src/animation/listener_helpers.dart', 'packages/flutter/src/animation/animation_controller.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/gestures/drag_details.dart', 'packages/flutter/src/gestures/velocity_tracker.dart', 'packages/flutter/src/animation/curves.dart'], (function load__packages__flutter__src__widgets__dismissible_dart(dart_sdk, packages__flutter__src__gestures__recognizer$46dart, packages__flutter__src__rendering__proxy_box$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__painting__basic_types$46dart, packages__flutter__src__animation__listener_helpers$46dart, packages__flutter__src__animation__animation_controller$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__gestures__drag_details$46dart, packages__flutter__src__gestures__velocity_tracker$46dart, packages__flutter__src__animation__curves$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const ui = dart_sdk.ui;
-  const _interceptors = dart_sdk._interceptors;
-  const _internal = dart_sdk._internal;
   const async = dart_sdk.async;
+  const ui = dart_sdk.ui;
+  const _internal = dart_sdk._internal;
+  const _interceptors = dart_sdk._interceptors;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const debug = packages__flutter__src__foundation__debug$46dart.src__foundation__debug;
-  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
+  const recognizer = packages__flutter__src__gestures__recognizer$46dart.src__gestures__recognizer;
+  const proxy_box = packages__flutter__src__rendering__proxy_box$46dart.src__rendering__proxy_box;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const debug = packages__flutter__src__widgets__widget_span$46dart.src__widgets__debug;
+  const transitions = packages__flutter__src__widgets__widget_span$46dart.src__widgets__transitions;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const gesture_detector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__gesture_detector;
+  const ticker_provider = packages__flutter__src__widgets__widget_span$46dart.src__widgets__ticker_provider;
+  const automatic_keep_alive = packages__flutter__src__widgets__widget_span$46dart.src__widgets__automatic_keep_alive;
+  const basic_types = packages__flutter__src__painting__basic_types$46dart.src__painting__basic_types;
+  const animation = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animation;
+  const tween = packages__flutter__src__animation__listener_helpers$46dart.src__animation__tween;
+  const animation_controller = packages__flutter__src__animation__animation_controller$46dart.src__animation__animation_controller;
   const assertions = packages__flutter__src__foundation__debug$46dart.src__foundation__assertions;
-  const binding = packages__flutter__src__scheduler__binding$46dart.src__scheduler__binding;
-  var image_stream = Object.create(dart.library);
-  var $length = dartx.length;
-  var $runtimeType = dartx.runtimeType;
-  var $forEach = dartx.forEach;
-  var $add = dartx.add;
+  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
+  const drag_details = packages__flutter__src__gestures__drag_details$46dart.src__gestures__drag_details;
+  const velocity_tracker = packages__flutter__src__gestures__velocity_tracker$46dart.src__gestures__velocity_tracker;
+  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
+  var dismissible = Object.create(dart.library);
+  var $sign = dartx.sign;
+  var $abs = dartx.abs;
   var $_get = dartx._get;
-  var $removeAt = dartx.removeAt;
-  var $isNotEmpty = dartx.isNotEmpty;
-  var $isEmpty = dartx.isEmpty;
-  var $toList = dartx.toList;
-  var $clear = dartx.clear;
-  var $remove = dartx.remove;
-  var $map = dartx.map;
-  var $whereType = dartx.whereType;
-  var $truncate = dartx.truncate;
+  var $add = dartx.add;
   dart._checkModuleNullSafetyMode(false);
   var T = {
-    JSArrayOfImageStreamListener: () => (T.JSArrayOfImageStreamListener = dart.constFn(_interceptors.JSArray$(image_stream.ImageStreamListener)))(),
-    ObjectFlagPropertyOfImageStreamCompleter: () => (T.ObjectFlagPropertyOfImageStreamCompleter = dart.constFn(diagnostics.ObjectFlagProperty$(image_stream.ImageStreamCompleter)))(),
-    ListOfImageStreamListener: () => (T.ListOfImageStreamListener = dart.constFn(core.List$(image_stream.ImageStreamListener)))(),
-    ObjectFlagPropertyOfListOfImageStreamListener: () => (T.ObjectFlagPropertyOfListOfImageStreamListener = dart.constFn(diagnostics.ObjectFlagProperty$(T.ListOfImageStreamListener())))(),
+    DismissDirectionL: () => (T.DismissDirectionL = dart.constFn(dart.legacy(dismissible.DismissDirection)))(),
+    doubleL: () => (T.doubleL = dart.constFn(dart.legacy(core.double)))(),
+    _FlingGestureKindL: () => (T._FlingGestureKindL = dart.constFn(dart.legacy(dismissible._FlingGestureKind)))(),
     VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
-    JSArrayOfVoidTovoid: () => (T.JSArrayOfVoidTovoid = dart.constFn(_interceptors.JSArray$(T.VoidTovoid())))(),
-    StackTraceN: () => (T.StackTraceN = dart.constFn(dart.nullable(core.StackTrace)))(),
-    ObjectAndStackTraceNTovoid: () => (T.ObjectAndStackTraceNTovoid = dart.constFn(dart.fnType(dart.void, [core.Object, T.StackTraceN()])))(),
-    ObjectAndStackTraceNToNvoid: () => (T.ObjectAndStackTraceNToNvoid = dart.constFn(dart.nullable(T.ObjectAndStackTraceNTovoid())))(),
-    ImageStreamListenerToFn: () => (T.ImageStreamListenerToFn = dart.constFn(dart.fnType(T.ObjectAndStackTraceNToNvoid(), [image_stream.ImageStreamListener])))(),
-    ImageChunkEventTovoid: () => (T.ImageChunkEventTovoid = dart.constFn(dart.fnType(dart.void, [image_stream.ImageChunkEvent])))(),
-    ImageChunkEventToNvoid: () => (T.ImageChunkEventToNvoid = dart.constFn(dart.nullable(T.ImageChunkEventTovoid())))(),
-    ImageStreamListenerToFn$1: () => (T.ImageStreamListenerToFn$1 = dart.constFn(dart.fnType(T.ImageChunkEventToNvoid(), [image_stream.ImageStreamListener])))(),
-    DiagnosticsPropertyOfImageInfo: () => (T.DiagnosticsPropertyOfImageInfo = dart.constFn(diagnostics.DiagnosticsProperty$(image_stream.ImageInfo)))(),
-    ObjectAndStackTraceToNull: () => (T.ObjectAndStackTraceToNull = dart.constFn(dart.fnType(core.Null, [core.Object, core.StackTrace])))()
+    TweenOfOffset: () => (T.TweenOfOffset = dart.constFn(tween.Tween$(ui.Offset)))(),
+    boolN: () => (T.boolN = dart.constFn(dart.nullable(core.bool)))(),
+    AnimationStatusTovoid: () => (T.AnimationStatusTovoid = dart.constFn(dart.fnType(dart.void, [animation.AnimationStatus])))(),
+    TweenOfdouble: () => (T.TweenOfdouble = dart.constFn(tween.Tween$(core.double)))(),
+    JSArrayOfDiagnosticsNode: () => (T.JSArrayOfDiagnosticsNode = dart.constFn(_interceptors.JSArray$(diagnostics.DiagnosticsNode)))(),
+    VoidTobool: () => (T.VoidTobool = dart.constFn(dart.fnType(core.bool, [])))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    JSArrayOfWidget: () => (T.JSArrayOfWidget = dart.constFn(_interceptors.JSArray$(framework.Widget)))()
   };
   const CT = Object.create({
     _: () => (C, CT)
   });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: dismissible.DismissDirection.prototype,
+        [_name$]: "DismissDirection.vertical",
+        index: 0
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: dismissible.DismissDirection.prototype,
+        [_name$]: "DismissDirection.horizontal",
+        index: 1
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: dismissible.DismissDirection.prototype,
+        [_name$]: "DismissDirection.endToStart",
+        index: 2
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: dismissible.DismissDirection.prototype,
+        [_name$]: "DismissDirection.startToEnd",
+        index: 3
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: dismissible.DismissDirection.prototype,
+        [_name$]: "DismissDirection.up",
+        index: 4
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: dismissible.DismissDirection.prototype,
+        [_name$]: "DismissDirection.down",
+        index: 5
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: dismissible.DismissDirection.prototype,
+        [_name$]: "DismissDirection.none",
+        index: 6
+      });
+    },
+    get C7() {
+      return C[7] = dart.constList([C[0] || CT.C0, C[1] || CT.C1, C[2] || CT.C2, C[3] || CT.C3, C[4] || CT.C4, C[5] || CT.C5, C[6] || CT.C6], T.DismissDirectionL());
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 300000
+      });
+    },
+    get C9() {
+      return C[9] = dart.constMap(T.DismissDirectionL(), T.doubleL(), []);
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 200000
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: recognizer.DragStartBehavior.prototype,
+        [_name]: "DragStartBehavior.start",
+        index: 1
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: proxy_box.HitTestBehavior.prototype,
+        [_name$0]: "HitTestBehavior.opaque",
+        index: 1
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: basic_types.Axis.prototype,
+        [_name$1]: "Axis.horizontal",
+        index: 0
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: basic_types.Axis.prototype,
+        [_name$1]: "Axis.vertical",
+        index: 1
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: dismissible._FlingGestureKind.prototype,
+        [_name$]: "_FlingGestureKind.none",
+        index: 0
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: dismissible._FlingGestureKind.prototype,
+        [_name$]: "_FlingGestureKind.forward",
+        index: 1
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: dismissible._FlingGestureKind.prototype,
+        [_name$]: "_FlingGestureKind.reverse",
+        index: 2
+      });
+    },
+    get C18() {
+      return C[18] = dart.constList([C[15] || CT.C15, C[16] || CT.C16, C[17] || CT.C17], T._FlingGestureKindL());
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: ui.TextDirection.prototype,
+        [_name$2]: "TextDirection.rtl",
+        index: 0
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: ui.TextDirection.prototype,
+        [_name$2]: "TextDirection.ltr",
+        index: 1
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 11,
+        [_Location_line]: 585,
+        [_Location_file]: null
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 11,
+        [_Location_line]: 586,
+        [_Location_file]: null
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 587,
+        [_Location_file]: null
+      });
+    },
+    get C22() {
+      return C[22] = dart.constList([C[23] || CT.C23, C[24] || CT.C24, C[25] || CT.C25], T._LocationL());
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[22] || CT.C22,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 584,
+        [_Location_file]: "file:///C:/src/flutter/packages/flutter/lib/src/widgets/dismissible.dart"
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "sizeFactor",
+        [_Location_column]: 9,
+        [_Location_line]: 582,
+        [_Location_file]: null
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "axis",
+        [_Location_column]: 9,
+        [_Location_line]: 583,
+        [_Location_file]: null
+      });
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 584,
+        [_Location_file]: null
+      });
+    },
+    get C27() {
+      return C[27] = dart.constList([C[28] || CT.C28, C[29] || CT.C29, C[30] || CT.C30], T._LocationL());
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[27] || CT.C27,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 581,
+        [_Location_file]: "file:///C:/src/flutter/packages/flutter/lib/src/widgets/dismissible.dart"
+      });
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "position",
+        [_Location_column]: 7,
+        [_Location_line]: 593,
+        [_Location_file]: null
+      });
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 594,
+        [_Location_file]: null
+      });
+    },
+    get C32() {
+      return C[32] = dart.constList([C[33] || CT.C33, C[34] || CT.C34], T._LocationL());
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[32] || CT.C32,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 592,
+        [_Location_file]: "file:///C:/src/flutter/packages/flutter/lib/src/widgets/dismissible.dart"
+      });
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "clipper",
+        [_Location_column]: 15,
+        [_Location_line]: 602,
+        [_Location_file]: null
+      });
+    },
+    get C38() {
+      return C[38] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 15,
+        [_Location_line]: 606,
+        [_Location_file]: null
+      });
+    },
+    get C36() {
+      return C[36] = dart.constList([C[37] || CT.C37, C[38] || CT.C38], T._LocationL());
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[36] || CT.C36,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 601,
+        [_Location_file]: "file:///C:/src/flutter/packages/flutter/lib/src/widgets/dismissible.dart"
+      });
+    },
+    get C41() {
+      return C[41] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 13,
+        [_Location_line]: 601,
+        [_Location_file]: null
+      });
+    },
+    get C40() {
+      return C[40] = dart.constList([C[41] || CT.C41], T._LocationL());
+    },
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[40] || CT.C40,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 600,
+        [_Location_file]: "file:///C:/src/flutter/packages/flutter/lib/src/widgets/dismissible.dart"
+      });
+    },
+    get C44() {
+      return C[44] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 23,
+        [_Location_line]: 598,
+        [_Location_file]: null
+      });
+    },
+    get C43() {
+      return C[43] = dart.constList([C[44] || CT.C44], T._LocationL());
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[43] || CT.C43,
+        [_Location_name]: null,
+        [_Location_column]: 17,
+        [_Location_line]: 598,
+        [_Location_file]: "file:///C:/src/flutter/packages/flutter/lib/src/widgets/dismissible.dart"
+      });
+    },
+    get C47() {
+      return C[47] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onHorizontalDragStart",
+        [_Location_column]: 7,
+        [_Location_line]: 614,
+        [_Location_file]: null
+      });
+    },
+    get C48() {
+      return C[48] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onHorizontalDragUpdate",
+        [_Location_column]: 7,
+        [_Location_line]: 615,
+        [_Location_file]: null
+      });
+    },
+    get C49() {
+      return C[49] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onHorizontalDragEnd",
+        [_Location_column]: 7,
+        [_Location_line]: 616,
+        [_Location_file]: null
+      });
+    },
+    get C50() {
+      return C[50] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onVerticalDragStart",
+        [_Location_column]: 7,
+        [_Location_line]: 617,
+        [_Location_file]: null
+      });
+    },
+    get C51() {
+      return C[51] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onVerticalDragUpdate",
+        [_Location_column]: 7,
+        [_Location_line]: 618,
+        [_Location_file]: null
+      });
+    },
+    get C52() {
+      return C[52] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onVerticalDragEnd",
+        [_Location_column]: 7,
+        [_Location_line]: 619,
+        [_Location_file]: null
+      });
+    },
+    get C53() {
+      return C[53] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "behavior",
+        [_Location_column]: 7,
+        [_Location_line]: 620,
+        [_Location_file]: null
+      });
+    },
+    get C54() {
+      return C[54] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 621,
+        [_Location_file]: null
+      });
+    },
+    get C55() {
+      return C[55] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "dragStartBehavior",
+        [_Location_column]: 7,
+        [_Location_line]: 622,
+        [_Location_file]: null
+      });
+    },
+    get C46() {
+      return C[46] = dart.constList([C[47] || CT.C47, C[48] || CT.C48, C[49] || CT.C49, C[50] || CT.C50, C[51] || CT.C51, C[52] || CT.C52, C[53] || CT.C53, C[54] || CT.C54, C[55] || CT.C55], T._LocationL());
+    },
+    get C45() {
+      return C[45] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[46] || CT.C46,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 613,
+        [_Location_file]: "file:///C:/src/flutter/packages/flutter/lib/src/widgets/dismissible.dart"
+      });
+    },
+    get C57() {
+      return C[57] = dart.const({
+        __proto__: curves.Cubic.prototype,
+        [Cubic_d]: 1,
+        [Cubic_c]: 0.25,
+        [Cubic_b]: 0.1,
+        [Cubic_a]: 0.25
+      });
+    },
+    get C56() {
+      return C[56] = dart.const({
+        __proto__: curves.Interval.prototype,
+        [Interval_curve]: C[57] || CT.C57,
+        [Interval_end]: 1,
+        [Interval_begin]: 0.4
+      });
+    }
+  }, false);
+  var C = Array(58).fill(void 0);
   var I = [
-    "file:///C:/src/flutter/packages/flutter/lib/src/painting/image_stream.dart",
-    "package:flutter/src/painting/image_stream.dart"
+    "file:///C:/src/flutter/packages/flutter/lib/src/widgets/dismissible.dart",
+    "package:flutter/src/widgets/dismissible.dart"
   ];
-  var image$ = dart.privateName(image_stream, "ImageInfo.image");
-  var scale$ = dart.privateName(image_stream, "ImageInfo.scale");
-  var debugLabel$ = dart.privateName(image_stream, "ImageInfo.debugLabel");
-  image_stream.ImageInfo = class ImageInfo extends core.Object {
-    get image() {
-      return this[image$];
-    }
-    set image(value) {
-      super.image = value;
-    }
-    get scale() {
-      return this[scale$];
-    }
-    set scale(value) {
-      super.scale = value;
-    }
-    get debugLabel() {
-      return this[debugLabel$];
-    }
-    set debugLabel(value) {
-      super.debugLabel = value;
-    }
-    clone() {
-      return new image_stream.ImageInfo.new({image: this.image.clone(), scale: this.scale, debugLabel: this.debugLabel});
-    }
-    isCloneOf(other) {
-      if (other == null) dart.nullFailed(I[0], 88, 28, "other");
-      return dart.test(other.image.isCloneOf(this.image)) && this.scale == this.scale && other.debugLabel == this.debugLabel;
-    }
-    dispose() {
-      let t0, t0$;
-      if (!(dart.notNull((t0$ = (t0 = this.image.debugGetOpenHandleStackTraces(), t0 == null ? null : t0[$length]), t0$ == null ? 1 : t0$)) > 0)) dart.assertFailed(null, I[0], 122, 12, "(image.debugGetOpenHandleStackTraces()?.length ?? 1) > 0");
-      this.image.dispose();
-    }
+  var _name$ = dart.privateName(dismissible, "_name");
+  dismissible.DismissDirection = class DismissDirection extends core.Object {
     toString() {
-      return (this.debugLabel != null ? dart.str(this.debugLabel) + " " : "") + dart.str(this.image) + " @ " + dart.str(debug.debugFormatDouble(this.scale)) + "x";
-    }
-    get hashCode() {
-      return ui.hashValues(this.image, this.scale, this.debugLabel);
-    }
-    _equals(other) {
-      if (other == null) return false;
-      if (!dart.equals(dart.runtimeType(other), this[$runtimeType])) return false;
-      return image_stream.ImageInfo.is(other) && dart.equals(other.image, this.image) && other.scale == this.scale && other.debugLabel == this.debugLabel;
+      return this[_name$];
     }
   };
-  (image_stream.ImageInfo.new = function(opts) {
-    let image = opts && 'image' in opts ? opts.image : null;
-    if (image == null) dart.nullFailed(I[0], 27, 35, "image");
-    let scale = opts && 'scale' in opts ? opts.scale : 1;
-    if (scale == null) dart.nullFailed(I[0], 27, 47, "scale");
-    let debugLabel = opts && 'debugLabel' in opts ? opts.debugLabel : null;
-    this[image$] = image;
-    this[scale$] = scale;
-    this[debugLabel$] = debugLabel;
-    if (!(image != null)) dart.assertFailed(null, I[0], 28, 14, "image != null");
-    if (!(scale != null)) dart.assertFailed(null, I[0], 29, 14, "scale != null");
+  (dismissible.DismissDirection.new = function(index, _name) {
+    if (index == null) dart.nullFailed(I[0], 34, 6, "index");
+    if (_name == null) dart.nullFailed(I[0], 34, 6, "_name");
+    this.index = index;
+    this[_name$] = _name;
     ;
-  }).prototype = image_stream.ImageInfo.prototype;
-  dart.addTypeTests(image_stream.ImageInfo);
-  dart.addTypeCaches(image_stream.ImageInfo);
-  dart.setMethodSignature(image_stream.ImageInfo, () => ({
-    __proto__: dart.getMethods(image_stream.ImageInfo.__proto__),
-    clone: dart.fnType(image_stream.ImageInfo, []),
-    isCloneOf: dart.fnType(core.bool, [image_stream.ImageInfo]),
-    dispose: dart.fnType(dart.void, [])
+  }).prototype = dismissible.DismissDirection.prototype;
+  dart.addTypeTests(dismissible.DismissDirection);
+  dart.addTypeCaches(dismissible.DismissDirection);
+  dart.setLibraryUri(dismissible.DismissDirection, I[1]);
+  dart.setFieldSignature(dismissible.DismissDirection, () => ({
+    __proto__: dart.getFields(dismissible.DismissDirection.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
   }));
-  dart.setLibraryUri(image_stream.ImageInfo, I[1]);
-  dart.setFieldSignature(image_stream.ImageInfo, () => ({
-    __proto__: dart.getFields(image_stream.ImageInfo.__proto__),
-    image: dart.finalFieldType(ui.Image),
-    scale: dart.finalFieldType(core.double),
-    debugLabel: dart.finalFieldType(dart.nullable(core.String))
-  }));
-  dart.defineExtensionMethods(image_stream.ImageInfo, ['toString', '_equals']);
-  dart.defineExtensionAccessors(image_stream.ImageInfo, ['hashCode']);
-  var onImage$ = dart.privateName(image_stream, "ImageStreamListener.onImage");
-  var onChunk$ = dart.privateName(image_stream, "ImageStreamListener.onChunk");
-  var onError$ = dart.privateName(image_stream, "ImageStreamListener.onError");
-  image_stream.ImageStreamListener = class ImageStreamListener extends core.Object {
-    get onImage() {
-      return this[onImage$];
+  dart.defineExtensionMethods(dismissible.DismissDirection, ['toString']);
+  dismissible.DismissDirection.vertical = C[0] || CT.C0;
+  dismissible.DismissDirection.horizontal = C[1] || CT.C1;
+  dismissible.DismissDirection.endToStart = C[2] || CT.C2;
+  dismissible.DismissDirection.startToEnd = C[3] || CT.C3;
+  dismissible.DismissDirection.up = C[4] || CT.C4;
+  dismissible.DismissDirection.down = C[5] || CT.C5;
+  dismissible.DismissDirection.none = C[6] || CT.C6;
+  dismissible.DismissDirection.values = C[7] || CT.C7;
+  var child$ = dart.privateName(dismissible, "Dismissible.child");
+  var background$ = dart.privateName(dismissible, "Dismissible.background");
+  var secondaryBackground$ = dart.privateName(dismissible, "Dismissible.secondaryBackground");
+  var confirmDismiss$ = dart.privateName(dismissible, "Dismissible.confirmDismiss");
+  var onResize$ = dart.privateName(dismissible, "Dismissible.onResize");
+  var onDismissed$ = dart.privateName(dismissible, "Dismissible.onDismissed");
+  var direction$ = dart.privateName(dismissible, "Dismissible.direction");
+  var resizeDuration$ = dart.privateName(dismissible, "Dismissible.resizeDuration");
+  var dismissThresholds$ = dart.privateName(dismissible, "Dismissible.dismissThresholds");
+  var movementDuration$ = dart.privateName(dismissible, "Dismissible.movementDuration");
+  var crossAxisEndOffset$ = dart.privateName(dismissible, "Dismissible.crossAxisEndOffset");
+  var dragStartBehavior$ = dart.privateName(dismissible, "Dismissible.dragStartBehavior");
+  var behavior$ = dart.privateName(dismissible, "Dismissible.behavior");
+  var Duration__duration = dart.privateName(core, "Duration._duration");
+  var _name = dart.privateName(recognizer, "_name");
+  var _name$0 = dart.privateName(proxy_box, "_name");
+  dismissible.Dismissible = class Dismissible extends framework.StatefulWidget {
+    get child() {
+      return this[child$];
     }
-    set onImage(value) {
-      super.onImage = value;
+    set child(value) {
+      super.child = value;
     }
-    get onChunk() {
-      return this[onChunk$];
+    get background() {
+      return this[background$];
     }
-    set onChunk(value) {
-      super.onChunk = value;
+    set background(value) {
+      super.background = value;
     }
-    get onError() {
-      return this[onError$];
+    get secondaryBackground() {
+      return this[secondaryBackground$];
     }
-    set onError(value) {
-      super.onError = value;
+    set secondaryBackground(value) {
+      super.secondaryBackground = value;
     }
-    get hashCode() {
-      return ui.hashValues(this.onImage, this.onChunk, this.onError);
+    get confirmDismiss() {
+      return this[confirmDismiss$];
     }
-    _equals(other) {
-      if (other == null) return false;
-      if (!dart.equals(dart.runtimeType(other), this[$runtimeType])) return false;
-      return image_stream.ImageStreamListener.is(other) && dart.equals(other.onImage, this.onImage) && dart.equals(other.onChunk, this.onChunk) && dart.equals(other.onError, this.onError);
+    set confirmDismiss(value) {
+      super.confirmDismiss = value;
+    }
+    get onResize() {
+      return this[onResize$];
+    }
+    set onResize(value) {
+      super.onResize = value;
+    }
+    get onDismissed() {
+      return this[onDismissed$];
+    }
+    set onDismissed(value) {
+      super.onDismissed = value;
+    }
+    get direction() {
+      return this[direction$];
+    }
+    set direction(value) {
+      super.direction = value;
+    }
+    get resizeDuration() {
+      return this[resizeDuration$];
+    }
+    set resizeDuration(value) {
+      super.resizeDuration = value;
+    }
+    get dismissThresholds() {
+      return this[dismissThresholds$];
+    }
+    set dismissThresholds(value) {
+      super.dismissThresholds = value;
+    }
+    get movementDuration() {
+      return this[movementDuration$];
+    }
+    set movementDuration(value) {
+      super.movementDuration = value;
+    }
+    get crossAxisEndOffset() {
+      return this[crossAxisEndOffset$];
+    }
+    set crossAxisEndOffset(value) {
+      super.crossAxisEndOffset = value;
+    }
+    get dragStartBehavior() {
+      return this[dragStartBehavior$];
+    }
+    set dragStartBehavior(value) {
+      super.dragStartBehavior = value;
+    }
+    get behavior() {
+      return this[behavior$];
+    }
+    set behavior(value) {
+      super.behavior = value;
+    }
+    createState() {
+      return new dismissible._DismissibleState.new();
     }
   };
-  (image_stream.ImageStreamListener.new = function(onImage, opts) {
-    if (onImage == null) dart.nullFailed(I[0], 159, 10, "onImage");
-    let onChunk = opts && 'onChunk' in opts ? opts.onChunk : null;
-    let onError = opts && 'onError' in opts ? opts.onError : null;
-    this[onImage$] = onImage;
-    this[onChunk$] = onChunk;
-    this[onError$] = onError;
-    if (!(onImage != null)) dart.assertFailed(null, I[0], 162, 15, "onImage != null");
+  (dismissible.Dismissible.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    if (key == null) dart.nullFailed(I[0], 124, 18, "key");
+    let child = opts && 'child' in opts ? opts.child : null;
+    if (child == null) dart.nullFailed(I[0], 125, 19, "child");
+    let background = opts && 'background' in opts ? opts.background : null;
+    let secondaryBackground = opts && 'secondaryBackground' in opts ? opts.secondaryBackground : null;
+    let confirmDismiss = opts && 'confirmDismiss' in opts ? opts.confirmDismiss : null;
+    let onResize = opts && 'onResize' in opts ? opts.onResize : null;
+    let onDismissed = opts && 'onDismissed' in opts ? opts.onDismissed : null;
+    let direction = opts && 'direction' in opts ? opts.direction : C[1] || CT.C1;
+    if (direction == null) dart.nullFailed(I[0], 131, 10, "direction");
+    let resizeDuration = opts && 'resizeDuration' in opts ? opts.resizeDuration : C[8] || CT.C8;
+    let dismissThresholds = opts && 'dismissThresholds' in opts ? opts.dismissThresholds : C[9] || CT.C9;
+    if (dismissThresholds == null) dart.nullFailed(I[0], 133, 10, "dismissThresholds");
+    let movementDuration = opts && 'movementDuration' in opts ? opts.movementDuration : C[10] || CT.C10;
+    if (movementDuration == null) dart.nullFailed(I[0], 134, 10, "movementDuration");
+    let crossAxisEndOffset = opts && 'crossAxisEndOffset' in opts ? opts.crossAxisEndOffset : 0;
+    if (crossAxisEndOffset == null) dart.nullFailed(I[0], 135, 10, "crossAxisEndOffset");
+    let dragStartBehavior = opts && 'dragStartBehavior' in opts ? opts.dragStartBehavior : C[11] || CT.C11;
+    if (dragStartBehavior == null) dart.nullFailed(I[0], 136, 10, "dragStartBehavior");
+    let behavior = opts && 'behavior' in opts ? opts.behavior : C[12] || CT.C12;
+    if (behavior == null) dart.nullFailed(I[0], 137, 10, "behavior");
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[child$] = child;
+    this[background$] = background;
+    this[secondaryBackground$] = secondaryBackground;
+    this[confirmDismiss$] = confirmDismiss;
+    this[onResize$] = onResize;
+    this[onDismissed$] = onDismissed;
+    this[direction$] = direction;
+    this[resizeDuration$] = resizeDuration;
+    this[dismissThresholds$] = dismissThresholds;
+    this[movementDuration$] = movementDuration;
+    this[crossAxisEndOffset$] = crossAxisEndOffset;
+    this[dragStartBehavior$] = dragStartBehavior;
+    this[behavior$] = behavior;
+    if (!(key != null)) dart.assertFailed(null, I[0], 138, 15, "key != null");
+    if (!(secondaryBackground == null || background != null)) dart.assertFailed(null, I[0], 139, 15, "secondaryBackground == null || background != null");
+    if (!(dragStartBehavior != null)) dart.assertFailed(null, I[0], 140, 15, "dragStartBehavior != null");
+    dismissible.Dismissible.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
     ;
-  }).prototype = image_stream.ImageStreamListener.prototype;
-  dart.addTypeTests(image_stream.ImageStreamListener);
-  dart.addTypeCaches(image_stream.ImageStreamListener);
-  dart.setLibraryUri(image_stream.ImageStreamListener, I[1]);
-  dart.setFieldSignature(image_stream.ImageStreamListener, () => ({
-    __proto__: dart.getFields(image_stream.ImageStreamListener.__proto__),
-    onImage: dart.finalFieldType(dart.fnType(dart.void, [image_stream.ImageInfo, core.bool])),
-    onChunk: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [image_stream.ImageChunkEvent]))),
-    onError: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [core.Object, dart.nullable(core.StackTrace)])))
+  }).prototype = dismissible.Dismissible.prototype;
+  dart.addTypeTests(dismissible.Dismissible);
+  dart.addTypeCaches(dismissible.Dismissible);
+  dart.setMethodSignature(dismissible.Dismissible, () => ({
+    __proto__: dart.getMethods(dismissible.Dismissible.__proto__),
+    createState: dart.fnType(dismissible._DismissibleState, [])
   }));
-  dart.defineExtensionMethods(image_stream.ImageStreamListener, ['_equals']);
-  dart.defineExtensionAccessors(image_stream.ImageStreamListener, ['hashCode']);
-  var cumulativeBytesLoaded$ = dart.privateName(image_stream, "ImageChunkEvent.cumulativeBytesLoaded");
-  var expectedTotalBytes$ = dart.privateName(image_stream, "ImageChunkEvent.expectedTotalBytes");
-  const Object_Diagnosticable$36 = class Object_Diagnosticable extends core.Object {};
-  (Object_Diagnosticable$36.new = function() {
-  }).prototype = Object_Diagnosticable$36.prototype;
-  dart.applyMixin(Object_Diagnosticable$36, diagnostics.Diagnosticable);
-  image_stream.ImageChunkEvent = class ImageChunkEvent extends Object_Diagnosticable$36 {
-    get cumulativeBytesLoaded() {
-      return this[cumulativeBytesLoaded$];
-    }
-    set cumulativeBytesLoaded(value) {
-      super.cumulativeBytesLoaded = value;
-    }
-    get expectedTotalBytes() {
-      return this[expectedTotalBytes$];
-    }
-    set expectedTotalBytes(value) {
-      super.expectedTotalBytes = value;
-    }
-    debugFillProperties(properties) {
-      if (properties == null) dart.nullFailed(I[0], 284, 56, "properties");
-      super.debugFillProperties(properties);
-      properties.add(new diagnostics.IntProperty.new("cumulativeBytesLoaded", this.cumulativeBytesLoaded));
-      properties.add(new diagnostics.IntProperty.new("expectedTotalBytes", this.expectedTotalBytes));
-    }
-  };
-  (image_stream.ImageChunkEvent.new = function(opts) {
-    let cumulativeBytesLoaded = opts && 'cumulativeBytesLoaded' in opts ? opts.cumulativeBytesLoaded : null;
-    if (cumulativeBytesLoaded == null) dart.nullFailed(I[0], 262, 19, "cumulativeBytesLoaded");
-    let expectedTotalBytes = opts && 'expectedTotalBytes' in opts ? opts.expectedTotalBytes : null;
-    this[cumulativeBytesLoaded$] = cumulativeBytesLoaded;
-    this[expectedTotalBytes$] = expectedTotalBytes;
-    if (!(dart.notNull(cumulativeBytesLoaded) >= 0)) dart.assertFailed(null, I[0], 264, 15, "cumulativeBytesLoaded >= 0");
-    if (!(expectedTotalBytes == null || dart.notNull(expectedTotalBytes) >= 0)) dart.assertFailed(null, I[0], 265, 15, "expectedTotalBytes == null || expectedTotalBytes >= 0");
-    ;
-  }).prototype = image_stream.ImageChunkEvent.prototype;
-  dart.addTypeTests(image_stream.ImageChunkEvent);
-  dart.addTypeCaches(image_stream.ImageChunkEvent);
-  dart.setLibraryUri(image_stream.ImageChunkEvent, I[1]);
-  dart.setFieldSignature(image_stream.ImageChunkEvent, () => ({
-    __proto__: dart.getFields(image_stream.ImageChunkEvent.__proto__),
-    cumulativeBytesLoaded: dart.finalFieldType(core.int),
-    expectedTotalBytes: dart.finalFieldType(dart.nullable(core.int))
+  dart.setLibraryUri(dismissible.Dismissible, I[1]);
+  dart.setFieldSignature(dismissible.Dismissible, () => ({
+    __proto__: dart.getFields(dismissible.Dismissible.__proto__),
+    child: dart.finalFieldType(framework.Widget),
+    background: dart.finalFieldType(dart.nullable(framework.Widget)),
+    secondaryBackground: dart.finalFieldType(dart.nullable(framework.Widget)),
+    confirmDismiss: dart.finalFieldType(dart.nullable(dart.fnType(async.Future$(dart.nullable(core.bool)), [dismissible.DismissDirection]))),
+    onResize: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, []))),
+    onDismissed: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [dismissible.DismissDirection]))),
+    direction: dart.finalFieldType(dismissible.DismissDirection),
+    resizeDuration: dart.finalFieldType(dart.nullable(core.Duration)),
+    dismissThresholds: dart.finalFieldType(core.Map$(dismissible.DismissDirection, core.double)),
+    movementDuration: dart.finalFieldType(core.Duration),
+    crossAxisEndOffset: dart.finalFieldType(core.double),
+    dragStartBehavior: dart.finalFieldType(recognizer.DragStartBehavior),
+    behavior: dart.finalFieldType(proxy_box.HitTestBehavior)
   }));
-  var _completer$ = dart.privateName(image_stream, "_completer");
-  var _listeners = dart.privateName(image_stream, "_listeners");
-  const Object_Diagnosticable$36$ = class Object_Diagnosticable extends core.Object {};
-  (Object_Diagnosticable$36$.new = function() {
-  }).prototype = Object_Diagnosticable$36$.prototype;
-  dart.applyMixin(Object_Diagnosticable$36$, diagnostics.Diagnosticable);
-  image_stream.ImageStream = class ImageStream extends Object_Diagnosticable$36$ {
-    get completer() {
-      return this[_completer$];
-    }
-    setCompleter(value) {
-      if (value == null) dart.nullFailed(I[0], 334, 42, "value");
-      if (!(this[_completer$] == null)) dart.assertFailed(null, I[0], 335, 12, "_completer == null");
-      this[_completer$] = value;
-      if (this[_listeners] != null) {
-        let initialListeners = dart.nullCheck(this[_listeners]);
-        this[_listeners] = null;
-        initialListeners[$forEach](dart.bind(dart.nullCheck(this[_completer$]), 'addListener'));
-      }
-    }
-    addListener(listener) {
-      if (listener == null) dart.nullFailed(I[0], 365, 40, "listener");
-      if (this[_completer$] != null) return dart.nullCheck(this[_completer$]).addListener(listener);
-      this[_listeners] == null ? this[_listeners] = T.JSArrayOfImageStreamListener().of([]) : null;
-      dart.nullCheck(this[_listeners])[$add](listener);
-    }
-    removeListener(listener) {
-      if (listener == null) dart.nullFailed(I[0], 376, 43, "listener");
-      if (this[_completer$] != null) return dart.nullCheck(this[_completer$]).removeListener(listener);
-      if (!(this[_listeners] != null)) dart.assertFailed(null, I[0], 379, 12, "_listeners != null");
-      for (let i = 0; i < dart.notNull(dart.nullCheck(this[_listeners])[$length]); i = i + 1) {
-        if (dart.equals(dart.nullCheck(this[_listeners])[$_get](i), listener)) {
-          dart.nullCheck(this[_listeners])[$removeAt](i);
-          break;
+  var _name$1 = dart.privateName(basic_types, "_name");
+  dismissible._DismissibleClipper = class _DismissibleClipper extends proxy_box.CustomClipper$(ui.Rect) {
+    getClip(size) {
+      if (size == null) dart.nullFailed(I[0], 250, 21, "size");
+      if (!(this.axis != null)) dart.assertFailed(null, I[0], 251, 12, "axis != null");
+      switch (this.axis) {
+        case C[13] || CT.C13:
+        {
+          let offset = dart.notNull(this.moveAnimation.value.dx) * dart.notNull(size.width);
+          if (offset < 0) return new ui.Rect.fromLTRB(dart.notNull(size.width) + offset, 0.0, size.width, size.height);
+          return new ui.Rect.fromLTRB(0.0, 0.0, offset, size.height);
+        }
+        case C[14] || CT.C14:
+        {
+          let offset = dart.notNull(this.moveAnimation.value.dy) * dart.notNull(size.height);
+          if (offset < 0) return new ui.Rect.fromLTRB(0.0, dart.notNull(size.height) + offset, size.width, size.height);
+          return new ui.Rect.fromLTRB(0.0, 0.0, size.width, offset);
+        }
+        default:
+        {
+          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
         }
       }
     }
-    get key() {
-      let t0;
-      t0 = this[_completer$];
-      return t0 == null ? this : t0;
+    getApproximateClipRect(size) {
+      if (size == null) dart.nullFailed(I[0], 267, 36, "size");
+      return this.getClip(size);
     }
-    debugFillProperties(properties) {
-      let t0, t0$, t0$0, t0$1;
-      if (properties == null) dart.nullFailed(I[0], 402, 56, "properties");
-      super.debugFillProperties(properties);
-      properties.add(new (T.ObjectFlagPropertyOfImageStreamCompleter()).new("completer", this[_completer$], {ifPresent: (t0 = this[_completer$], t0 == null ? null : t0.toStringShort()), ifNull: "unresolved"}));
-      properties.add(new (T.ObjectFlagPropertyOfListOfImageStreamListener()).new("listeners", this[_listeners], {ifPresent: dart.str((t0$ = this[_listeners], t0$ == null ? null : t0$[$length])) + " listener" + ((t0$0 = this[_listeners], t0$0 == null ? null : t0$0[$length]) === 1 ? "" : "s"), ifNull: "no listeners", level: this[_completer$] != null ? diagnostics.DiagnosticLevel.hidden : diagnostics.DiagnosticLevel.info}));
-      t0$1 = this[_completer$];
-      t0$1 == null ? null : t0$1.debugFillProperties(properties);
+    shouldReclip(oldClipper) {
+      dismissible._DismissibleClipper.as(oldClipper);
+      if (oldClipper == null) dart.nullFailed(I[0], 270, 41, "oldClipper");
+      return oldClipper.axis != this.axis || !dart.equals(oldClipper.moveAnimation.value, this.moveAnimation.value);
     }
   };
-  (image_stream.ImageStream.new = function() {
-    this[_completer$] = null;
-    this[_listeners] = null;
+  (dismissible._DismissibleClipper.new = function(opts) {
+    let axis = opts && 'axis' in opts ? opts.axis : null;
+    if (axis == null) dart.nullFailed(I[0], 240, 19, "axis");
+    let moveAnimation = opts && 'moveAnimation' in opts ? opts.moveAnimation : null;
+    if (moveAnimation == null) dart.nullFailed(I[0], 241, 19, "moveAnimation");
+    this.axis = axis;
+    this.moveAnimation = moveAnimation;
+    if (!(axis != null)) dart.assertFailed(null, I[0], 242, 15, "axis != null");
+    if (!(moveAnimation != null)) dart.assertFailed(null, I[0], 243, 15, "moveAnimation != null");
+    dismissible._DismissibleClipper.__proto__.new.call(this, {reclip: moveAnimation});
     ;
-  }).prototype = image_stream.ImageStream.prototype;
-  dart.addTypeTests(image_stream.ImageStream);
-  dart.addTypeCaches(image_stream.ImageStream);
-  dart.setMethodSignature(image_stream.ImageStream, () => ({
-    __proto__: dart.getMethods(image_stream.ImageStream.__proto__),
-    setCompleter: dart.fnType(dart.void, [image_stream.ImageStreamCompleter]),
-    addListener: dart.fnType(dart.void, [image_stream.ImageStreamListener]),
-    removeListener: dart.fnType(dart.void, [image_stream.ImageStreamListener])
+  }).prototype = dismissible._DismissibleClipper.prototype;
+  dart.addTypeTests(dismissible._DismissibleClipper);
+  dart.addTypeCaches(dismissible._DismissibleClipper);
+  dart.setMethodSignature(dismissible._DismissibleClipper, () => ({
+    __proto__: dart.getMethods(dismissible._DismissibleClipper.__proto__),
+    getClip: dart.fnType(ui.Rect, [ui.Size]),
+    shouldReclip: dart.fnType(core.bool, [dart.nullable(core.Object)])
   }));
-  dart.setGetterSignature(image_stream.ImageStream, () => ({
-    __proto__: dart.getGetters(image_stream.ImageStream.__proto__),
-    completer: dart.nullable(image_stream.ImageStreamCompleter),
-    key: core.Object
+  dart.setLibraryUri(dismissible._DismissibleClipper, I[1]);
+  dart.setFieldSignature(dismissible._DismissibleClipper, () => ({
+    __proto__: dart.getFields(dismissible._DismissibleClipper.__proto__),
+    axis: dart.finalFieldType(basic_types.Axis),
+    moveAnimation: dart.finalFieldType(animation.Animation$(ui.Offset))
   }));
-  dart.setLibraryUri(image_stream.ImageStream, I[1]);
-  dart.setFieldSignature(image_stream.ImageStream, () => ({
-    __proto__: dart.getFields(image_stream.ImageStream.__proto__),
-    [_completer$]: dart.fieldType(dart.nullable(image_stream.ImageStreamCompleter)),
-    [_listeners]: dart.fieldType(dart.nullable(core.List$(image_stream.ImageStreamListener)))
+  dismissible._FlingGestureKind = class _FlingGestureKind extends core.Object {
+    toString() {
+      return this[_name$];
+    }
+  };
+  (dismissible._FlingGestureKind.new = function(index, _name) {
+    if (index == null) dart.nullFailed(I[0], 276, 6, "index");
+    if (_name == null) dart.nullFailed(I[0], 276, 6, "_name");
+    this.index = index;
+    this[_name$] = _name;
+    ;
+  }).prototype = dismissible._FlingGestureKind.prototype;
+  dart.addTypeTests(dismissible._FlingGestureKind);
+  dart.addTypeCaches(dismissible._FlingGestureKind);
+  dart.setLibraryUri(dismissible._FlingGestureKind, I[1]);
+  dart.setFieldSignature(dismissible._FlingGestureKind, () => ({
+    __proto__: dart.getFields(dismissible._FlingGestureKind.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
   }));
-  var _keepAliveHandles = dart.privateName(image_stream, "_keepAliveHandles");
-  var _disposed = dart.privateName(image_stream, "_disposed");
-  var _maybeDispose = dart.privateName(image_stream, "_maybeDispose");
-  image_stream.ImageStreamCompleterHandle = class ImageStreamCompleterHandle extends core.Object {
+  dart.defineExtensionMethods(dismissible._FlingGestureKind, ['toString']);
+  dismissible._FlingGestureKind.none = C[15] || CT.C15;
+  dismissible._FlingGestureKind.forward = C[16] || CT.C16;
+  dismissible._FlingGestureKind.reverse = C[17] || CT.C17;
+  dismissible._FlingGestureKind.values = C[18] || CT.C18;
+  var _moveController = dart.privateName(dismissible, "_moveController");
+  var ___DismissibleState__moveAnimation = dart.privateName(dismissible, "_#_DismissibleState#_moveAnimation");
+  var ___DismissibleState__moveAnimation_isSet = dart.privateName(dismissible, "_#_DismissibleState#_moveAnimation#isSet");
+  var _resizeController = dart.privateName(dismissible, "_resizeController");
+  var _resizeAnimation = dart.privateName(dismissible, "_resizeAnimation");
+  var _dragExtent = dart.privateName(dismissible, "_dragExtent");
+  var _dragUnderway = dart.privateName(dismissible, "_dragUnderway");
+  var _sizePriorToCollapse = dart.privateName(dismissible, "_sizePriorToCollapse");
+  var _handleDismissStatusChanged = dart.privateName(dismissible, "_handleDismissStatusChanged");
+  var _updateMoveAnimation = dart.privateName(dismissible, "_updateMoveAnimation");
+  var _moveAnimation = dart.privateName(dismissible, "_moveAnimation");
+  var _directionIsXAxis = dart.privateName(dismissible, "_directionIsXAxis");
+  var _name$2 = dart.privateName(ui, "_name");
+  var _extentToDirection = dart.privateName(dismissible, "_extentToDirection");
+  var _dismissDirection = dart.privateName(dismissible, "_dismissDirection");
+  var _isActive = dart.privateName(dismissible, "_isActive");
+  var _overallDragAxisExtent = dart.privateName(dismissible, "_overallDragAxisExtent");
+  var _handleDragStart = dart.privateName(dismissible, "_handleDragStart");
+  var _handleDragUpdate = dart.privateName(dismissible, "_handleDragUpdate");
+  var _describeFlingGesture = dart.privateName(dismissible, "_describeFlingGesture");
+  var _confirmStartResizeAnimation = dart.privateName(dismissible, "_confirmStartResizeAnimation");
+  var _startResizeAnimation = dart.privateName(dismissible, "_startResizeAnimation");
+  var _handleDragEnd = dart.privateName(dismissible, "_handleDragEnd");
+  var _handleResizeProgressChanged = dart.privateName(dismissible, "_handleResizeProgressChanged");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  const State_TickerProviderStateMixin$36 = class State_TickerProviderStateMixin extends framework.State$(dismissible.Dismissible) {};
+  (State_TickerProviderStateMixin$36.new = function() {
+    ticker_provider.TickerProviderStateMixin$(dismissible.Dismissible)[dart.mixinNew].call(this);
+    State_TickerProviderStateMixin$36.__proto__.new.call(this);
+  }).prototype = State_TickerProviderStateMixin$36.prototype;
+  dart.applyMixin(State_TickerProviderStateMixin$36, ticker_provider.TickerProviderStateMixin$(dismissible.Dismissible));
+  const State_AutomaticKeepAliveClientMixin$36 = class State_AutomaticKeepAliveClientMixin extends State_TickerProviderStateMixin$36 {};
+  (State_AutomaticKeepAliveClientMixin$36.new = function() {
+    automatic_keep_alive.AutomaticKeepAliveClientMixin$(dismissible.Dismissible)[dart.mixinNew].call(this);
+    State_AutomaticKeepAliveClientMixin$36.__proto__.new.call(this);
+  }).prototype = State_AutomaticKeepAliveClientMixin$36.prototype;
+  dart.applyMixin(State_AutomaticKeepAliveClientMixin$36, automatic_keep_alive.AutomaticKeepAliveClientMixin$(dismissible.Dismissible));
+  dismissible._DismissibleState = class _DismissibleState extends State_AutomaticKeepAliveClientMixin$36 {
+    initState() {
+      let t0;
+      super.initState();
+      this[_moveController] = (t0 = new animation_controller.AnimationController.new({duration: this.widget.movementDuration, vsync: this}), (() => {
+        t0.addStatusListener(dart.bind(this, _handleDismissStatusChanged));
+        return t0;
+      })());
+      this[_updateMoveAnimation]();
+    }
+    get [_moveAnimation]() {
+      let t0;
+      return dart.test(this[___DismissibleState__moveAnimation_isSet]) ? (t0 = this[___DismissibleState__moveAnimation], t0) : dart.throw(new _internal.LateError.fieldNI("_moveAnimation"));
+    }
+    set [_moveAnimation](t0) {
+      if (t0 == null) dart.nullFailed(I[0], 288, 26, "null");
+      this[___DismissibleState__moveAnimation_isSet] = true;
+      this[___DismissibleState__moveAnimation] = t0;
+    }
+    get wantKeepAlive() {
+      let t1, t1$;
+      return (t1 = this[_moveController], t1 == null ? null : t1.isAnimating) === true || (t1$ = this[_resizeController], t1$ == null ? null : t1$.isAnimating) === true;
+    }
     dispose() {
-      let t0;
-      if (!(this[_completer$] != null)) dart.assertFailed(null, I[0], 442, 12, "_completer != null");
-      if (!(dart.notNull(dart.nullCheck(this[_completer$])[_keepAliveHandles]) > 0)) dart.assertFailed(null, I[0], 443, 12, "_completer!._keepAliveHandles > 0");
-      if (!!dart.test(dart.nullCheck(this[_completer$])[_disposed])) dart.assertFailed(null, I[0], 444, 12, "!_completer!._disposed");
-      t0 = dart.nullCheck(this[_completer$]);
-      t0[_keepAliveHandles] = dart.notNull(t0[_keepAliveHandles]) - 1;
-      dart.nullCheck(this[_completer$])[_maybeDispose]();
-      this[_completer$] = null;
+      let t1;
+      dart.nullCheck(this[_moveController]).dispose();
+      t1 = this[_resizeController];
+      t1 == null ? null : t1.dispose();
+      super.dispose();
     }
-  };
-  (image_stream.ImageStreamCompleterHandle.__ = function(_completer) {
-    let t0;
-    if (_completer == null) dart.nullFailed(I[0], 431, 58, "_completer");
-    this[_completer$] = _completer;
-    t0 = dart.nullCheck(this[_completer$]);
-    t0[_keepAliveHandles] = dart.notNull(t0[_keepAliveHandles]) + 1;
-  }).prototype = image_stream.ImageStreamCompleterHandle.prototype;
-  dart.addTypeTests(image_stream.ImageStreamCompleterHandle);
-  dart.addTypeCaches(image_stream.ImageStreamCompleterHandle);
-  dart.setMethodSignature(image_stream.ImageStreamCompleterHandle, () => ({
-    __proto__: dart.getMethods(image_stream.ImageStreamCompleterHandle.__proto__),
-    dispose: dart.fnType(dart.void, [])
-  }));
-  dart.setLibraryUri(image_stream.ImageStreamCompleterHandle, I[1]);
-  dart.setFieldSignature(image_stream.ImageStreamCompleterHandle, () => ({
-    __proto__: dart.getFields(image_stream.ImageStreamCompleterHandle.__proto__),
-    [_completer$]: dart.fieldType(dart.nullable(image_stream.ImageStreamCompleter))
-  }));
-  var debugLabel = dart.privateName(image_stream, "ImageStreamCompleter.debugLabel");
-  var _currentImage = dart.privateName(image_stream, "_currentImage");
-  var _currentError = dart.privateName(image_stream, "_currentError");
-  var _hadAtLeastOneListener = dart.privateName(image_stream, "_hadAtLeastOneListener");
-  var _onLastListenerRemovedCallbacks = dart.privateName(image_stream, "_onLastListenerRemovedCallbacks");
-  var _checkDisposed = dart.privateName(image_stream, "_checkDisposed");
-  const Object_Diagnosticable$36$0 = class Object_Diagnosticable extends core.Object {};
-  (Object_Diagnosticable$36$0.new = function() {
-  }).prototype = Object_Diagnosticable$36$0.prototype;
-  dart.applyMixin(Object_Diagnosticable$36$0, diagnostics.Diagnosticable);
-  image_stream.ImageStreamCompleter = class ImageStreamCompleter extends Object_Diagnosticable$36$0 {
-    get debugLabel() {
-      return this[debugLabel];
+    get [_directionIsXAxis]() {
+      return this.widget.direction == dismissible.DismissDirection.horizontal || this.widget.direction == dismissible.DismissDirection.endToStart || this.widget.direction == dismissible.DismissDirection.startToEnd;
     }
-    set debugLabel(value) {
-      this[debugLabel] = value;
-    }
-    get hasListeners() {
-      return this[_listeners][$isNotEmpty];
-    }
-    addListener(listener) {
-      let t2, t1, t0;
-      if (listener == null) dart.nullFailed(I[0], 498, 40, "listener");
-      this[_checkDisposed]();
-      this[_hadAtLeastOneListener] = true;
-      this[_listeners][$add](listener);
-      if (this[_currentImage] != null) {
-        try {
-          t0 = listener;
-          t1 = dart.nullCheck(this[_currentImage]).clone();
-          t2 = true;
-          t0.onImage(t1, t2);
-        } catch (e) {
-          let exception = dart.getThrown(e);
-          let stack = dart.stackTrace(e);
-          if (core.Object.is(exception)) {
-            this.reportError({context: new assertions.ErrorDescription.new("by a synchronously-called image listener"), exception: exception, stack: stack});
-          } else
-            throw e;
+    [_extentToDirection](extent) {
+      if (extent == null) dart.nullFailed(I[0], 313, 46, "extent");
+      if (extent === 0.0) return dismissible.DismissDirection.none;
+      if (dart.test(this[_directionIsXAxis])) {
+        switch (basic.Directionality.of(this.context)) {
+          case C[19] || CT.C19:
+          {
+            return dart.notNull(extent) < 0 ? dismissible.DismissDirection.startToEnd : dismissible.DismissDirection.endToStart;
+          }
+          case C[20] || CT.C20:
+          {
+            return dart.notNull(extent) > 0 ? dismissible.DismissDirection.startToEnd : dismissible.DismissDirection.endToStart;
+          }
+          default:
+          {
+            dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+          }
         }
       }
-      if (this[_currentError] != null && listener.onError != null) {
-        try {
-          dart.nullCheck(listener.onError)(dart.nullCheck(this[_currentError]).exception, dart.nullCheck(this[_currentError]).stack);
-        } catch (e$) {
-          let newException = dart.getThrown(e$);
-          let newStack = dart.stackTrace(e$);
-          if (core.Object.is(newException)) {
-            if (!dart.equals(newException, dart.nullCheck(this[_currentError]).exception)) {
-              assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: newException, library: "image resource service", context: new assertions.ErrorDescription.new("by a synchronously-called image error listener"), stack: newStack}));
-            }
-          } else
-            throw e$;
-        }
+      return dart.notNull(extent) > 0 ? dismissible.DismissDirection.down : dismissible.DismissDirection.up;
+    }
+    get [_dismissDirection]() {
+      return this[_extentToDirection](this[_dragExtent]);
+    }
+    get [_isActive]() {
+      return dart.test(this[_dragUnderway]) || dart.test(dart.nullCheck(this[_moveController]).isAnimating);
+    }
+    get [_overallDragAxisExtent]() {
+      let size = dart.nullCheck(this.context.size);
+      return dart.test(this[_directionIsXAxis]) ? size.width : size.height;
+    }
+    [_handleDragStart](details) {
+      if (details == null) dart.nullFailed(I[0], 338, 42, "details");
+      this[_dragUnderway] = true;
+      if (dart.test(dart.nullCheck(this[_moveController]).isAnimating)) {
+        this[_dragExtent] = dart.notNull(dart.nullCheck(this[_moveController]).value) * dart.notNull(this[_overallDragAxisExtent]) * this[_dragExtent][$sign];
+        dart.nullCheck(this[_moveController]).stop();
+      } else {
+        this[_dragExtent] = 0.0;
+        dart.nullCheck(this[_moveController]).value = 0.0;
       }
-    }
-    keepAlive() {
-      this[_checkDisposed]();
-      return new image_stream.ImageStreamCompleterHandle.__(this);
-    }
-    removeListener(listener) {
-      if (listener == null) dart.nullFailed(I[0], 552, 43, "listener");
-      this[_checkDisposed]();
-      for (let i = 0; i < dart.notNull(this[_listeners][$length]); i = i + 1) {
-        if (dart.equals(this[_listeners][$_get](i), listener)) {
-          this[_listeners][$removeAt](i);
-          break;
-        }
-      }
-      if (dart.test(this[_listeners][$isEmpty])) {
-        let callbacks = this[_onLastListenerRemovedCallbacks][$toList]();
-        for (let callback of callbacks) {
-          callback();
-        }
-        this[_onLastListenerRemovedCallbacks][$clear]();
-        this[_maybeDispose]();
-      }
-    }
-    [_maybeDispose]() {
-      let t2;
-      if (!dart.test(this[_hadAtLeastOneListener]) || dart.test(this[_disposed]) || dart.test(this[_listeners][$isNotEmpty]) || this[_keepAliveHandles] !== 0) {
-        return;
-      }
-      t2 = this[_currentImage];
-      t2 == null ? null : t2.dispose();
-      this[_currentImage] = null;
-      this[_disposed] = true;
-    }
-    [_checkDisposed]() {
-      if (dart.test(this[_disposed])) {
-        dart.throw(new core.StateError.new("Stream has been disposed.\n" + "An ImageStream is considered disposed once at least one listener has " + "been added and subsequently all listeners have been removed and no " + "handles are outstanding from the keepAlive method.\n" + "To resolve this error, maintain at least one listener on the stream, " + "or create an ImageStreamCompleterHandle from the keepAlive " + "method, or create a new stream for the image."));
-      }
-    }
-    addOnLastListenerRemovedCallback(callback) {
-      if (callback == null) dart.nullFailed(I[0], 601, 54, "callback");
-      if (!(callback != null)) dart.assertFailed(null, I[0], 602, 12, "callback != null");
-      this[_checkDisposed]();
-      this[_onLastListenerRemovedCallbacks][$add](callback);
-    }
-    removeOnLastListenerRemovedCallback(callback) {
-      if (callback == null) dart.nullFailed(I[0], 609, 57, "callback");
-      if (!(callback != null)) dart.assertFailed(null, I[0], 610, 12, "callback != null");
-      this[_checkDisposed]();
-      this[_onLastListenerRemovedCallbacks][$remove](callback);
-    }
-    setImage(image) {
-      let t2, t4, t3, t2$;
-      if (image == null) dart.nullFailed(I[0], 617, 27, "image");
-      this[_checkDisposed]();
-      t2 = this[_currentImage];
-      t2 == null ? null : t2.dispose();
-      this[_currentImage] = image;
-      if (dart.test(this[_listeners][$isEmpty])) return;
-      let localListeners = T.ListOfImageStreamListener().from(this[_listeners]);
-      for (let listener of localListeners) {
-        try {
-          t2$ = listener;
-          t3 = image.clone();
-          t4 = false;
-          t2$.onImage(t3, t4);
-        } catch (e) {
-          let exception = dart.getThrown(e);
-          let stack = dart.stackTrace(e);
-          if (core.Object.is(exception)) {
-            this.reportError({context: new assertions.ErrorDescription.new("by an image listener"), exception: exception, stack: stack});
-          } else
-            throw e;
-        }
-      }
-    }
-    reportError(opts) {
-      let context = opts && 'context' in opts ? opts.context : null;
-      let exception = opts && 'exception' in opts ? opts.exception : null;
-      if (exception == null) dart.nullFailed(I[0], 673, 21, "exception");
-      let stack = opts && 'stack' in opts ? opts.stack : null;
-      let informationCollector = opts && 'informationCollector' in opts ? opts.informationCollector : null;
-      let silent = opts && 'silent' in opts ? opts.silent : false;
-      if (silent == null) dart.nullFailed(I[0], 676, 10, "silent");
-      this[_currentError] = new assertions.FlutterErrorDetails.new({exception: exception, stack: stack, library: "image resource service", context: context, informationCollector: informationCollector, silent: silent});
-      let localErrorListeners = this[_listeners][$map](T.ObjectAndStackTraceNToNvoid(), dart.fn(listener => {
-        if (listener == null) dart.nullFailed(I[0], 689, 56, "listener");
-        return listener.onError;
-      }, T.ImageStreamListenerToFn()))[$whereType](T.ObjectAndStackTraceNTovoid())[$toList]();
-      let handled = false;
-      for (let errorListener of localErrorListeners) {
-        try {
-          errorListener(exception, stack);
-          handled = true;
-        } catch (e) {
-          let newException = dart.getThrown(e);
-          let newStack = dart.stackTrace(e);
-          if (core.Object.is(newException)) {
-            if (!dart.equals(newException, exception)) {
-              assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({context: new assertions.ErrorDescription.new("when reporting an error to an image listener"), library: "image resource service", exception: newException, stack: newStack}));
-            }
-          } else
-            throw e;
-        }
-      }
-      if (!handled) {
-        assertions.FlutterError.reportError(dart.nullCheck(this[_currentError]));
-      }
-    }
-    reportImageChunkEvent(event) {
-      if (event == null) dart.nullFailed(I[0], 720, 46, "event");
-      this[_checkDisposed]();
-      if (dart.test(this.hasListeners)) {
-        let localListeners = this[_listeners][$map](T.ImageChunkEventToNvoid(), dart.fn(listener => {
-          if (listener == null) dart.nullFailed(I[0], 725, 58, "listener");
-          return listener.onChunk;
-        }, T.ImageStreamListenerToFn$1()))[$whereType](T.ImageChunkEventTovoid())[$toList]();
-        for (let listener of localListeners) {
-          listener(event);
-        }
-      }
-    }
-    debugFillProperties(description) {
-      if (description == null) dart.nullFailed(I[0], 737, 56, "description");
-      super.debugFillProperties(description);
-      description.add(new (T.DiagnosticsPropertyOfImageInfo()).new("current", this[_currentImage], {ifNull: "unresolved", showName: false}));
-      description.add(new (T.ObjectFlagPropertyOfListOfImageStreamListener()).new("listeners", this[_listeners], {ifPresent: dart.str(this[_listeners][$length]) + " listener" + (this[_listeners][$length] === 1 ? "" : "s")}));
-      description.add(new diagnostics.FlagProperty.new("disposed", {value: this[_disposed], ifTrue: "<disposed>"}));
-    }
-  };
-  (image_stream.ImageStreamCompleter.new = function() {
-    this[_listeners] = T.JSArrayOfImageStreamListener().of([]);
-    this[_currentImage] = null;
-    this[_currentError] = null;
-    this[debugLabel] = null;
-    this[_hadAtLeastOneListener] = false;
-    this[_keepAliveHandles] = 0;
-    this[_disposed] = false;
-    this[_onLastListenerRemovedCallbacks] = T.JSArrayOfVoidTovoid().of([]);
-    ;
-  }).prototype = image_stream.ImageStreamCompleter.prototype;
-  dart.addTypeTests(image_stream.ImageStreamCompleter);
-  dart.addTypeCaches(image_stream.ImageStreamCompleter);
-  dart.setMethodSignature(image_stream.ImageStreamCompleter, () => ({
-    __proto__: dart.getMethods(image_stream.ImageStreamCompleter.__proto__),
-    addListener: dart.fnType(dart.void, [image_stream.ImageStreamListener]),
-    keepAlive: dart.fnType(image_stream.ImageStreamCompleterHandle, []),
-    removeListener: dart.fnType(dart.void, [image_stream.ImageStreamListener]),
-    [_maybeDispose]: dart.fnType(dart.void, []),
-    [_checkDisposed]: dart.fnType(dart.void, []),
-    addOnLastListenerRemovedCallback: dart.fnType(dart.void, [dart.fnType(dart.void, [])]),
-    removeOnLastListenerRemovedCallback: dart.fnType(dart.void, [dart.fnType(dart.void, [])]),
-    setImage: dart.fnType(dart.void, [image_stream.ImageInfo]),
-    reportError: dart.fnType(dart.void, [], {context: dart.nullable(diagnostics.DiagnosticsNode), informationCollector: dart.nullable(dart.fnType(core.Iterable$(diagnostics.DiagnosticsNode), [])), silent: core.bool, stack: dart.nullable(core.StackTrace)}, {exception: core.Object}),
-    reportImageChunkEvent: dart.fnType(dart.void, [image_stream.ImageChunkEvent])
-  }));
-  dart.setGetterSignature(image_stream.ImageStreamCompleter, () => ({
-    __proto__: dart.getGetters(image_stream.ImageStreamCompleter.__proto__),
-    hasListeners: core.bool
-  }));
-  dart.setLibraryUri(image_stream.ImageStreamCompleter, I[1]);
-  dart.setFieldSignature(image_stream.ImageStreamCompleter, () => ({
-    __proto__: dart.getFields(image_stream.ImageStreamCompleter.__proto__),
-    [_listeners]: dart.finalFieldType(core.List$(image_stream.ImageStreamListener)),
-    [_currentImage]: dart.fieldType(dart.nullable(image_stream.ImageInfo)),
-    [_currentError]: dart.fieldType(dart.nullable(assertions.FlutterErrorDetails)),
-    debugLabel: dart.fieldType(dart.nullable(core.String)),
-    [_hadAtLeastOneListener]: dart.fieldType(core.bool),
-    [_keepAliveHandles]: dart.fieldType(core.int),
-    [_disposed]: dart.fieldType(core.bool),
-    [_onLastListenerRemovedCallbacks]: dart.finalFieldType(core.List$(dart.fnType(dart.void, [])))
-  }));
-  image_stream.OneFrameImageStreamCompleter = class OneFrameImageStreamCompleter extends image_stream.ImageStreamCompleter {};
-  (image_stream.OneFrameImageStreamCompleter.new = function(image, opts) {
-    if (image == null) dart.nullFailed(I[0], 766, 50, "image");
-    let informationCollector = opts && 'informationCollector' in opts ? opts.informationCollector : null;
-    if (!(image != null)) dart.assertFailed(null, I[0], 767, 16, "image != null");
-    image_stream.OneFrameImageStreamCompleter.__proto__.new.call(this);
-    image.then(dart.void, dart.bind(this, 'setImage'), {onError: dart.fn((error, stack) => {
-        if (error == null) dart.nullFailed(I[0], 768, 49, "error");
-        if (stack == null) dart.nullFailed(I[0], 768, 67, "stack");
-        this.reportError({context: new assertions.ErrorDescription.new("resolving a single-frame image stream"), exception: error, stack: stack, informationCollector: informationCollector, silent: true});
-      }, T.ObjectAndStackTraceToNull())});
-  }).prototype = image_stream.OneFrameImageStreamCompleter.prototype;
-  dart.addTypeTests(image_stream.OneFrameImageStreamCompleter);
-  dart.addTypeCaches(image_stream.OneFrameImageStreamCompleter);
-  dart.setLibraryUri(image_stream.OneFrameImageStreamCompleter, I[1]);
-  var _codec = dart.privateName(image_stream, "_codec");
-  var _nextFrame = dart.privateName(image_stream, "_nextFrame");
-  var __MultiFrameImageStreamCompleter__shownTimestamp = dart.privateName(image_stream, "_#MultiFrameImageStreamCompleter#_shownTimestamp");
-  var __MultiFrameImageStreamCompleter__shownTimestamp_isSet = dart.privateName(image_stream, "_#MultiFrameImageStreamCompleter#_shownTimestamp#isSet");
-  var _frameDuration = dart.privateName(image_stream, "_frameDuration");
-  var _framesEmitted = dart.privateName(image_stream, "_framesEmitted");
-  var _timer = dart.privateName(image_stream, "_timer");
-  var _frameCallbackScheduled = dart.privateName(image_stream, "_frameCallbackScheduled");
-  var _informationCollector = dart.privateName(image_stream, "_informationCollector");
-  var _scale = dart.privateName(image_stream, "_scale");
-  var _handleCodecReady = dart.privateName(image_stream, "_handleCodecReady");
-  var _shownTimestamp = dart.privateName(image_stream, "_shownTimestamp");
-  var _decodeNextFrameAndSchedule = dart.privateName(image_stream, "_decodeNextFrameAndSchedule");
-  var _isFirstFrame = dart.privateName(image_stream, "_isFirstFrame");
-  var _hasFrameDurationPassed = dart.privateName(image_stream, "_hasFrameDurationPassed");
-  var _emitFrame = dart.privateName(image_stream, "_emitFrame");
-  var _scheduleAppFrame = dart.privateName(image_stream, "_scheduleAppFrame");
-  var _handleAppFrame = dart.privateName(image_stream, "_handleAppFrame");
-  image_stream.MultiFrameImageStreamCompleter = class MultiFrameImageStreamCompleter extends image_stream.ImageStreamCompleter {
-    get [_shownTimestamp]() {
-      let t4;
-      return dart.test(this[__MultiFrameImageStreamCompleter__shownTimestamp_isSet]) ? (t4 = this[__MultiFrameImageStreamCompleter__shownTimestamp], t4) : dart.throw(new _internal.LateError.fieldNI("_shownTimestamp"));
-    }
-    set [_shownTimestamp](t4) {
-      if (t4 == null) dart.nullFailed(I[0], 869, 17, "null");
-      this[__MultiFrameImageStreamCompleter__shownTimestamp_isSet] = true;
-      this[__MultiFrameImageStreamCompleter__shownTimestamp] = t4;
-    }
-    [_handleCodecReady](codec) {
-      if (codec == null) dart.nullFailed(I[0], 879, 35, "codec");
-      this[_codec] = codec;
-      if (!(this[_codec] != null)) dart.assertFailed(null, I[0], 881, 12, "_codec != null");
-      if (dart.test(this.hasListeners)) {
-        this[_decodeNextFrameAndSchedule]();
-      }
-    }
-    [_handleAppFrame](timestamp) {
-      if (timestamp == null) dart.nullFailed(I[0], 888, 33, "timestamp");
-      this[_frameCallbackScheduled] = false;
-      if (!dart.test(this.hasListeners)) return;
-      if (!(this[_nextFrame] != null)) dart.assertFailed(null, I[0], 892, 12, "_nextFrame != null");
-      if (dart.test(this[_isFirstFrame]()) || dart.test(this[_hasFrameDurationPassed](timestamp))) {
-        this[_emitFrame](new image_stream.ImageInfo.new({image: dart.nullCheck(this[_nextFrame]).image.clone(), scale: this[_scale], debugLabel: this.debugLabel}));
-        this[_shownTimestamp] = timestamp;
-        this[_frameDuration] = dart.nullCheck(this[_nextFrame]).duration;
-        dart.nullCheck(this[_nextFrame]).image.dispose();
-        this[_nextFrame] = null;
-        let completedCycles = (dart.notNull(this[_framesEmitted]) / dart.notNull(dart.nullCheck(this[_codec]).frameCount))[$truncate]();
-        if (dart.nullCheck(this[_codec]).repetitionCount === -1 || completedCycles <= dart.notNull(dart.nullCheck(this[_codec]).repetitionCount)) {
-          this[_decodeNextFrameAndSchedule]();
-        }
-        return;
-      }
-      let delay = dart.nullCheck(this[_frameDuration])['-'](timestamp['-'](this[_shownTimestamp]));
-      this[_timer] = async.Timer.new(delay['*'](binding.timeDilation), dart.fn(() => {
-        this[_scheduleAppFrame]();
+      this.setState(dart.fn(() => {
+        this[_updateMoveAnimation]();
       }, T.VoidTovoid()));
     }
-    [_isFirstFrame]() {
-      return this[_frameDuration] == null;
-    }
-    [_hasFrameDurationPassed](timestamp) {
-      if (timestamp == null) dart.nullFailed(I[0], 919, 41, "timestamp");
-      return timestamp['-'](this[_shownTimestamp])['>='](dart.nullCheck(this[_frameDuration]));
-    }
-    [_decodeNextFrameAndSchedule]() {
-      return async.async(dart.void, (function* _decodeNextFrameAndSchedule() {
-        let t5;
-        t5 = this[_nextFrame];
-        t5 == null ? null : t5.image.dispose();
-        this[_nextFrame] = null;
-        try {
-          this[_nextFrame] = (yield dart.nullCheck(this[_codec]).getNextFrame());
-        } catch (e) {
-          let exception = dart.getThrown(e);
-          let stack = dart.stackTrace(e);
-          if (core.Object.is(exception)) {
-            this.reportError({context: new assertions.ErrorDescription.new("resolving an image frame"), exception: exception, stack: stack, informationCollector: this[_informationCollector], silent: true});
-            return;
-          } else
-            throw e;
+    [_handleDragUpdate](details) {
+      if (details == null) dart.nullFailed(I[0], 352, 44, "details");
+      if (!dart.test(this[_isActive]) || dart.test(dart.nullCheck(this[_moveController]).isAnimating)) return;
+      let delta = dart.nullCheck(details.primaryDelta);
+      let oldDragExtent = this[_dragExtent];
+      switch (this.widget.direction) {
+        case C[1] || CT.C1:
+        case C[0] || CT.C0:
+        {
+          this[_dragExtent] = dart.notNull(this[_dragExtent]) + delta;
+          break;
         }
-        if (dart.nullCheck(this[_codec]).frameCount === 1) {
-          if (!dart.test(this.hasListeners)) {
-            return;
+        case C[4] || CT.C4:
+        {
+          if (dart.notNull(this[_dragExtent]) + delta < 0) this[_dragExtent] = dart.notNull(this[_dragExtent]) + delta;
+          break;
+        }
+        case C[5] || CT.C5:
+        {
+          if (dart.notNull(this[_dragExtent]) + delta > 0) this[_dragExtent] = dart.notNull(this[_dragExtent]) + delta;
+          break;
+        }
+        case C[2] || CT.C2:
+        {
+          switch (basic.Directionality.of(this.context)) {
+            case C[19] || CT.C19:
+            {
+              if (dart.notNull(this[_dragExtent]) + delta > 0) this[_dragExtent] = dart.notNull(this[_dragExtent]) + delta;
+              break;
+            }
+            case C[20] || CT.C20:
+            {
+              if (dart.notNull(this[_dragExtent]) + delta < 0) this[_dragExtent] = dart.notNull(this[_dragExtent]) + delta;
+              break;
+            }
+            default:
+            {
+              dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+            }
           }
-          this[_emitFrame](new image_stream.ImageInfo.new({image: dart.nullCheck(this[_nextFrame]).image.clone(), scale: this[_scale], debugLabel: this.debugLabel}));
-          dart.nullCheck(this[_nextFrame]).image.dispose();
-          this[_nextFrame] = null;
+          break;
+        }
+        case C[3] || CT.C3:
+        {
+          switch (basic.Directionality.of(this.context)) {
+            case C[19] || CT.C19:
+            {
+              if (dart.notNull(this[_dragExtent]) + delta < 0) this[_dragExtent] = dart.notNull(this[_dragExtent]) + delta;
+              break;
+            }
+            case C[20] || CT.C20:
+            {
+              if (dart.notNull(this[_dragExtent]) + delta > 0) this[_dragExtent] = dart.notNull(this[_dragExtent]) + delta;
+              break;
+            }
+            default:
+            {
+              dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+            }
+          }
+          break;
+        }
+        case C[6] || CT.C6:
+        {
+          this[_dragExtent] = 0.0;
+          break;
+        }
+        default:
+        {
+          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+        }
+      }
+      if (oldDragExtent[$sign] !== this[_dragExtent][$sign]) {
+        this.setState(dart.fn(() => {
+          this[_updateMoveAnimation]();
+        }, T.VoidTovoid()));
+      }
+      if (!dart.test(dart.nullCheck(this[_moveController]).isAnimating)) {
+        dart.nullCheck(this[_moveController]).value = this[_dragExtent][$abs]() / dart.notNull(this[_overallDragAxisExtent]);
+      }
+    }
+    [_updateMoveAnimation]() {
+      let end = this[_dragExtent][$sign];
+      this[_moveAnimation] = dart.nullCheck(this[_moveController]).drive(ui.Offset, new (T.TweenOfOffset()).new({begin: ui.Offset.zero, end: dart.test(this[_directionIsXAxis]) ? new ui.Offset.new(end, this.widget.crossAxisEndOffset) : new ui.Offset.new(this.widget.crossAxisEndOffset, end)}));
+    }
+    [_describeFlingGesture](velocity) {
+      if (velocity == null) dart.nullFailed(I[0], 426, 52, "velocity");
+      if (!(this.widget.direction != null)) dart.assertFailed(null, I[0], 427, 12, "widget.direction != null");
+      if (this[_dragExtent] === 0.0) {
+        return dismissible._FlingGestureKind.none;
+      }
+      let vx = velocity.pixelsPerSecond.dx;
+      let vy = velocity.pixelsPerSecond.dy;
+      let flingDirection = null;
+      if (dart.test(this[_directionIsXAxis])) {
+        if (vx[$abs]() - vy[$abs]() < 400 || vx[$abs]() < 700) return dismissible._FlingGestureKind.none;
+        if (!(vx !== 0.0)) dart.assertFailed(null, I[0], 443, 14, "vx != 0.0");
+        flingDirection = this[_extentToDirection](vx);
+      } else {
+        if (vy[$abs]() - vx[$abs]() < 400 || vy[$abs]() < 700) return dismissible._FlingGestureKind.none;
+        if (!(vy !== 0.0)) dart.assertFailed(null, I[0], 448, 14, "vy != 0.0");
+        flingDirection = this[_extentToDirection](vy);
+      }
+      if (!(this[_dismissDirection] != null)) dart.assertFailed(null, I[0], 451, 12, "_dismissDirection != null");
+      if (flingDirection == this[_dismissDirection]) return dismissible._FlingGestureKind.forward;
+      return dismissible._FlingGestureKind.reverse;
+    }
+    [_handleDragEnd](details) {
+      if (details == null) dart.nullFailed(I[0], 457, 46, "details");
+      return async.async(dart.void, (function* _handleDragEnd() {
+        let t1, t1$;
+        if (!dart.test(this[_isActive]) || dart.test(dart.nullCheck(this[_moveController]).isAnimating)) return;
+        this[_dragUnderway] = false;
+        if (dart.test(dart.nullCheck(this[_moveController]).isCompleted) && (yield this[_confirmStartResizeAnimation]()) === true) {
+          this[_startResizeAnimation]();
           return;
         }
-        this[_scheduleAppFrame]();
+        let flingVelocity = dart.test(this[_directionIsXAxis]) ? details.velocity.pixelsPerSecond.dx : details.velocity.pixelsPerSecond.dy;
+        switch (this[_describeFlingGesture](details.velocity)) {
+          case C[16] || CT.C16:
+          {
+            if (!(this[_dragExtent] !== 0.0)) dart.assertFailed(null, I[0], 468, 16, "_dragExtent != 0.0");
+            if (!!dart.test(dart.nullCheck(this[_moveController]).isDismissed)) dart.assertFailed(null, I[0], 469, 16, "!_moveController!.isDismissed");
+            if (dart.notNull((t1 = this.widget.dismissThresholds[$_get](this[_dismissDirection]), t1 == null ? 0.4 : t1)) >= 1.0) {
+              dart.nullCheck(this[_moveController]).reverse();
+              break;
+            }
+            this[_dragExtent] = flingVelocity[$sign];
+            dart.nullCheck(this[_moveController]).fling({velocity: flingVelocity[$abs]() * 0.0033333333333333335});
+            break;
+          }
+          case C[17] || CT.C17:
+          {
+            if (!(this[_dragExtent] !== 0.0)) dart.assertFailed(null, I[0], 478, 16, "_dragExtent != 0.0");
+            if (!!dart.test(dart.nullCheck(this[_moveController]).isDismissed)) dart.assertFailed(null, I[0], 479, 16, "!_moveController!.isDismissed");
+            this[_dragExtent] = flingVelocity[$sign];
+            dart.nullCheck(this[_moveController]).fling({velocity: -flingVelocity[$abs]() * 0.0033333333333333335});
+            break;
+          }
+          case C[15] || CT.C15:
+          {
+            if (!dart.test(dart.nullCheck(this[_moveController]).isDismissed)) {
+              if (dart.notNull(dart.nullCheck(this[_moveController]).value) > dart.notNull((t1$ = this.widget.dismissThresholds[$_get](this[_dismissDirection]), t1$ == null ? 0.4 : t1$))) {
+                dart.nullCheck(this[_moveController]).forward();
+              } else {
+                dart.nullCheck(this[_moveController]).reverse();
+              }
+            }
+            break;
+          }
+          default:
+          {
+            dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+          }
+        }
       }).bind(this));
     }
-    [_scheduleAppFrame]() {
-      if (dart.test(this[_frameCallbackScheduled])) {
-        return;
+    [_handleDismissStatusChanged](status) {
+      if (status == null) dart.nullFailed(I[0], 495, 60, "status");
+      return async.async(dart.void, (function* _handleDismissStatusChanged() {
+        if (status == animation.AnimationStatus.completed && !dart.test(this[_dragUnderway])) {
+          if ((yield this[_confirmStartResizeAnimation]()) === true)
+            this[_startResizeAnimation]();
+          else
+            dart.nullCheck(this[_moveController]).reverse();
+        }
+        this.updateKeepAlive();
+      }).bind(this));
+    }
+    [_confirmStartResizeAnimation]() {
+      return async.async(T.boolN(), (function* _confirmStartResizeAnimation() {
+        if (this.widget.confirmDismiss != null) {
+          let direction = this[_dismissDirection];
+          return dart.nullCheck(this.widget.confirmDismiss)(direction);
+        }
+        return true;
+      }).bind(this));
+    }
+    [_startResizeAnimation]() {
+      let t1;
+      if (!(this[_moveController] != null)) dart.assertFailed(null, I[0], 514, 12, "_moveController != null");
+      if (!dart.test(dart.nullCheck(this[_moveController]).isCompleted)) dart.assertFailed(null, I[0], 515, 12, "_moveController!.isCompleted");
+      if (!(this[_resizeController] == null)) dart.assertFailed(null, I[0], 516, 12, "_resizeController == null");
+      if (!(this[_sizePriorToCollapse] == null)) dart.assertFailed(null, I[0], 517, 12, "_sizePriorToCollapse == null");
+      if (this.widget.resizeDuration == null) {
+        if (this.widget.onDismissed != null) {
+          let direction = this[_dismissDirection];
+          dart.nullCheck(this.widget.onDismissed)(direction);
+        }
+      } else {
+        this[_resizeController] = (t1 = new animation_controller.AnimationController.new({duration: this.widget.resizeDuration, vsync: this}), (() => {
+          t1.addListener(dart.bind(this, _handleResizeProgressChanged));
+          t1.addStatusListener(dart.fn(status => {
+            if (status == null) dart.nullFailed(I[0], 526, 46, "status");
+            return this.updateKeepAlive();
+          }, T.AnimationStatusTovoid()));
+          return t1;
+        })());
+        dart.nullCheck(this[_resizeController]).forward();
+        this.setState(dart.fn(() => {
+          this[_sizePriorToCollapse] = this.context.size;
+          this[_resizeAnimation] = dart.nullCheck(this[_resizeController]).drive(core.double, new tween.CurveTween.new({curve: dismissible._kResizeTimeCurve})).drive(core.double, new (T.TweenOfdouble()).new({begin: 1.0, end: 0.0}));
+        }, T.VoidTovoid()));
       }
-      this[_frameCallbackScheduled] = true;
-      dart.nullCheck(binding.SchedulerBinding.instance).scheduleFrameCallback(dart.bind(this, _handleAppFrame));
     }
-    [_emitFrame](imageInfo) {
-      if (imageInfo == null) dart.nullFailed(I[0], 969, 29, "imageInfo");
-      this.setImage(imageInfo);
-      this[_framesEmitted] = dart.notNull(this[_framesEmitted]) + 1;
-    }
-    addListener(listener) {
-      if (listener == null) dart.nullFailed(I[0], 975, 40, "listener");
-      if (!dart.test(this.hasListeners) && this[_codec] != null) this[_decodeNextFrameAndSchedule]();
-      super.addListener(listener);
-    }
-    removeListener(listener) {
-      let t6;
-      if (listener == null) dart.nullFailed(I[0], 982, 43, "listener");
-      super.removeListener(listener);
-      if (!dart.test(this.hasListeners)) {
-        t6 = this[_timer];
-        t6 == null ? null : t6.cancel();
-        this[_timer] = null;
+    [_handleResizeProgressChanged]() {
+      let t1, t1$;
+      if (dart.test(dart.nullCheck(this[_resizeController]).isCompleted)) {
+        t1 = this.widget.onDismissed;
+        t1 == null ? null : t1(this[_dismissDirection]);
+      } else {
+        t1$ = this.widget.onResize;
+        t1$ == null ? null : t1$();
       }
+    }
+    build(context) {
+      if (context == null) dart.nullFailed(I[0], 553, 29, "context");
+      super.build(context);
+      if (!(!dart.test(this[_directionIsXAxis]) || dart.test(debug.debugCheckHasDirectionality(context)))) dart.assertFailed(null, I[0], 556, 12, "!_directionIsXAxis || debugCheckHasDirectionality(context)");
+      let background = this.widget.background;
+      if (this.widget.secondaryBackground != null) {
+        let direction = this[_dismissDirection];
+        if (direction == dismissible.DismissDirection.endToStart || direction == dismissible.DismissDirection.up) background = this.widget.secondaryBackground;
+      }
+      if (this[_resizeAnimation] != null) {
+        if (!dart.test(dart.fn(() => {
+          if (dart.nullCheck(this[_resizeAnimation]).status != animation.AnimationStatus.forward) {
+            if (!(dart.nullCheck(this[_resizeAnimation]).status == animation.AnimationStatus.completed)) dart.assertFailed(null, I[0], 569, 18, "_resizeAnimation!.status == AnimationStatus.completed");
+            dart.throw(new assertions.FlutterError.fromParts(T.JSArrayOfDiagnosticsNode().of([new assertions.ErrorSummary.new("A dismissed Dismissible widget is still part of the tree."), new assertions.ErrorHint.new("Make sure to implement the onDismissed handler and to immediately remove the Dismissible " + "widget from the application once that handler has fired.")])));
+          }
+          return true;
+        }, T.VoidTobool())())) dart.assertFailed(null, I[0], 567, 14, "() {\r\n        if (_resizeAnimation!.status != AnimationStatus.forward) {\r\n          assert(_resizeAnimation!.status == AnimationStatus.completed);\r\n          throw FlutterError.fromParts(<DiagnosticsNode>[\r\n            ErrorSummary('A dismissed Dismissible widget is still part of the tree.'),\r\n            ErrorHint(\r\n              'Make sure to implement the onDismissed handler and to immediately remove the Dismissible '\r\n              'widget from the application once that handler has fired.',\r\n            ),\r\n          ]);\r\n        }\r\n        return true;\r\n      }()");
+        return new transitions.SizeTransition.new({sizeFactor: dart.nullCheck(this[_resizeAnimation]), axis: dart.test(this[_directionIsXAxis]) ? basic_types.Axis.vertical : basic_types.Axis.horizontal, child: new basic.SizedBox.new({width: dart.nullCheck(this[_sizePriorToCollapse]).width, height: dart.nullCheck(this[_sizePriorToCollapse]).height, child: background, $creationLocationd_0dea112b090073317d4: C[21] || CT.C21}), $creationLocationd_0dea112b090073317d4: C[26] || CT.C26});
+      }
+      let content = new transitions.SlideTransition.new({position: this[_moveAnimation], child: this.widget.child, $creationLocationd_0dea112b090073317d4: C[31] || CT.C31});
+      if (background != null) {
+        content = new basic.Stack.new({children: (() => {
+            let t1 = T.JSArrayOfWidget().of([]);
+            if (!dart.test(this[_moveAnimation].isDismissed)) t1[$add](new basic.Positioned.fill({child: new basic.ClipRect.new({clipper: new dismissible._DismissibleClipper.new({axis: dart.test(this[_directionIsXAxis]) ? basic_types.Axis.horizontal : basic_types.Axis.vertical, moveAnimation: this[_moveAnimation]}), child: background, $creationLocationd_0dea112b090073317d4: C[35] || CT.C35}), $creationLocationd_0dea112b090073317d4: C[39] || CT.C39}));
+            t1[$add](content);
+            return t1;
+          })(), $creationLocationd_0dea112b090073317d4: C[42] || CT.C42});
+      }
+      return new gesture_detector.GestureDetector.new({onHorizontalDragStart: dart.test(this[_directionIsXAxis]) ? dart.bind(this, _handleDragStart) : null, onHorizontalDragUpdate: dart.test(this[_directionIsXAxis]) ? dart.bind(this, _handleDragUpdate) : null, onHorizontalDragEnd: dart.test(this[_directionIsXAxis]) ? dart.bind(this, _handleDragEnd) : null, onVerticalDragStart: dart.test(this[_directionIsXAxis]) ? null : dart.bind(this, _handleDragStart), onVerticalDragUpdate: dart.test(this[_directionIsXAxis]) ? null : dart.bind(this, _handleDragUpdate), onVerticalDragEnd: dart.test(this[_directionIsXAxis]) ? null : dart.bind(this, _handleDragEnd), behavior: this.widget.behavior, child: content, dragStartBehavior: this.widget.dragStartBehavior, $creationLocationd_0dea112b090073317d4: C[45] || CT.C45});
     }
   };
-  (image_stream.MultiFrameImageStreamCompleter.new = function(opts) {
-    let codec = opts && 'codec' in opts ? opts.codec : null;
-    if (codec == null) dart.nullFailed(I[0], 831, 31, "codec");
-    let scale = opts && 'scale' in opts ? opts.scale : null;
-    if (scale == null) dart.nullFailed(I[0], 832, 21, "scale");
-    let debugLabel = opts && 'debugLabel' in opts ? opts.debugLabel : null;
-    let chunkEvents = opts && 'chunkEvents' in opts ? opts.chunkEvents : null;
-    let informationCollector = opts && 'informationCollector' in opts ? opts.informationCollector : null;
-    this[_codec] = null;
-    this[_nextFrame] = null;
-    this[__MultiFrameImageStreamCompleter__shownTimestamp] = null;
-    this[__MultiFrameImageStreamCompleter__shownTimestamp_isSet] = false;
-    this[_frameDuration] = null;
-    this[_framesEmitted] = 0;
-    this[_timer] = null;
-    this[_frameCallbackScheduled] = false;
-    if (!(codec != null)) dart.assertFailed(null, I[0], 836, 15, "codec != null");
-    this[_informationCollector] = informationCollector;
-    this[_scale] = scale;
-    image_stream.MultiFrameImageStreamCompleter.__proto__.new.call(this);
-    this.debugLabel = debugLabel;
-    codec.then(dart.void, dart.bind(this, _handleCodecReady), {onError: dart.fn((error, stack) => {
-        if (error == null) dart.nullFailed(I[0], 840, 58, "error");
-        if (stack == null) dart.nullFailed(I[0], 840, 76, "stack");
-        this.reportError({context: new assertions.ErrorDescription.new("resolving an image codec"), exception: error, stack: stack, informationCollector: informationCollector, silent: true});
-      }, T.ObjectAndStackTraceToNull())});
-    if (chunkEvents != null) {
-      chunkEvents.listen(dart.bind(this, 'reportImageChunkEvent'), {onError: dart.fn((error, stack) => {
-          if (error == null) dart.nullFailed(I[0], 851, 26, "error");
-          if (stack == null) dart.nullFailed(I[0], 851, 44, "stack");
-          this.reportError({context: new assertions.ErrorDescription.new("loading an image"), exception: error, stack: stack, informationCollector: informationCollector, silent: true});
-        }, T.ObjectAndStackTraceToNull())});
+  (dismissible._DismissibleState.new = function() {
+    this[_moveController] = null;
+    this[___DismissibleState__moveAnimation] = null;
+    this[___DismissibleState__moveAnimation_isSet] = false;
+    this[_resizeController] = null;
+    this[_resizeAnimation] = null;
+    this[_dragExtent] = 0.0;
+    this[_dragUnderway] = false;
+    this[_sizePriorToCollapse] = null;
+    dismissible._DismissibleState.__proto__.new.call(this);
+    ;
+  }).prototype = dismissible._DismissibleState.prototype;
+  dart.addTypeTests(dismissible._DismissibleState);
+  dart.addTypeCaches(dismissible._DismissibleState);
+  dart.setMethodSignature(dismissible._DismissibleState, () => ({
+    __proto__: dart.getMethods(dismissible._DismissibleState.__proto__),
+    [_extentToDirection]: dart.fnType(dismissible.DismissDirection, [core.double]),
+    [_handleDragStart]: dart.fnType(dart.void, [drag_details.DragStartDetails]),
+    [_handleDragUpdate]: dart.fnType(dart.void, [drag_details.DragUpdateDetails]),
+    [_updateMoveAnimation]: dart.fnType(dart.void, []),
+    [_describeFlingGesture]: dart.fnType(dismissible._FlingGestureKind, [velocity_tracker.Velocity]),
+    [_handleDragEnd]: dart.fnType(async.Future$(dart.void), [drag_details.DragEndDetails]),
+    [_handleDismissStatusChanged]: dart.fnType(async.Future$(dart.void), [animation.AnimationStatus]),
+    [_confirmStartResizeAnimation]: dart.fnType(async.Future$(dart.nullable(core.bool)), []),
+    [_startResizeAnimation]: dart.fnType(dart.void, []),
+    [_handleResizeProgressChanged]: dart.fnType(dart.void, [])
+  }));
+  dart.setGetterSignature(dismissible._DismissibleState, () => ({
+    __proto__: dart.getGetters(dismissible._DismissibleState.__proto__),
+    [_moveAnimation]: animation.Animation$(ui.Offset),
+    wantKeepAlive: core.bool,
+    [_directionIsXAxis]: core.bool,
+    [_dismissDirection]: dismissible.DismissDirection,
+    [_isActive]: core.bool,
+    [_overallDragAxisExtent]: core.double
+  }));
+  dart.setSetterSignature(dismissible._DismissibleState, () => ({
+    __proto__: dart.getSetters(dismissible._DismissibleState.__proto__),
+    [_moveAnimation]: animation.Animation$(ui.Offset)
+  }));
+  dart.setLibraryUri(dismissible._DismissibleState, I[1]);
+  dart.setFieldSignature(dismissible._DismissibleState, () => ({
+    __proto__: dart.getFields(dismissible._DismissibleState.__proto__),
+    [_moveController]: dart.fieldType(dart.nullable(animation_controller.AnimationController)),
+    [___DismissibleState__moveAnimation]: dart.fieldType(dart.nullable(animation.Animation$(ui.Offset))),
+    [___DismissibleState__moveAnimation_isSet]: dart.fieldType(core.bool),
+    [_resizeController]: dart.fieldType(dart.nullable(animation_controller.AnimationController)),
+    [_resizeAnimation]: dart.fieldType(dart.nullable(animation.Animation$(core.double))),
+    [_dragExtent]: dart.fieldType(core.double),
+    [_dragUnderway]: dart.fieldType(core.bool),
+    [_sizePriorToCollapse]: dart.fieldType(dart.nullable(ui.Size))
+  }));
+  var Cubic_d = dart.privateName(curves, "Cubic.d");
+  var Cubic_c = dart.privateName(curves, "Cubic.c");
+  var Cubic_b = dart.privateName(curves, "Cubic.b");
+  var Cubic_a = dart.privateName(curves, "Cubic.a");
+  var Interval_curve = dart.privateName(curves, "Interval.curve");
+  var Interval_end = dart.privateName(curves, "Interval.end");
+  var Interval_begin = dart.privateName(curves, "Interval.begin");
+  dart.defineLazy(dismissible, {
+    /*dismissible._kResizeTimeCurve*/get _kResizeTimeCurve() {
+      return C[56] || CT.C56;
+    },
+    /*dismissible._kMinFlingVelocity*/get _kMinFlingVelocity() {
+      return 700;
+    },
+    /*dismissible._kMinFlingVelocityDelta*/get _kMinFlingVelocityDelta() {
+      return 400;
+    },
+    /*dismissible._kFlingVelocityScale*/get _kFlingVelocityScale() {
+      return 0.0033333333333333335;
+    },
+    /*dismissible._kDismissThreshold*/get _kDismissThreshold() {
+      return 0.4;
     }
-  }).prototype = image_stream.MultiFrameImageStreamCompleter.prototype;
-  dart.addTypeTests(image_stream.MultiFrameImageStreamCompleter);
-  dart.addTypeCaches(image_stream.MultiFrameImageStreamCompleter);
-  dart.setMethodSignature(image_stream.MultiFrameImageStreamCompleter, () => ({
-    __proto__: dart.getMethods(image_stream.MultiFrameImageStreamCompleter.__proto__),
-    [_handleCodecReady]: dart.fnType(dart.void, [ui.Codec]),
-    [_handleAppFrame]: dart.fnType(dart.void, [core.Duration]),
-    [_isFirstFrame]: dart.fnType(core.bool, []),
-    [_hasFrameDurationPassed]: dart.fnType(core.bool, [core.Duration]),
-    [_decodeNextFrameAndSchedule]: dart.fnType(async.Future$(dart.void), []),
-    [_scheduleAppFrame]: dart.fnType(dart.void, []),
-    [_emitFrame]: dart.fnType(dart.void, [image_stream.ImageInfo])
-  }));
-  dart.setGetterSignature(image_stream.MultiFrameImageStreamCompleter, () => ({
-    __proto__: dart.getGetters(image_stream.MultiFrameImageStreamCompleter.__proto__),
-    [_shownTimestamp]: core.Duration
-  }));
-  dart.setSetterSignature(image_stream.MultiFrameImageStreamCompleter, () => ({
-    __proto__: dart.getSetters(image_stream.MultiFrameImageStreamCompleter.__proto__),
-    [_shownTimestamp]: core.Duration
-  }));
-  dart.setLibraryUri(image_stream.MultiFrameImageStreamCompleter, I[1]);
-  dart.setFieldSignature(image_stream.MultiFrameImageStreamCompleter, () => ({
-    __proto__: dart.getFields(image_stream.MultiFrameImageStreamCompleter.__proto__),
-    [_codec]: dart.fieldType(dart.nullable(ui.Codec)),
-    [_scale]: dart.finalFieldType(core.double),
-    [_informationCollector]: dart.finalFieldType(dart.nullable(dart.fnType(core.Iterable$(diagnostics.DiagnosticsNode), []))),
-    [_nextFrame]: dart.fieldType(dart.nullable(ui.FrameInfo)),
-    [__MultiFrameImageStreamCompleter__shownTimestamp]: dart.fieldType(dart.nullable(core.Duration)),
-    [__MultiFrameImageStreamCompleter__shownTimestamp_isSet]: dart.fieldType(core.bool),
-    [_frameDuration]: dart.fieldType(dart.nullable(core.Duration)),
-    [_framesEmitted]: dart.fieldType(core.int),
-    [_timer]: dart.fieldType(dart.nullable(async.Timer)),
-    [_frameCallbackScheduled]: dart.fieldType(core.bool)
-  }));
-  dart.trackLibraries("packages/flutter/src/painting/image_stream.dart", {
-    "package:flutter/src/painting/image_stream.dart": image_stream
+  }, false);
+  dart.trackLibraries("packages/flutter/src/widgets/dismissible.dart", {
+    "package:flutter/src/widgets/dismissible.dart": dismissible
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["image_stream.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/flutter/src/painting/image_stream.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["dismissible.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/flutter/src/widgets/dismissible.dart.lib.js"}');
   // Exports:
   return {
-    src__painting__image_stream: image_stream
+    src__widgets__dismissible: dismissible
   };
 }));
 
-//# sourceMappingURL=image_stream.dart.lib.js.map
+//# sourceMappingURL=dismissible.dart.lib.js.map

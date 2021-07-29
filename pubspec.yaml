@@ -37,6 +37,7 @@ dependencies:
   shared_preferences: ^2.0.6
   provider: ^5.0.0
   flutter_bloc: ^7.0.1
+  flutter_swiper: ^1.1.6
   
 dev_dependencies:
   flutter_test:
@@ -73,6 +74,7 @@ flutter:
     - images/gradient2.png
     - images/bamboo.jpg
     - images/square.png
+    - images/exam/
 
     # - images/a_dot_ham.jpeg
 

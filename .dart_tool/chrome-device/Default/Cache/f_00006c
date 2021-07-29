@@ -1,591 +1,582 @@
-define(['dart_sdk', 'packages/flutter/src/painting/image_stream.dart', 'packages/flutter/src/foundation/object.dart', 'packages/flutter/src/scheduler/binding.dart', 'packages/flutter/src/foundation/debug.dart'], (function load__packages__flutter__src__painting__image_cache_dart(dart_sdk, packages__flutter__src__painting__image_stream$46dart, packages__flutter__src__foundation__object$46dart, packages__flutter__src__scheduler__binding$46dart, packages__flutter__src__foundation__debug$46dart) {
+define(['dart_sdk', 'packages/flutter/src/painting/basic_types.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/rendering/layer.dart'], (function load__packages__flutter__src__widgets__overflow_bar_dart(dart_sdk, packages__flutter__src__painting__basic_types$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__rendering__layer$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const _js_helper = dart_sdk._js_helper;
-  const developer = dart_sdk.developer;
-  const _interceptors = dart_sdk._interceptors;
   const ui = dart_sdk.ui;
+  const math = dart_sdk.math;
   const _internal = dart_sdk._internal;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const image_stream = packages__flutter__src__painting__image_stream$46dart.src__painting__image_stream;
-  const object = packages__flutter__src__foundation__object$46dart.src__foundation__object;
-  const binding = packages__flutter__src__scheduler__binding$46dart.src__scheduler__binding;
+  const basic_types = packages__flutter__src__painting__basic_types$46dart.src__painting__basic_types;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
   const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
-  var image_cache = Object.create(dart.library);
-  var $length = dartx.length;
-  var $values = dartx.values;
-  var $clear = dartx.clear;
-  var $remove = dartx.remove;
-  var $_set = dartx._set;
-  var $putIfAbsent = dartx.putIfAbsent;
-  var $toString = dartx.toString;
-  var $_get = dartx._get;
-  var $containsKey = dartx.containsKey;
-  var $first = dartx.first;
-  var $keys = dartx.keys;
-  var $runtimeType = dartx.runtimeType;
+  const box = packages__flutter__src__rendering__layer$46dart.src__rendering__box;
+  const object = packages__flutter__src__rendering__layer$46dart.src__rendering__object;
+  var overflow_bar = Object.create(dart.library);
   dart._checkModuleNullSafetyMode(false);
   var T = {
-    LinkedMapOfObject$_PendingImage: () => (T.LinkedMapOfObject$_PendingImage = dart.constFn(_js_helper.LinkedMap$(core.Object, image_cache._PendingImage)))(),
-    LinkedMapOfObject$_CachedImage: () => (T.LinkedMapOfObject$_CachedImage = dart.constFn(_js_helper.LinkedMap$(core.Object, image_cache._CachedImage)))(),
-    LinkedMapOfObject$_LiveImage: () => (T.LinkedMapOfObject$_LiveImage = dart.constFn(_js_helper.LinkedMap$(core.Object, image_cache._LiveImage)))(),
-    IdentityMapOfString$dynamic: () => (T.IdentityMapOfString$dynamic = dart.constFn(_js_helper.IdentityMap$(core.String, dart.dynamic)))(),
-    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
-    VoidTo_LiveImage: () => (T.VoidTo_LiveImage = dart.constFn(dart.fnType(image_cache._LiveImage, [])))(),
-    ImageInfoN: () => (T.ImageInfoN = dart.constFn(dart.nullable(image_stream.ImageInfo)))(),
-    ImageInfoNAndboolTovoid: () => (T.ImageInfoNAndboolTovoid = dart.constFn(dart.fnType(dart.void, [T.ImageInfoN(), core.bool])))(),
-    JSArrayOfString: () => (T.JSArrayOfString = dart.constFn(_interceptors.JSArray$(core.String)))(),
-    DurationTovoid: () => (T.DurationTovoid = dart.constFn(dart.fnType(dart.void, [core.Duration])))()
+    OverflowBarAlignmentL: () => (T.OverflowBarAlignmentL = dart.constFn(dart.legacy(overflow_bar.OverflowBarAlignment)))(),
+    WidgetL: () => (T.WidgetL = dart.constFn(dart.legacy(framework.Widget)))(),
+    EnumPropertyOfOverflowBarAlignment: () => (T.EnumPropertyOfOverflowBarAlignment = dart.constFn(diagnostics.EnumProperty$(overflow_bar.OverflowBarAlignment)))(),
+    EnumPropertyOfVerticalDirection: () => (T.EnumPropertyOfVerticalDirection = dart.constFn(diagnostics.EnumProperty$(basic_types.VerticalDirection)))(),
+    EnumPropertyOfTextDirection: () => (T.EnumPropertyOfTextDirection = dart.constFn(diagnostics.EnumProperty$(ui.TextDirection)))(),
+    RenderBoxN: () => (T.RenderBoxN = dart.constFn(dart.nullable(box.RenderBox)))(),
+    VoidToRenderBoxN: () => (T.VoidToRenderBoxN = dart.constFn(dart.fnType(T.RenderBoxN(), [])))()
   };
   const CT = Object.create({
     _: () => (C, CT)
   });
-  var I = [
-    "file:///C:/src/flutter/packages/flutter/lib/src/painting/image_cache.dart",
-    "package:flutter/src/painting/image_cache.dart"
-  ];
-  var _pendingImages = dart.privateName(image_cache, "_pendingImages");
-  var _cache = dart.privateName(image_cache, "_cache");
-  var _liveImages = dart.privateName(image_cache, "_liveImages");
-  var _maximumSize = dart.privateName(image_cache, "_maximumSize");
-  var _maximumSizeBytes = dart.privateName(image_cache, "_maximumSizeBytes");
-  var _currentSizeBytes = dart.privateName(image_cache, "_currentSizeBytes");
-  var _checkCacheSize = dart.privateName(image_cache, "_checkCacheSize");
-  var _touch = dart.privateName(image_cache, "_touch");
-  var _trackLiveImage = dart.privateName(image_cache, "_trackLiveImage");
-  image_cache.ImageCache = class ImageCache extends core.Object {
-    get maximumSize() {
-      return this[_maximumSize];
-    }
-    set maximumSize(value) {
-      let t0;
-      if (value == null) dart.nullFailed(I[0], 102, 23, "value");
-      if (!(value != null)) dart.assertFailed(null, I[0], 103, 12, "value != null");
-      if (!(dart.notNull(value) >= 0)) dart.assertFailed(null, I[0], 104, 12, "value >= 0");
-      if (value == this.maximumSize) return;
-      let timelineTask = null;
-      if (!false) {
-        timelineTask = (t0 = new developer.TimelineTask.new(), (() => {
-          t0.start("ImageCache.setMaximumSize", {arguments: new (T.IdentityMapOfString$dynamic()).from(["value", value])});
-          return t0;
-        })());
-      }
-      this[_maximumSize] = value;
-      if (this.maximumSize === 0) {
-        this.clear();
-      } else {
-        this[_checkCacheSize](timelineTask);
-      }
-      if (!false) {
-        dart.nullCheck(timelineTask).finish();
-      }
-    }
-    get currentSize() {
-      return this[_cache][$length];
-    }
-    get maximumSizeBytes() {
-      return this[_maximumSizeBytes];
-    }
-    set maximumSizeBytes(value) {
-      let t0;
-      if (value == null) dart.nullFailed(I[0], 141, 28, "value");
-      if (!(value != null)) dart.assertFailed(null, I[0], 142, 12, "value != null");
-      if (!(dart.notNull(value) >= 0)) dart.assertFailed(null, I[0], 143, 12, "value >= 0");
-      if (value == this[_maximumSizeBytes]) return;
-      let timelineTask = null;
-      if (!false) {
-        timelineTask = (t0 = new developer.TimelineTask.new(), (() => {
-          t0.start("ImageCache.setMaximumSizeBytes", {arguments: new (T.IdentityMapOfString$dynamic()).from(["value", value])});
-          return t0;
-        })());
-      }
-      this[_maximumSizeBytes] = value;
-      if (this[_maximumSizeBytes] === 0) {
-        this.clear();
-      } else {
-        this[_checkCacheSize](timelineTask);
-      }
-      if (!false) {
-        dart.nullCheck(timelineTask).finish();
-      }
-    }
-    get currentSizeBytes() {
-      return this[_currentSizeBytes];
-    }
-    clear() {
-      if (!false) {
-        developer.Timeline.instantSync("ImageCache.clear", {arguments: new (T.IdentityMapOfString$dynamic()).from(["pendingImages", this[_pendingImages][$length], "keepAliveImages", this[_cache][$length], "liveImages", this[_liveImages][$length], "currentSizeInBytes", this[_currentSizeBytes]])});
-      }
-      for (let image of this[_cache][$values]) {
-        image.dispose();
-      }
-      this[_cache][$clear]();
-      this[_pendingImages][$clear]();
-      this[_currentSizeBytes] = 0;
-    }
-    evict(key, opts) {
-      let t0;
-      if (key == null) dart.nullFailed(I[0], 238, 21, "key");
-      let includeLive = opts && 'includeLive' in opts ? opts.includeLive : true;
-      if (includeLive == null) dart.nullFailed(I[0], 238, 33, "includeLive");
-      if (!(includeLive != null)) dart.assertFailed(null, I[0], 239, 12, "includeLive != null");
-      if (dart.test(includeLive)) {
-        let image = this[_liveImages][$remove](key);
-        t0 = image;
-        t0 == null ? null : t0.dispose();
-      }
-      let pendingImage = this[_pendingImages][$remove](key);
-      if (pendingImage != null) {
-        if (!false) {
-          developer.Timeline.instantSync("ImageCache.evict", {arguments: new (T.IdentityMapOfString$dynamic()).from(["type", "pending"])});
-        }
-        pendingImage.removeListener();
-        return true;
-      }
-      let image = this[_cache][$remove](key);
-      if (image != null) {
-        if (!false) {
-          developer.Timeline.instantSync("ImageCache.evict", {arguments: new (T.IdentityMapOfString$dynamic()).from(["type", "keepAlive", "sizeInBytes", image.sizeBytes])});
-        }
-        this[_currentSizeBytes] = dart.notNull(this[_currentSizeBytes]) - dart.nullCheck(image.sizeBytes);
-        image.dispose();
-        return true;
-      }
-      if (!false) {
-        developer.Timeline.instantSync("ImageCache.evict", {arguments: new (T.IdentityMapOfString$dynamic()).from(["type", "miss"])});
-      }
-      return false;
-    }
-    [_touch](key, image, timelineTask) {
-      if (key == null) dart.nullFailed(I[0], 284, 22, "key");
-      if (image == null) dart.nullFailed(I[0], 284, 40, "image");
-      if (!(timelineTask != null)) dart.assertFailed(null, I[0], 285, 12, "timelineTask != null");
-      if (image.sizeBytes != null && dart.nullCheck(image.sizeBytes) <= dart.notNull(this.maximumSizeBytes) && dart.notNull(this.maximumSize) > 0) {
-        this[_currentSizeBytes] = dart.notNull(this[_currentSizeBytes]) + dart.nullCheck(image.sizeBytes);
-        this[_cache][$_set](key, image);
-        this[_checkCacheSize](timelineTask);
-      } else {
-        image.dispose();
-      }
-    }
-    [_trackLiveImage](key, completer, sizeBytes) {
-      let t0;
-      if (key == null) dart.nullFailed(I[0], 295, 31, "key");
-      if (completer == null) dart.nullFailed(I[0], 295, 57, "completer");
-      t0 = this[_liveImages][$putIfAbsent](key, dart.fn(() => new image_cache._LiveImage.new(completer, dart.fn(() => {
-        this[_liveImages][$remove](key);
-      }, T.VoidTovoid())), T.VoidTo_LiveImage()));
-      t0.sizeBytes == null ? t0.sizeBytes = sizeBytes : null;
-    }
-    putIfAbsent(key, loader, opts) {
-      let t0, t0$, t1;
-      if (key == null) dart.nullFailed(I[0], 322, 44, "key");
-      if (loader == null) dart.nullFailed(I[0], 322, 81, "loader");
-      let onError = opts && 'onError' in opts ? opts.onError : null;
-      if (!(key != null)) dart.assertFailed(null, I[0], 323, 12, "key != null");
-      if (!(loader != null)) dart.assertFailed(null, I[0], 324, 12, "loader != null");
-      let timelineTask = null;
-      let listenerTask = null;
-      if (!false) {
-        timelineTask = (t0 = new developer.TimelineTask.new(), (() => {
-          t0.start("ImageCache.putIfAbsent", {arguments: new (T.IdentityMapOfString$dynamic()).from(["key", dart.toString(key)])});
-          return t0;
-        })());
-      }
-      let result = (t0$ = this[_pendingImages][$_get](key), t0$ == null ? null : t0$.completer);
-      if (result != null) {
-        if (!false) {
-          dart.nullCheck(timelineTask).finish({arguments: new (T.IdentityMapOfString$dynamic()).from(["result", "pending"])});
-        }
-        return result;
-      }
-      let image = this[_cache][$remove](key);
-      if (image != null) {
-        if (!false) {
-          dart.nullCheck(timelineTask).finish({arguments: new (T.IdentityMapOfString$dynamic()).from(["result", "keepAlive"])});
-        }
-        this[_trackLiveImage](key, image.completer, image.sizeBytes);
-        this[_cache][$_set](key, image);
-        return image.completer;
-      }
-      let liveImage = this[_liveImages][$_get](key);
-      if (liveImage != null) {
-        this[_touch](key, new image_cache._CachedImage.new(liveImage.completer, {sizeBytes: liveImage.sizeBytes}), timelineTask);
-        if (!false) {
-          dart.nullCheck(timelineTask).finish({arguments: new (T.IdentityMapOfString$dynamic()).from(["result", "keepAlive"])});
-        }
-        return liveImage.completer;
-      }
-      try {
-        result = loader();
-        this[_trackLiveImage](key, result, null);
-      } catch (e) {
-        let error = dart.getThrown(e);
-        let stackTrace = dart.stackTrace(e);
-        if (core.Object.is(error)) {
-          if (!false) {
-            dart.nullCheck(timelineTask).finish({arguments: new (T.IdentityMapOfString$dynamic()).from(["result", "error", "error", dart.toString(error), "stackTrace", stackTrace.toString()])});
-          }
-          if (onError != null) {
-            onError(error, stackTrace);
-            return null;
-          } else {
-            dart.rethrow(e);
-          }
-        } else
-          throw e;
-      }
-      if (!false) {
-        listenerTask = (t1 = new developer.TimelineTask.new({parent: timelineTask}), (() => {
-          t1.start("listener");
-          return t1;
-        })());
-      }
-      let listenedOnce = false;
-      let untrackedPendingImage = null;
-      const listener = (info, syncCall) => {
-        let t1;
-        if (syncCall == null) dart.nullFailed(I[0], 411, 41, "syncCall");
-        let sizeBytes = null;
-        if (info != null) {
-          sizeBytes = dart.notNull(info.image.height) * dart.notNull(info.image.width) * 4;
-          info.dispose();
-        }
-        let image = new image_cache._CachedImage.new(dart.nullCheck(result), {sizeBytes: sizeBytes});
-        this[_trackLiveImage](key, result, sizeBytes);
-        if (untrackedPendingImage == null) {
-          this[_touch](key, image, listenerTask);
-        } else {
-          image.dispose();
-        }
-        let pendingImage = (t1 = untrackedPendingImage, t1 == null ? this[_pendingImages][$remove](key) : t1);
-        if (pendingImage != null) {
-          pendingImage.removeListener();
-        }
-        if (!false && !listenedOnce) {
-          dart.nullCheck(listenerTask).finish({arguments: new (T.IdentityMapOfString$dynamic()).from(["syncCall", syncCall, "sizeInBytes", sizeBytes])});
-          dart.nullCheck(timelineTask).finish({arguments: new (T.IdentityMapOfString$dynamic()).from(["currentSizeBytes", this.currentSizeBytes, "currentSize", this.currentSize])});
-        }
-        listenedOnce = true;
-      };
-      dart.fn(listener, T.ImageInfoNAndboolTovoid());
-      let streamListener = new image_stream.ImageStreamListener.new(listener);
-      if (dart.notNull(this.maximumSize) > 0 && dart.notNull(this.maximumSizeBytes) > 0) {
-        this[_pendingImages][$_set](key, new image_cache._PendingImage.new(result, streamListener));
-      } else {
-        untrackedPendingImage = new image_cache._PendingImage.new(result, streamListener);
-      }
-      result.addListener(streamListener);
-      return result;
-    }
-    statusForKey(key) {
-      if (key == null) dart.nullFailed(I[0], 461, 40, "key");
-      return new image_cache.ImageCacheStatus.__({pending: this[_pendingImages][$containsKey](key), keepAlive: this[_cache][$containsKey](key), live: this[_liveImages][$containsKey](key)});
-    }
-    containsKey(key) {
-      if (key == null) dart.nullFailed(I[0], 470, 27, "key");
-      return this[_pendingImages][$_get](key) != null || this[_cache][$_get](key) != null;
-    }
-    get liveImageCount() {
-      return this[_liveImages][$length];
-    }
-    get pendingImageCount() {
-      return this[_pendingImages][$length];
-    }
-    clearLiveImages() {
-      for (let image of this[_liveImages][$values]) {
-        image.dispose();
-      }
-      this[_liveImages][$clear]();
-    }
-    [_checkCacheSize](timelineTask) {
-      let t1;
-      let finishArgs = new (T.IdentityMapOfString$dynamic()).new();
-      let checkCacheTask = null;
-      if (!false) {
-        checkCacheTask = (t1 = new developer.TimelineTask.new({parent: timelineTask}), (() => {
-          t1.start("checkCacheSize");
-          return t1;
-        })());
-        finishArgs[$_set]("evictedKeys", T.JSArrayOfString().of([]));
-        finishArgs[$_set]("currentSize", this.currentSize);
-        finishArgs[$_set]("currentSizeBytes", this.currentSizeBytes);
-      }
-      while (dart.notNull(this[_currentSizeBytes]) > dart.notNull(this[_maximumSizeBytes]) || dart.notNull(this[_cache][$length]) > dart.notNull(this[_maximumSize])) {
-        let key = this[_cache][$keys][$first];
-        let image = dart.nullCheck(this[_cache][$_get](key));
-        this[_currentSizeBytes] = dart.notNull(this[_currentSizeBytes]) - dart.nullCheck(image.sizeBytes);
-        image.dispose();
-        this[_cache][$remove](key);
-        if (!false) {
-          dart.dsend(finishArgs[$_get]("evictedKeys"), 'add', [dart.toString(key)]);
-        }
-      }
-      if (!false) {
-        finishArgs[$_set]("endSize", this.currentSize);
-        finishArgs[$_set]("endSizeBytes", this.currentSizeBytes);
-        dart.nullCheck(checkCacheTask).finish({arguments: finishArgs});
-      }
-      if (!(dart.notNull(this[_currentSizeBytes]) >= 0)) dart.assertFailed(null, I[0], 528, 12, "_currentSizeBytes >= 0");
-      if (!(dart.notNull(this[_cache][$length]) <= dart.notNull(this.maximumSize))) dart.assertFailed(null, I[0], 529, 12, "_cache.length <= maximumSize");
-      if (!(dart.notNull(this[_currentSizeBytes]) <= dart.notNull(this.maximumSizeBytes))) dart.assertFailed(null, I[0], 530, 12, "_currentSizeBytes <= maximumSizeBytes");
-    }
-  };
-  (image_cache.ImageCache.new = function() {
-    this[_pendingImages] = new (T.LinkedMapOfObject$_PendingImage()).new();
-    this[_cache] = new (T.LinkedMapOfObject$_CachedImage()).new();
-    this[_liveImages] = new (T.LinkedMapOfObject$_LiveImage()).new();
-    this[_maximumSize] = 1000;
-    this[_maximumSizeBytes] = 104857600;
-    this[_currentSizeBytes] = 0;
-    ;
-  }).prototype = image_cache.ImageCache.prototype;
-  dart.addTypeTests(image_cache.ImageCache);
-  dart.addTypeCaches(image_cache.ImageCache);
-  dart.setMethodSignature(image_cache.ImageCache, () => ({
-    __proto__: dart.getMethods(image_cache.ImageCache.__proto__),
-    clear: dart.fnType(dart.void, []),
-    evict: dart.fnType(core.bool, [core.Object], {includeLive: core.bool}, {}),
-    [_touch]: dart.fnType(dart.void, [core.Object, image_cache._CachedImage, dart.nullable(developer.TimelineTask)]),
-    [_trackLiveImage]: dart.fnType(dart.void, [core.Object, image_stream.ImageStreamCompleter, dart.nullable(core.int)]),
-    putIfAbsent: dart.fnType(dart.nullable(image_stream.ImageStreamCompleter), [core.Object, dart.fnType(image_stream.ImageStreamCompleter, [])], {onError: dart.nullable(dart.fnType(dart.void, [core.Object, dart.nullable(core.StackTrace)]))}, {}),
-    statusForKey: dart.fnType(image_cache.ImageCacheStatus, [core.Object]),
-    containsKey: dart.fnType(core.bool, [core.Object]),
-    clearLiveImages: dart.fnType(dart.void, []),
-    [_checkCacheSize]: dart.fnType(dart.void, [dart.nullable(developer.TimelineTask)])
-  }));
-  dart.setGetterSignature(image_cache.ImageCache, () => ({
-    __proto__: dart.getGetters(image_cache.ImageCache.__proto__),
-    maximumSize: core.int,
-    currentSize: core.int,
-    maximumSizeBytes: core.int,
-    currentSizeBytes: core.int,
-    liveImageCount: core.int,
-    pendingImageCount: core.int
-  }));
-  dart.setSetterSignature(image_cache.ImageCache, () => ({
-    __proto__: dart.getSetters(image_cache.ImageCache.__proto__),
-    maximumSize: core.int,
-    maximumSizeBytes: core.int
-  }));
-  dart.setLibraryUri(image_cache.ImageCache, I[1]);
-  dart.setFieldSignature(image_cache.ImageCache, () => ({
-    __proto__: dart.getFields(image_cache.ImageCache.__proto__),
-    [_pendingImages]: dart.finalFieldType(core.Map$(core.Object, image_cache._PendingImage)),
-    [_cache]: dart.finalFieldType(core.Map$(core.Object, image_cache._CachedImage)),
-    [_liveImages]: dart.finalFieldType(core.Map$(core.Object, image_cache._LiveImage)),
-    [_maximumSize]: dart.fieldType(core.int),
-    [_maximumSizeBytes]: dart.fieldType(core.int),
-    [_currentSizeBytes]: dart.fieldType(core.int)
-  }));
-  var pending$ = dart.privateName(image_cache, "ImageCacheStatus.pending");
-  var keepAlive$ = dart.privateName(image_cache, "ImageCacheStatus.keepAlive");
-  var live$ = dart.privateName(image_cache, "ImageCacheStatus.live");
-  image_cache.ImageCacheStatus = class ImageCacheStatus extends core.Object {
-    get pending() {
-      return this[pending$];
-    }
-    set pending(value) {
-      super.pending = value;
-    }
-    get keepAlive() {
-      return this[keepAlive$];
-    }
-    set keepAlive(value) {
-      super.keepAlive = value;
-    }
-    get live() {
-      return this[live$];
-    }
-    set live(value) {
-      super.live = value;
-    }
-    get tracked() {
-      return dart.test(this.pending) || dart.test(this.keepAlive) || dart.test(this.live);
-    }
-    get untracked() {
-      return !dart.test(this.pending) && !dart.test(this.keepAlive) && !dart.test(this.live);
-    }
-    _equals(other) {
-      if (other == null) return false;
-      if (!dart.equals(dart.runtimeType(other), this[$runtimeType])) {
-        return false;
-      }
-      return image_cache.ImageCacheStatus.is(other) && other.pending == this.pending && other.keepAlive == this.keepAlive && other.live == this.live;
-    }
-    get hashCode() {
-      return ui.hashValues(this.pending, this.keepAlive, this.live);
-    }
-    toString() {
-      return dart.str(object.objectRuntimeType(this, "ImageCacheStatus")) + "(pending: " + dart.str(this.pending) + ", live: " + dart.str(this.live) + ", keepAlive: " + dart.str(this.keepAlive) + ")";
-    }
-  };
-  (image_cache.ImageCacheStatus.__ = function(opts) {
-    let pending = opts && 'pending' in opts ? opts.pending : false;
-    if (pending == null) dart.nullFailed(I[0], 554, 10, "pending");
-    let keepAlive = opts && 'keepAlive' in opts ? opts.keepAlive : false;
-    if (keepAlive == null) dart.nullFailed(I[0], 555, 10, "keepAlive");
-    let live = opts && 'live' in opts ? opts.live : false;
-    if (live == null) dart.nullFailed(I[0], 556, 10, "live");
-    this[pending$] = pending;
-    this[keepAlive$] = keepAlive;
-    this[live$] = live;
-    if (!(!dart.test(pending) || !dart.test(keepAlive))) dart.assertFailed(null, I[0], 557, 15, "!pending || !keepAlive");
-    ;
-  }).prototype = image_cache.ImageCacheStatus.prototype;
-  dart.addTypeTests(image_cache.ImageCacheStatus);
-  dart.addTypeCaches(image_cache.ImageCacheStatus);
-  dart.setGetterSignature(image_cache.ImageCacheStatus, () => ({
-    __proto__: dart.getGetters(image_cache.ImageCacheStatus.__proto__),
-    tracked: core.bool,
-    untracked: core.bool
-  }));
-  dart.setLibraryUri(image_cache.ImageCacheStatus, I[1]);
-  dart.setFieldSignature(image_cache.ImageCacheStatus, () => ({
-    __proto__: dart.getFields(image_cache.ImageCacheStatus.__proto__),
-    pending: dart.finalFieldType(core.bool),
-    keepAlive: dart.finalFieldType(core.bool),
-    live: dart.finalFieldType(core.bool)
-  }));
-  dart.defineExtensionMethods(image_cache.ImageCacheStatus, ['_equals', 'toString']);
-  dart.defineExtensionAccessors(image_cache.ImageCacheStatus, ['hashCode']);
-  image_cache._CachedImageBase = class _CachedImageBase extends core.Object {
-    dispose() {
-      if (!(this.handle != null)) dart.assertFailed(null, I[0], 622, 12, "handle != null");
-      dart.nullCheck(binding.SchedulerBinding.instance).addPostFrameCallback(dart.fn(timeStamp => {
-        let t1;
-        if (timeStamp == null) dart.nullFailed(I[0], 625, 63, "timeStamp");
-        if (!(this.handle != null)) dart.assertFailed(null, I[0], 626, 14, "handle != null");
-        t1 = this.handle;
-        t1 == null ? null : t1.dispose();
-        this.handle = null;
-      }, T.DurationTovoid()));
-    }
-  };
-  (image_cache._CachedImageBase.new = function(completer, opts) {
-    if (completer == null) dart.nullFailed(I[0], 611, 10, "completer");
-    let sizeBytes = opts && 'sizeBytes' in opts ? opts.sizeBytes : null;
-    this.completer = completer;
-    this.sizeBytes = sizeBytes;
-    if (!(completer != null)) dart.assertFailed(null, I[0], 613, 15, "completer != null");
-    this.handle = completer.keepAlive();
-    ;
-  }).prototype = image_cache._CachedImageBase.prototype;
-  dart.addTypeTests(image_cache._CachedImageBase);
-  dart.addTypeCaches(image_cache._CachedImageBase);
-  dart.setMethodSignature(image_cache._CachedImageBase, () => ({
-    __proto__: dart.getMethods(image_cache._CachedImageBase.__proto__),
-    dispose: dart.fnType(dart.void, [])
-  }));
-  dart.setLibraryUri(image_cache._CachedImageBase, I[1]);
-  dart.setFieldSignature(image_cache._CachedImageBase, () => ({
-    __proto__: dart.getFields(image_cache._CachedImageBase.__proto__),
-    completer: dart.finalFieldType(image_stream.ImageStreamCompleter),
-    sizeBytes: dart.fieldType(dart.nullable(core.int)),
-    handle: dart.fieldType(dart.nullable(image_stream.ImageStreamCompleterHandle))
-  }));
-  image_cache._CachedImage = class _CachedImage extends image_cache._CachedImageBase {};
-  (image_cache._CachedImage.new = function(completer, opts) {
-    if (completer == null) dart.nullFailed(I[0], 634, 37, "completer");
-    let sizeBytes = opts && 'sizeBytes' in opts ? opts.sizeBytes : null;
-    image_cache._CachedImage.__proto__.new.call(this, completer, {sizeBytes: sizeBytes});
-    ;
-  }).prototype = image_cache._CachedImage.prototype;
-  dart.addTypeTests(image_cache._CachedImage);
-  dart.addTypeCaches(image_cache._CachedImage);
-  dart.setLibraryUri(image_cache._CachedImage, I[1]);
-  var ___LiveImage__handleRemove = dart.privateName(image_cache, "_#_LiveImage#_handleRemove");
-  var ___LiveImage__handleRemove_isSet = dart.privateName(image_cache, "_#_LiveImage#_handleRemove#isSet");
-  var _handleRemove = dart.privateName(image_cache, "_handleRemove");
-  image_cache._LiveImage = class _LiveImage extends image_cache._CachedImageBase {
-    get [_handleRemove]() {
-      let t1;
-      return dart.test(this[___LiveImage__handleRemove_isSet]) ? (t1 = this[___LiveImage__handleRemove], t1) : dart.throw(new _internal.LateError.fieldNI("_handleRemove"));
-    }
-    set [_handleRemove](t1) {
-      if (t1 == null) dart.nullFailed(I[0], 648, 21, "null");
-      this[___LiveImage__handleRemove_isSet] = true;
-      this[___LiveImage__handleRemove] = t1;
-    }
-    dispose() {
-      this.completer.removeOnLastListenerRemovedCallback(this[_handleRemove]);
-      super.dispose();
-    }
-    toString() {
-      return diagnostics.describeIdentity(this);
-    }
-  };
-  (image_cache._LiveImage.new = function(completer, handleRemove, opts) {
-    if (completer == null) dart.nullFailed(I[0], 639, 35, "completer");
-    if (handleRemove == null) dart.nullFailed(I[0], 639, 59, "handleRemove");
-    let sizeBytes = opts && 'sizeBytes' in opts ? opts.sizeBytes : null;
-    this[___LiveImage__handleRemove] = null;
-    this[___LiveImage__handleRemove_isSet] = false;
-    image_cache._LiveImage.__proto__.new.call(this, completer, {sizeBytes: sizeBytes});
-    this[_handleRemove] = dart.fn(() => {
-      handleRemove();
-      this.dispose();
-    }, T.VoidTovoid());
-    completer.addOnLastListenerRemovedCallback(this[_handleRemove]);
-  }).prototype = image_cache._LiveImage.prototype;
-  dart.addTypeTests(image_cache._LiveImage);
-  dart.addTypeCaches(image_cache._LiveImage);
-  dart.setGetterSignature(image_cache._LiveImage, () => ({
-    __proto__: dart.getGetters(image_cache._LiveImage.__proto__),
-    [_handleRemove]: dart.fnType(dart.void, [])
-  }));
-  dart.setSetterSignature(image_cache._LiveImage, () => ({
-    __proto__: dart.getSetters(image_cache._LiveImage.__proto__),
-    [_handleRemove]: dart.fnType(dart.void, [])
-  }));
-  dart.setLibraryUri(image_cache._LiveImage, I[1]);
-  dart.setFieldSignature(image_cache._LiveImage, () => ({
-    __proto__: dart.getFields(image_cache._LiveImage.__proto__),
-    [___LiveImage__handleRemove]: dart.fieldType(dart.nullable(dart.fnType(dart.void, []))),
-    [___LiveImage__handleRemove_isSet]: dart.fieldType(core.bool)
-  }));
-  dart.defineExtensionMethods(image_cache._LiveImage, ['toString']);
-  image_cache._PendingImage = class _PendingImage extends core.Object {
-    removeListener() {
-      this.completer.removeListener(this.listener);
-    }
-  };
-  (image_cache._PendingImage.new = function(completer, listener) {
-    if (completer == null) dart.nullFailed(I[0], 661, 22, "completer");
-    if (listener == null) dart.nullFailed(I[0], 661, 38, "listener");
-    this.completer = completer;
-    this.listener = listener;
-    ;
-  }).prototype = image_cache._PendingImage.prototype;
-  dart.addTypeTests(image_cache._PendingImage);
-  dart.addTypeCaches(image_cache._PendingImage);
-  dart.setMethodSignature(image_cache._PendingImage, () => ({
-    __proto__: dart.getMethods(image_cache._PendingImage.__proto__),
-    removeListener: dart.fnType(dart.void, [])
-  }));
-  dart.setLibraryUri(image_cache._PendingImage, I[1]);
-  dart.setFieldSignature(image_cache._PendingImage, () => ({
-    __proto__: dart.getFields(image_cache._PendingImage.__proto__),
-    completer: dart.finalFieldType(image_stream.ImageStreamCompleter),
-    listener: dart.finalFieldType(image_stream.ImageStreamListener)
-  }));
-  dart.defineLazy(image_cache, {
-    /*image_cache._kDefaultSize*/get _kDefaultSize() {
-      return 1000;
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: overflow_bar.OverflowBarAlignment.prototype,
+        [_name$]: "OverflowBarAlignment.start",
+        index: 0
+      });
     },
-    /*image_cache._kDefaultSizeBytes*/get _kDefaultSizeBytes() {
-      return 104857600;
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: overflow_bar.OverflowBarAlignment.prototype,
+        [_name$]: "OverflowBarAlignment.end",
+        index: 1
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: overflow_bar.OverflowBarAlignment.prototype,
+        [_name$]: "OverflowBarAlignment.center",
+        index: 2
+      });
+    },
+    get C3() {
+      return C[3] = dart.constList([C[0] || CT.C0, C[1] || CT.C1, C[2] || CT.C2], T.OverflowBarAlignmentL());
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: basic_types.VerticalDirection.prototype,
+        [_name]: "VerticalDirection.down",
+        index: 1
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: ui.Clip.prototype,
+        [_name$0]: "Clip.none",
+        index: 0
+      });
+    },
+    get C6() {
+      return C[6] = dart.constList([], T.WidgetL());
     }
   }, false);
-  dart.trackLibraries("packages/flutter/src/painting/image_cache.dart", {
-    "package:flutter/src/painting/image_cache.dart": image_cache
+  var C = Array(7).fill(void 0);
+  var I = [
+    "file:///C:/src/flutter/packages/flutter/lib/src/widgets/overflow_bar.dart",
+    "package:flutter/src/widgets/overflow_bar.dart"
+  ];
+  var _name$ = dart.privateName(overflow_bar, "_name");
+  overflow_bar.OverflowBarAlignment = class OverflowBarAlignment extends core.Object {
+    toString() {
+      return this[_name$];
+    }
+  };
+  (overflow_bar.OverflowBarAlignment.new = function(index, _name) {
+    if (index == null) dart.nullFailed(I[0], 18, 6, "index");
+    if (_name == null) dart.nullFailed(I[0], 18, 6, "_name");
+    this.index = index;
+    this[_name$] = _name;
+    ;
+  }).prototype = overflow_bar.OverflowBarAlignment.prototype;
+  dart.addTypeTests(overflow_bar.OverflowBarAlignment);
+  dart.addTypeCaches(overflow_bar.OverflowBarAlignment);
+  dart.setLibraryUri(overflow_bar.OverflowBarAlignment, I[1]);
+  dart.setFieldSignature(overflow_bar.OverflowBarAlignment, () => ({
+    __proto__: dart.getFields(overflow_bar.OverflowBarAlignment.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(overflow_bar.OverflowBarAlignment, ['toString']);
+  overflow_bar.OverflowBarAlignment.start = C[0] || CT.C0;
+  overflow_bar.OverflowBarAlignment.end = C[1] || CT.C1;
+  overflow_bar.OverflowBarAlignment.center = C[2] || CT.C2;
+  overflow_bar.OverflowBarAlignment.values = C[3] || CT.C3;
+  var spacing$ = dart.privateName(overflow_bar, "OverflowBar.spacing");
+  var overflowSpacing$ = dart.privateName(overflow_bar, "OverflowBar.overflowSpacing");
+  var overflowAlignment$ = dart.privateName(overflow_bar, "OverflowBar.overflowAlignment");
+  var overflowDirection$ = dart.privateName(overflow_bar, "OverflowBar.overflowDirection");
+  var textDirection$ = dart.privateName(overflow_bar, "OverflowBar.textDirection");
+  var clipBehavior$ = dart.privateName(overflow_bar, "OverflowBar.clipBehavior");
+  var _name = dart.privateName(basic_types, "_name");
+  var _name$0 = dart.privateName(ui, "_name");
+  overflow_bar.OverflowBar = class OverflowBar extends framework.MultiChildRenderObjectWidget {
+    get spacing() {
+      return this[spacing$];
+    }
+    set spacing(value) {
+      super.spacing = value;
+    }
+    get overflowSpacing() {
+      return this[overflowSpacing$];
+    }
+    set overflowSpacing(value) {
+      super.overflowSpacing = value;
+    }
+    get overflowAlignment() {
+      return this[overflowAlignment$];
+    }
+    set overflowAlignment(value) {
+      super.overflowAlignment = value;
+    }
+    get overflowDirection() {
+      return this[overflowDirection$];
+    }
+    set overflowDirection(value) {
+      super.overflowDirection = value;
+    }
+    get textDirection() {
+      return this[textDirection$];
+    }
+    set textDirection(value) {
+      super.textDirection = value;
+    }
+    get clipBehavior() {
+      return this[clipBehavior$];
+    }
+    set clipBehavior(value) {
+      super.clipBehavior = value;
+    }
+    createRenderObject(context) {
+      let t0;
+      if (context == null) dart.nullFailed(I[0], 221, 54, "context");
+      return new overflow_bar._RenderOverflowBar.new({spacing: this.spacing, overflowSpacing: this.overflowSpacing, overflowAlignment: this.overflowAlignment, overflowDirection: this.overflowDirection, textDirection: (t0 = this.textDirection, t0 == null ? basic.Directionality.of(context) : t0), clipBehavior: this.clipBehavior});
+    }
+    updateRenderObject(context, renderObject) {
+      let t1, t0;
+      if (context == null) dart.nullFailed(I[0], 233, 40, "context");
+      overflow_bar._RenderOverflowBar.as(renderObject);
+      if (renderObject == null) dart.nullFailed(I[0], 233, 68, "renderObject");
+      t0 = renderObject;
+      (() => {
+        t0.spacing = this.spacing;
+        t0.overflowSpacing = this.overflowSpacing;
+        t0.overflowAlignment = this.overflowAlignment;
+        t0.overflowDirection = this.overflowDirection;
+        t0.textDirection = (t1 = this.textDirection, t1 == null ? basic.Directionality.of(context) : t1);
+        t0.clipBehavior = this.clipBehavior;
+        return t0;
+      })();
+    }
+    debugFillProperties(properties) {
+      if (properties == null) dart.nullFailed(I[0], 244, 56, "properties");
+      super.debugFillProperties(properties);
+      properties.add(new diagnostics.DoubleProperty.new("spacing", this.spacing, {defaultValue: 0}));
+      properties.add(new diagnostics.DoubleProperty.new("overflowSpacing", this.overflowSpacing, {defaultValue: 0}));
+      properties.add(new (T.EnumPropertyOfOverflowBarAlignment()).new("overflowAlignment", this.overflowAlignment, {defaultValue: overflow_bar.OverflowBarAlignment.start}));
+      properties.add(new (T.EnumPropertyOfVerticalDirection()).new("overflowDirection", this.overflowDirection, {defaultValue: basic_types.VerticalDirection.down}));
+      properties.add(new (T.EnumPropertyOfTextDirection()).new("textDirection", this.textDirection, {defaultValue: null}));
+    }
+  };
+  (overflow_bar.OverflowBar.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let spacing = opts && 'spacing' in opts ? opts.spacing : 0;
+    if (spacing == null) dart.nullFailed(I[0], 105, 10, "spacing");
+    let overflowSpacing = opts && 'overflowSpacing' in opts ? opts.overflowSpacing : 0;
+    if (overflowSpacing == null) dart.nullFailed(I[0], 106, 10, "overflowSpacing");
+    let overflowAlignment = opts && 'overflowAlignment' in opts ? opts.overflowAlignment : C[0] || CT.C0;
+    if (overflowAlignment == null) dart.nullFailed(I[0], 107, 10, "overflowAlignment");
+    let overflowDirection = opts && 'overflowDirection' in opts ? opts.overflowDirection : C[4] || CT.C4;
+    if (overflowDirection == null) dart.nullFailed(I[0], 108, 10, "overflowDirection");
+    let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
+    let clipBehavior = opts && 'clipBehavior' in opts ? opts.clipBehavior : C[5] || CT.C5;
+    if (clipBehavior == null) dart.nullFailed(I[0], 110, 10, "clipBehavior");
+    let children = opts && 'children' in opts ? opts.children : C[6] || CT.C6;
+    if (children == null) dart.nullFailed(I[0], 111, 18, "children");
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[spacing$] = spacing;
+    this[overflowSpacing$] = overflowSpacing;
+    this[overflowAlignment$] = overflowAlignment;
+    this[overflowDirection$] = overflowDirection;
+    this[textDirection$] = textDirection;
+    this[clipBehavior$] = clipBehavior;
+    if (!(spacing != null)) dart.assertFailed(null, I[0], 112, 15, "spacing != null");
+    if (!(overflowSpacing != null)) dart.assertFailed(null, I[0], 113, 15, "overflowSpacing != null");
+    if (!(overflowAlignment != null)) dart.assertFailed(null, I[0], 114, 15, "overflowAlignment != null");
+    if (!(overflowDirection != null)) dart.assertFailed(null, I[0], 115, 15, "overflowDirection != null");
+    if (!(clipBehavior != null)) dart.assertFailed(null, I[0], 116, 15, "clipBehavior != null");
+    overflow_bar.OverflowBar.__proto__.new.call(this, {key: key, children: children, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = overflow_bar.OverflowBar.prototype;
+  dart.addTypeTests(overflow_bar.OverflowBar);
+  dart.addTypeCaches(overflow_bar.OverflowBar);
+  dart.setMethodSignature(overflow_bar.OverflowBar, () => ({
+    __proto__: dart.getMethods(overflow_bar.OverflowBar.__proto__),
+    createRenderObject: dart.fnType(overflow_bar._RenderOverflowBar, [framework.BuildContext])
+  }));
+  dart.setLibraryUri(overflow_bar.OverflowBar, I[1]);
+  dart.setFieldSignature(overflow_bar.OverflowBar, () => ({
+    __proto__: dart.getFields(overflow_bar.OverflowBar.__proto__),
+    spacing: dart.finalFieldType(core.double),
+    overflowSpacing: dart.finalFieldType(core.double),
+    overflowAlignment: dart.finalFieldType(overflow_bar.OverflowBarAlignment),
+    overflowDirection: dart.finalFieldType(basic_types.VerticalDirection),
+    textDirection: dart.finalFieldType(dart.nullable(ui.TextDirection)),
+    clipBehavior: dart.finalFieldType(ui.Clip)
+  }));
+  overflow_bar._OverflowBarParentData = class _OverflowBarParentData extends box.ContainerBoxParentData$(box.RenderBox) {};
+  (overflow_bar._OverflowBarParentData.new = function() {
+    overflow_bar._OverflowBarParentData.__proto__.new.call(this);
+    ;
+  }).prototype = overflow_bar._OverflowBarParentData.prototype;
+  dart.addTypeTests(overflow_bar._OverflowBarParentData);
+  dart.addTypeCaches(overflow_bar._OverflowBarParentData);
+  dart.setLibraryUri(overflow_bar._OverflowBarParentData, I[1]);
+  var _clipBehavior = dart.privateName(overflow_bar, "_clipBehavior");
+  var _spacing = dart.privateName(overflow_bar, "_spacing");
+  var _overflowSpacing = dart.privateName(overflow_bar, "_overflowSpacing");
+  var _overflowAlignment = dart.privateName(overflow_bar, "_overflowAlignment");
+  var _overflowDirection = dart.privateName(overflow_bar, "_overflowDirection");
+  var _textDirection = dart.privateName(overflow_bar, "_textDirection");
+  const RenderBox_ContainerRenderObjectMixin$36 = class RenderBox_ContainerRenderObjectMixin extends box.RenderBox {};
+  (RenderBox_ContainerRenderObjectMixin$36.new = function() {
+    object.ContainerRenderObjectMixin$(box.RenderBox, overflow_bar._OverflowBarParentData)[dart.mixinNew].call(this);
+    RenderBox_ContainerRenderObjectMixin$36.__proto__.new.call(this);
+  }).prototype = RenderBox_ContainerRenderObjectMixin$36.prototype;
+  dart.applyMixin(RenderBox_ContainerRenderObjectMixin$36, object.ContainerRenderObjectMixin$(box.RenderBox, overflow_bar._OverflowBarParentData));
+  const RenderBox_RenderBoxContainerDefaultsMixin$36 = class RenderBox_RenderBoxContainerDefaultsMixin extends RenderBox_ContainerRenderObjectMixin$36 {};
+  (RenderBox_RenderBoxContainerDefaultsMixin$36.new = function() {
+    RenderBox_RenderBoxContainerDefaultsMixin$36.__proto__.new.call(this);
+  }).prototype = RenderBox_RenderBoxContainerDefaultsMixin$36.prototype;
+  dart.applyMixin(RenderBox_RenderBoxContainerDefaultsMixin$36, box.RenderBoxContainerDefaultsMixin$(box.RenderBox, overflow_bar._OverflowBarParentData));
+  overflow_bar._RenderOverflowBar = class _RenderOverflowBar extends RenderBox_RenderBoxContainerDefaultsMixin$36 {
+    get spacing() {
+      return this[_spacing];
+    }
+    set spacing(value) {
+      if (value == null) dart.nullFailed(I[0], 283, 23, "value");
+      if (!(value != null)) dart.assertFailed(null, I[0], 284, 12, "value != null");
+      if (this[_spacing] == value) return;
+      this[_spacing] = value;
+      this.markNeedsLayout();
+    }
+    get overflowSpacing() {
+      return this[_overflowSpacing];
+    }
+    set overflowSpacing(value) {
+      if (value == null) dart.nullFailed(I[0], 293, 31, "value");
+      if (!(value != null)) dart.assertFailed(null, I[0], 294, 12, "value != null");
+      if (this[_overflowSpacing] == value) return;
+      this[_overflowSpacing] = value;
+      this.markNeedsLayout();
+    }
+    get overflowAlignment() {
+      return this[_overflowAlignment];
+    }
+    set overflowAlignment(value) {
+      if (value == null) dart.nullFailed(I[0], 303, 47, "value");
+      if (!(value != null)) dart.assertFailed(null, I[0], 304, 12, "value != null");
+      if (this[_overflowAlignment] == value) return;
+      this[_overflowAlignment] = value;
+      this.markNeedsLayout();
+    }
+    get overflowDirection() {
+      return this[_overflowDirection];
+    }
+    set overflowDirection(value) {
+      if (value == null) dart.nullFailed(I[0], 313, 44, "value");
+      if (!(value != null)) dart.assertFailed(null, I[0], 314, 12, "value != null");
+      if (this[_overflowDirection] == value) return;
+      this[_overflowDirection] = value;
+      this.markNeedsLayout();
+    }
+    get textDirection() {
+      return this[_textDirection];
+    }
+    set textDirection(value) {
+      if (value == null) dart.nullFailed(I[0], 323, 35, "value");
+      if (this[_textDirection] == value) return;
+      this[_textDirection] = value;
+      this.markNeedsLayout();
+    }
+    get clipBehavior() {
+      return this[_clipBehavior];
+    }
+    set clipBehavior(value) {
+      if (value == null) dart.nullFailed(I[0], 332, 25, "value");
+      if (!(value != null)) dart.assertFailed(null, I[0], 333, 12, "value != null");
+      if (value == this[_clipBehavior]) return;
+      this[_clipBehavior] = value;
+      this.markNeedsPaint();
+      this.markNeedsSemanticsUpdate();
+    }
+    setupParentData(child) {
+      box.RenderBox.as(child);
+      if (child == null) dart.nullFailed(I[0], 342, 34, "child");
+      if (!overflow_bar._OverflowBarParentData.is(child.parentData)) child.parentData = new overflow_bar._OverflowBarParentData.new();
+    }
+    computeMinIntrinsicHeight(width) {
+      if (width == null) dart.nullFailed(I[0], 348, 43, "width");
+      let child = this.firstChild;
+      if (child == null) return 0.0;
+      let barWidth = 0.0;
+      while (child != null) {
+        barWidth = barWidth + dart.notNull(child.getMinIntrinsicWidth(1 / 0));
+        child = this.childAfter(child);
+      }
+      barWidth = barWidth + dart.notNull(this.spacing) * (dart.notNull(this.childCount) - 1);
+      let height = 0.0;
+      if (barWidth > dart.notNull(width)) {
+        child = this.firstChild;
+        while (child != null) {
+          height = height + dart.notNull(child.getMinIntrinsicHeight(width));
+          child = this.childAfter(child);
+        }
+        return height + dart.notNull(this.overflowSpacing) * (dart.notNull(this.childCount) - 1);
+      } else {
+        child = this.firstChild;
+        while (child != null) {
+          height = math.max(core.double, height, child.getMinIntrinsicHeight(width));
+          child = this.childAfter(child);
+        }
+        return height;
+      }
+    }
+    computeMaxIntrinsicHeight(width) {
+      if (width == null) dart.nullFailed(I[0], 378, 43, "width");
+      let child = this.firstChild;
+      if (child == null) return 0.0;
+      let barWidth = 0.0;
+      while (child != null) {
+        barWidth = barWidth + dart.notNull(child.getMinIntrinsicWidth(1 / 0));
+        child = this.childAfter(child);
+      }
+      barWidth = barWidth + dart.notNull(this.spacing) * (dart.notNull(this.childCount) - 1);
+      let height = 0.0;
+      if (barWidth > dart.notNull(width)) {
+        child = this.firstChild;
+        while (child != null) {
+          height = height + dart.notNull(child.getMaxIntrinsicHeight(width));
+          child = this.childAfter(child);
+        }
+        return height + dart.notNull(this.overflowSpacing) * (dart.notNull(this.childCount) - 1);
+      } else {
+        child = this.firstChild;
+        while (child != null) {
+          height = math.max(core.double, height, child.getMaxIntrinsicHeight(width));
+          child = this.childAfter(child);
+        }
+        return height;
+      }
+    }
+    computeMinIntrinsicWidth(height) {
+      if (height == null) dart.nullFailed(I[0], 408, 42, "height");
+      let child = this.firstChild;
+      if (child == null) return 0.0;
+      let width = 0.0;
+      while (child != null) {
+        width = width + dart.notNull(child.getMinIntrinsicWidth(1 / 0));
+        child = this.childAfter(child);
+      }
+      return width + dart.notNull(this.spacing) * (dart.notNull(this.childCount) - 1);
+    }
+    computeMaxIntrinsicWidth(height) {
+      if (height == null) dart.nullFailed(I[0], 421, 42, "height");
+      let child = this.firstChild;
+      if (child == null) return 0.0;
+      let width = 0.0;
+      while (child != null) {
+        width = width + dart.notNull(child.getMaxIntrinsicWidth(1 / 0));
+        child = this.childAfter(child);
+      }
+      return width + dart.notNull(this.spacing) * (dart.notNull(this.childCount) - 1);
+    }
+    computeDistanceToActualBaseline(baseline) {
+      if (baseline == null) dart.nullFailed(I[0], 434, 56, "baseline");
+      return this.defaultComputeDistanceToHighestActualBaseline(baseline);
+    }
+    computeDryLayout(constraints) {
+      if (constraints == null) dart.nullFailed(I[0], 439, 40, "constraints");
+      let child = this.firstChild;
+      if (child == null) {
+        return constraints.smallest;
+      }
+      let childConstraints = constraints.loosen();
+      let childrenWidth = 0.0;
+      let maxChildHeight = 0.0;
+      let y = 0.0;
+      while (child != null) {
+        let childSize = child.getDryLayout(childConstraints);
+        childrenWidth = childrenWidth + dart.notNull(childSize.width);
+        maxChildHeight = math.max(core.double, maxChildHeight, childSize.height);
+        y = y + (dart.notNull(childSize.height) + dart.notNull(this.overflowSpacing));
+        child = this.childAfter(child);
+      }
+      let actualWidth = childrenWidth + dart.notNull(this.spacing) * (dart.notNull(this.childCount) - 1);
+      if (actualWidth > dart.notNull(constraints.maxWidth)) {
+        return constraints.constrain(new ui.Size.new(constraints.maxWidth, y - dart.notNull(this.overflowSpacing)));
+      } else {
+        return constraints.constrain(new ui.Size.new(actualWidth, maxChildHeight));
+      }
+    }
+    performLayout() {
+      let child = this.firstChild;
+      if (child == null) {
+        this.size = this.constraints.smallest;
+        return;
+      }
+      let childConstraints = this.constraints.loosen();
+      let childrenWidth = 0.0;
+      let maxChildHeight = 0.0;
+      let maxChildWidth = 0.0;
+      while (child != null) {
+        child.layout(childConstraints, {parentUsesSize: true});
+        childrenWidth = childrenWidth + dart.notNull(child.size.width);
+        maxChildHeight = math.max(core.double, maxChildHeight, child.size.height);
+        maxChildWidth = math.max(core.double, maxChildWidth, child.size.width);
+        child = this.childAfter(child);
+      }
+      let rtl = this.textDirection == ui.TextDirection.rtl;
+      let actualWidth = childrenWidth + dart.notNull(this.spacing) * (dart.notNull(this.childCount) - 1);
+      if (actualWidth > dart.notNull(this.constraints.maxWidth)) {
+        child = this.overflowDirection == basic_types.VerticalDirection.down ? this.firstChild : this.lastChild;
+        const nextChild = () => {
+          return this.overflowDirection == basic_types.VerticalDirection.down ? this.childAfter(dart.nullCheck(child)) : this.childBefore(dart.nullCheck(child));
+        };
+        dart.fn(nextChild, T.VoidToRenderBoxN());
+        let y = 0.0;
+        while (child != null) {
+          let childParentData = overflow_bar._OverflowBarParentData.as(dart.nullCheck(child.parentData));
+          let x = 0.0;
+          switch (this.overflowAlignment) {
+            case C[0] || CT.C0:
+            {
+              x = rtl ? dart.notNull(this.constraints.maxWidth) - dart.notNull(child.size.width) : 0.0;
+              break;
+            }
+            case C[2] || CT.C2:
+            {
+              x = (dart.notNull(this.constraints.maxWidth) - dart.notNull(child.size.width)) / 2;
+              break;
+            }
+            case C[1] || CT.C1:
+            {
+              x = rtl ? 0.0 : dart.notNull(this.constraints.maxWidth) - dart.notNull(child.size.width);
+              break;
+            }
+            default:
+            {
+              dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+            }
+          }
+          if (!(x !== null)) dart.assertFailed(null, I[0], 506, 16, "x != null");
+          childParentData.offset = new ui.Offset.new(x, y);
+          y = y + (dart.notNull(child.size.height) + dart.notNull(this.overflowSpacing));
+          child = nextChild();
+        }
+        this.size = this.constraints.constrain(new ui.Size.new(this.constraints.maxWidth, y - dart.notNull(this.overflowSpacing)));
+      } else {
+        child = rtl ? this.lastChild : this.firstChild;
+        const nextChild = () => {
+          return rtl ? this.childBefore(dart.nullCheck(child)) : this.childAfter(dart.nullCheck(child));
+        };
+        dart.fn(nextChild, T.VoidToRenderBoxN());
+        let x = 0.0;
+        while (child != null) {
+          let childParentData = overflow_bar._OverflowBarParentData.as(dart.nullCheck(child.parentData));
+          childParentData.offset = new ui.Offset.new(x, (maxChildHeight - dart.notNull(child.size.height)) / 2);
+          x = x + (dart.notNull(child.size.width) + dart.notNull(this.spacing));
+          child = nextChild();
+        }
+        this.size = this.constraints.constrain(new ui.Size.new(actualWidth, maxChildHeight));
+      }
+    }
+    hitTestChildren(result, opts) {
+      if (result == null) dart.nullFailed(I[0], 528, 41, "result");
+      let position = opts && 'position' in opts ? opts.position : null;
+      if (position == null) dart.nullFailed(I[0], 528, 67, "position");
+      return this.defaultHitTestChildren(result, {position: position});
+    }
+    paint(context, offset) {
+      if (context == null) dart.nullFailed(I[0], 533, 30, "context");
+      if (offset == null) dart.nullFailed(I[0], 533, 46, "offset");
+      this.defaultPaint(context, offset);
+    }
+    debugFillProperties(properties) {
+      if (properties == null) dart.nullFailed(I[0], 538, 56, "properties");
+      super.debugFillProperties(properties);
+      properties.add(new diagnostics.DoubleProperty.new("spacing", this.spacing, {defaultValue: 0}));
+      properties.add(new diagnostics.DoubleProperty.new("overflowSpacing", this.overflowSpacing, {defaultValue: 0}));
+      properties.add(new (T.EnumPropertyOfOverflowBarAlignment()).new("overflowAlignment", this.overflowAlignment, {defaultValue: overflow_bar.OverflowBarAlignment.start}));
+      properties.add(new (T.EnumPropertyOfVerticalDirection()).new("overflowDirection", this.overflowDirection, {defaultValue: basic_types.VerticalDirection.down}));
+      properties.add(new (T.EnumPropertyOfTextDirection()).new("textDirection", this.textDirection, {defaultValue: null}));
+    }
+  };
+  (overflow_bar._RenderOverflowBar.new = function(opts) {
+    let children = opts && 'children' in opts ? opts.children : null;
+    let spacing = opts && 'spacing' in opts ? opts.spacing : 0;
+    if (spacing == null) dart.nullFailed(I[0], 261, 12, "spacing");
+    let overflowSpacing = opts && 'overflowSpacing' in opts ? opts.overflowSpacing : 0;
+    if (overflowSpacing == null) dart.nullFailed(I[0], 262, 12, "overflowSpacing");
+    let overflowAlignment = opts && 'overflowAlignment' in opts ? opts.overflowAlignment : C[0] || CT.C0;
+    if (overflowAlignment == null) dart.nullFailed(I[0], 263, 26, "overflowAlignment");
+    let overflowDirection = opts && 'overflowDirection' in opts ? opts.overflowDirection : C[4] || CT.C4;
+    if (overflowDirection == null) dart.nullFailed(I[0], 264, 23, "overflowDirection");
+    let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
+    if (textDirection == null) dart.nullFailed(I[0], 265, 28, "textDirection");
+    let clipBehavior = opts && 'clipBehavior' in opts ? opts.clipBehavior : C[5] || CT.C5;
+    if (clipBehavior == null) dart.nullFailed(I[0], 266, 10, "clipBehavior");
+    this[_clipBehavior] = ui.Clip.none;
+    if (!(spacing != null)) dart.assertFailed(null, I[0], 267, 15, "spacing != null");
+    if (!(overflowSpacing != null)) dart.assertFailed(null, I[0], 268, 15, "overflowSpacing != null");
+    if (!(overflowAlignment != null)) dart.assertFailed(null, I[0], 269, 15, "overflowAlignment != null");
+    if (!(textDirection != null)) dart.assertFailed(null, I[0], 270, 15, "textDirection != null");
+    if (!(clipBehavior != null)) dart.assertFailed(null, I[0], 271, 15, "clipBehavior != null");
+    this[_spacing] = spacing;
+    this[_overflowSpacing] = overflowSpacing;
+    this[_overflowAlignment] = overflowAlignment;
+    this[_overflowDirection] = overflowDirection;
+    this[_textDirection] = textDirection;
+    this[_clipBehavior] = clipBehavior;
+    overflow_bar._RenderOverflowBar.__proto__.new.call(this);
+    this.addAll(children);
+  }).prototype = overflow_bar._RenderOverflowBar.prototype;
+  dart.addTypeTests(overflow_bar._RenderOverflowBar);
+  dart.addTypeCaches(overflow_bar._RenderOverflowBar);
+  dart.setGetterSignature(overflow_bar._RenderOverflowBar, () => ({
+    __proto__: dart.getGetters(overflow_bar._RenderOverflowBar.__proto__),
+    spacing: core.double,
+    overflowSpacing: core.double,
+    overflowAlignment: overflow_bar.OverflowBarAlignment,
+    overflowDirection: basic_types.VerticalDirection,
+    textDirection: ui.TextDirection,
+    clipBehavior: ui.Clip
+  }));
+  dart.setSetterSignature(overflow_bar._RenderOverflowBar, () => ({
+    __proto__: dart.getSetters(overflow_bar._RenderOverflowBar.__proto__),
+    spacing: core.double,
+    overflowSpacing: core.double,
+    overflowAlignment: overflow_bar.OverflowBarAlignment,
+    overflowDirection: basic_types.VerticalDirection,
+    textDirection: ui.TextDirection,
+    clipBehavior: ui.Clip
+  }));
+  dart.setLibraryUri(overflow_bar._RenderOverflowBar, I[1]);
+  dart.setFieldSignature(overflow_bar._RenderOverflowBar, () => ({
+    __proto__: dart.getFields(overflow_bar._RenderOverflowBar.__proto__),
+    [_spacing]: dart.fieldType(core.double),
+    [_overflowSpacing]: dart.fieldType(core.double),
+    [_overflowAlignment]: dart.fieldType(overflow_bar.OverflowBarAlignment),
+    [_overflowDirection]: dart.fieldType(basic_types.VerticalDirection),
+    [_textDirection]: dart.fieldType(ui.TextDirection),
+    [_clipBehavior]: dart.fieldType(ui.Clip)
+  }));
+  dart.trackLibraries("packages/flutter/src/widgets/overflow_bar.dart", {
+    "package:flutter/src/widgets/overflow_bar.dart": overflow_bar
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["image_cache.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/flutter/src/painting/image_cache.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["overflow_bar.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/flutter/src/widgets/overflow_bar.dart.lib.js"}');
   // Exports:
   return {
-    src__painting__image_cache: image_cache
+    src__widgets__overflow_bar: overflow_bar
   };
 }));
 
-//# sourceMappingURL=image_cache.dart.lib.js.map
+//# sourceMappingURL=overflow_bar.dart.lib.js.map

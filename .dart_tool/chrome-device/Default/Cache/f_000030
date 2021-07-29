@@ -1,20 +1,26 @@
-define(['dart_sdk', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/foundation/debug.dart'], (function load__packages__flutter__src__widgets__safe_area_dart(dart_sdk, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__foundation__debug$46dart) {
+define(['dart_sdk', 'packages/flutter/src/services/text_input.dart', 'packages/flutter/src/foundation/_platform_web.dart', 'packages/characters/src/characters_impl.dart', 'packages/characters/src/extensions.dart', 'packages/flutter/src/services/text_editing.dart'], (function load__packages__flutter__src__services__text_formatter_dart(dart_sdk, packages__flutter__src__services__text_input$46dart, packages__flutter__src__foundation___platform_web$46dart, packages__characters__src__characters_impl$46dart, packages__characters__src__extensions$46dart, packages__flutter__src__services__text_editing$46dart) {
   'use strict';
   const core = dart_sdk.core;
+  const _internal = dart_sdk._internal;
   const math = dart_sdk.math;
+  const ui = dart_sdk.ui;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
-  const debug = packages__flutter__src__widgets__widget_span$46dart.src__widgets__debug;
-  const media_query = packages__flutter__src__widgets__widget_span$46dart.src__widgets__media_query;
-  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
-  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
-  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
-  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
-  var safe_area = Object.create(dart.library);
+  const text_input = packages__flutter__src__services__text_input$46dart.src__services__text_input;
+  const platform$ = packages__flutter__src__foundation___platform_web$46dart.src__foundation__platform;
+  const characters_impl = packages__characters__src__characters_impl$46dart.src__characters_impl;
+  const extensions = packages__characters__src__extensions$46dart.src__extensions;
+  const text_editing = packages__flutter__src__services__text_editing$46dart.src__services__text_editing;
+  var text_formatter = Object.create(dart.library);
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $splitMapJoin = dartx.splitMapJoin;
+  var $length = dartx.length;
+  var $substring = dartx.substring;
   dart._checkModuleNullSafetyMode(false);
   var T = {
-    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))()
+    MaxLengthEnforcementL: () => (T.MaxLengthEnforcementL = dart.constFn(dart.legacy(text_formatter.MaxLengthEnforcement)))(),
+    MatchToString: () => (T.MatchToString = dart.constFn(dart.fnType(core.String, [core.Match])))(),
+    StringToString: () => (T.StringToString = dart.constFn(dart.fnType(core.String, [core.String])))()
   };
   const CT = Object.create({
     _: () => (C, CT)
@@ -22,465 +28,446 @@ define(['dart_sdk', 'packages/flutter/src/painting/edge_insets.dart', 'packages/
   dart.defineLazy(CT, {
     get C0() {
       return C[0] = dart.const({
-        __proto__: edge_insets.EdgeInsets.prototype,
-        [EdgeInsets_bottom]: 0,
-        [EdgeInsets_right]: 0,
-        [EdgeInsets_top]: 0,
-        [EdgeInsets_left]: 0
+        __proto__: text_formatter.MaxLengthEnforcement.prototype,
+        [_name$]: "MaxLengthEnforcement.none",
+        index: 0
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: text_formatter.MaxLengthEnforcement.prototype,
+        [_name$]: "MaxLengthEnforcement.enforced",
+        index: 1
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: text_formatter.MaxLengthEnforcement.prototype,
+        [_name$]: "MaxLengthEnforcement.truncateAfterCompositionEnds",
+        index: 2
       });
     },
     get C3() {
-      return C[3] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "context",
-        [_Location_column]: 9,
-        [_Location_line]: 112,
-        [_Location_file]: null
-      });
+      return C[3] = dart.constList([C[0] || CT.C0, C[1] || CT.C1, C[2] || CT.C2], T.MaxLengthEnforcementL());
     },
     get C4() {
       return C[4] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "removeLeft",
-        [_Location_column]: 9,
-        [_Location_line]: 113,
-        [_Location_file]: null
+        __proto__: platform$.TargetPlatform.prototype,
+        [_name]: "TargetPlatform.android",
+        index: 0
       });
     },
     get C5() {
       return C[5] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "removeTop",
-        [_Location_column]: 9,
-        [_Location_line]: 114,
-        [_Location_file]: null
+        __proto__: platform$.TargetPlatform.prototype,
+        [_name]: "TargetPlatform.windows",
+        index: 5
       });
     },
     get C6() {
       return C[6] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "removeRight",
-        [_Location_column]: 9,
-        [_Location_line]: 115,
-        [_Location_file]: null
+        __proto__: platform$.TargetPlatform.prototype,
+        [_name]: "TargetPlatform.iOS",
+        index: 2
       });
     },
     get C7() {
       return C[7] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "removeBottom",
-        [_Location_column]: 9,
-        [_Location_line]: 116,
-        [_Location_file]: null
+        __proto__: platform$.TargetPlatform.prototype,
+        [_name]: "TargetPlatform.macOS",
+        index: 4
       });
     },
     get C8() {
       return C[8] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 9,
-        [_Location_line]: 117,
-        [_Location_file]: null
+        __proto__: platform$.TargetPlatform.prototype,
+        [_name]: "TargetPlatform.linux",
+        index: 3
       });
     },
-    get C2() {
-      return C[2] = dart.constList([C[3] || CT.C3, C[4] || CT.C4, C[5] || CT.C5, C[6] || CT.C6, C[7] || CT.C7, C[8] || CT.C8], T._LocationL());
-    },
-    get C1() {
-      return C[1] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[2] || CT.C2,
-        [_Location_name]: null,
-        [_Location_column]: 25,
-        [_Location_line]: 111,
-        [_Location_file]: "file:///C:/src/flutter/packages/flutter/lib/src/widgets/safe_area.dart"
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: platform$.TargetPlatform.prototype,
+        [_name]: "TargetPlatform.fuchsia",
+        index: 1
       });
     },
     get C11() {
       return C[11] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "padding",
-        [_Location_column]: 7,
-        [_Location_line]: 105,
-        [_Location_file]: null
-      });
-    },
-    get C12() {
-      return C[12] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 7,
-        [_Location_line]: 111,
-        [_Location_file]: null
+        __proto__: ui.TextAffinity.prototype,
+        [_name$0]: "TextAffinity.downstream",
+        index: 1
       });
     },
     get C10() {
-      return C[10] = dart.constList([C[11] || CT.C11, C[12] || CT.C12], T._LocationL());
-    },
-    get C9() {
-      return C[9] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[10] || CT.C10,
-        [_Location_name]: null,
-        [_Location_column]: 12,
-        [_Location_line]: 104,
-        [_Location_file]: "file:///C:/src/flutter/packages/flutter/lib/src/widgets/safe_area.dart"
-      });
-    },
-    get C15() {
-      return C[15] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "context",
-        [_Location_column]: 9,
-        [_Location_line]: 206,
-        [_Location_file]: null
-      });
-    },
-    get C16() {
-      return C[16] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "removeLeft",
-        [_Location_column]: 9,
-        [_Location_line]: 207,
-        [_Location_file]: null
-      });
-    },
-    get C17() {
-      return C[17] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "removeTop",
-        [_Location_column]: 9,
-        [_Location_line]: 208,
-        [_Location_file]: null
-      });
-    },
-    get C18() {
-      return C[18] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "removeRight",
-        [_Location_column]: 9,
-        [_Location_line]: 209,
-        [_Location_file]: null
-      });
-    },
-    get C19() {
-      return C[19] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "removeBottom",
-        [_Location_column]: 9,
-        [_Location_line]: 210,
-        [_Location_file]: null
-      });
-    },
-    get C20() {
-      return C[20] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 9,
-        [_Location_line]: 211,
-        [_Location_file]: null
-      });
-    },
-    get C14() {
-      return C[14] = dart.constList([C[15] || CT.C15, C[16] || CT.C16, C[17] || CT.C17, C[18] || CT.C18, C[19] || CT.C19, C[20] || CT.C20], T._LocationL());
-    },
-    get C13() {
-      return C[13] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[14] || CT.C14,
-        [_Location_name]: null,
-        [_Location_column]: 26,
-        [_Location_line]: 205,
-        [_Location_file]: "file:///C:/src/flutter/packages/flutter/lib/src/widgets/safe_area.dart"
-      });
-    },
-    get C23() {
-      return C[23] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "padding",
-        [_Location_column]: 7,
-        [_Location_line]: 199,
-        [_Location_file]: null
-      });
-    },
-    get C24() {
-      return C[24] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "sliver",
-        [_Location_column]: 7,
-        [_Location_line]: 205,
-        [_Location_file]: null
-      });
-    },
-    get C22() {
-      return C[22] = dart.constList([C[23] || CT.C23, C[24] || CT.C24], T._LocationL());
-    },
-    get C21() {
-      return C[21] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[22] || CT.C22,
-        [_Location_name]: null,
-        [_Location_column]: 12,
-        [_Location_line]: 198,
-        [_Location_file]: "file:///C:/src/flutter/packages/flutter/lib/src/widgets/safe_area.dart"
+      return C[10] = dart.const({
+        __proto__: text_editing.TextSelection.prototype,
+        [TextRange_end]: -1,
+        [TextRange_start]: -1,
+        [TextSelection_isDirectional]: false,
+        [TextSelection_affinity]: C[11] || CT.C11,
+        [TextSelection_extentOffset]: -1,
+        [TextSelection_baseOffset]: -1
       });
     }
   }, false);
-  var C = Array(25).fill(void 0);
+  var C = Array(12).fill(void 0);
   var I = [
-    "file:///C:/src/flutter/packages/flutter/lib/src/widgets/safe_area.dart",
-    "package:flutter/src/widgets/safe_area.dart"
+    "file:///C:/src/flutter/packages/flutter/lib/src/services/text_formatter.dart",
+    "package:flutter/src/services/text_formatter.dart"
   ];
-  var left$ = dart.privateName(safe_area, "SafeArea.left");
-  var top$ = dart.privateName(safe_area, "SafeArea.top");
-  var right$ = dart.privateName(safe_area, "SafeArea.right");
-  var bottom$ = dart.privateName(safe_area, "SafeArea.bottom");
-  var minimum$ = dart.privateName(safe_area, "SafeArea.minimum");
-  var maintainBottomViewPadding$ = dart.privateName(safe_area, "SafeArea.maintainBottomViewPadding");
-  var child$ = dart.privateName(safe_area, "SafeArea.child");
-  var EdgeInsets_bottom = dart.privateName(edge_insets, "EdgeInsets.bottom");
-  var EdgeInsets_right = dart.privateName(edge_insets, "EdgeInsets.right");
-  var EdgeInsets_top = dart.privateName(edge_insets, "EdgeInsets.top");
-  var EdgeInsets_left = dart.privateName(edge_insets, "EdgeInsets.left");
-  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
-  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
-  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
-  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
-  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
-  safe_area.SafeArea = class SafeArea extends framework.StatelessWidget {
-    get left() {
-      return this[left$];
-    }
-    set left(value) {
-      super.left = value;
-    }
-    get top() {
-      return this[top$];
-    }
-    set top(value) {
-      super.top = value;
-    }
-    get right() {
-      return this[right$];
-    }
-    set right(value) {
-      super.right = value;
-    }
-    get bottom() {
-      return this[bottom$];
-    }
-    set bottom(value) {
-      super.bottom = value;
-    }
-    get minimum() {
-      return this[minimum$];
-    }
-    set minimum(value) {
-      super.minimum = value;
-    }
-    get maintainBottomViewPadding() {
-      return this[maintainBottomViewPadding$];
-    }
-    set maintainBottomViewPadding(value) {
-      super.maintainBottomViewPadding = value;
-    }
-    get child() {
-      return this[child$];
-    }
-    set child(value) {
-      super.child = value;
-    }
-    build(context) {
-      if (context == null) dart.nullFailed(I[0], 96, 29, "context");
-      if (!dart.test(debug.debugCheckHasMediaQuery(context))) dart.assertFailed(null, I[0], 97, 12, "debugCheckHasMediaQuery(context)");
-      let data = media_query.MediaQuery.of(context);
-      let padding = data.padding;
-      if (data.padding.bottom === 0.0 && data.viewInsets.bottom !== 0.0 && dart.test(this.maintainBottomViewPadding)) padding = padding.copyWith({bottom: data.viewPadding.bottom});
-      return new basic.Padding.new({padding: new edge_insets.EdgeInsets.only({left: math.max(core.double, dart.test(this.left) ? padding.left : 0.0, this.minimum.left), top: math.max(core.double, dart.test(this.top) ? padding.top : 0.0, this.minimum.top), right: math.max(core.double, dart.test(this.right) ? padding.right : 0.0, this.minimum.right), bottom: math.max(core.double, dart.test(this.bottom) ? padding.bottom : 0.0, this.minimum.bottom)}), child: media_query.MediaQuery.removePadding({context: context, removeLeft: this.left, removeTop: this.top, removeRight: this.right, removeBottom: this.bottom, child: this.child, $creationLocationd_0dea112b090073317d4: C[1] || CT.C1}), $creationLocationd_0dea112b090073317d4: C[9] || CT.C9});
-    }
-    debugFillProperties(properties) {
-      if (properties == null) dart.nullFailed(I[0], 123, 56, "properties");
-      super.debugFillProperties(properties);
-      properties.add(new diagnostics.FlagProperty.new("left", {value: this.left, ifTrue: "avoid left padding"}));
-      properties.add(new diagnostics.FlagProperty.new("top", {value: this.top, ifTrue: "avoid top padding"}));
-      properties.add(new diagnostics.FlagProperty.new("right", {value: this.right, ifTrue: "avoid right padding"}));
-      properties.add(new diagnostics.FlagProperty.new("bottom", {value: this.bottom, ifTrue: "avoid bottom padding"}));
+  var _name$ = dart.privateName(text_formatter, "_name");
+  text_formatter.MaxLengthEnforcement = class MaxLengthEnforcement extends core.Object {
+    toString() {
+      return this[_name$];
     }
   };
-  (safe_area.SafeArea.new = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let left = opts && 'left' in opts ? opts.left : true;
-    if (left == null) dart.nullFailed(I[0], 43, 10, "left");
-    let top = opts && 'top' in opts ? opts.top : true;
-    if (top == null) dart.nullFailed(I[0], 44, 10, "top");
-    let right = opts && 'right' in opts ? opts.right : true;
-    if (right == null) dart.nullFailed(I[0], 45, 10, "right");
-    let bottom = opts && 'bottom' in opts ? opts.bottom : true;
-    if (bottom == null) dart.nullFailed(I[0], 46, 10, "bottom");
-    let minimum = opts && 'minimum' in opts ? opts.minimum : C[0] || CT.C0;
-    if (minimum == null) dart.nullFailed(I[0], 47, 10, "minimum");
-    let maintainBottomViewPadding = opts && 'maintainBottomViewPadding' in opts ? opts.maintainBottomViewPadding : false;
-    if (maintainBottomViewPadding == null) dart.nullFailed(I[0], 48, 10, "maintainBottomViewPadding");
-    let child = opts && 'child' in opts ? opts.child : null;
-    if (child == null) dart.nullFailed(I[0], 49, 19, "child");
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[left$] = left;
-    this[top$] = top;
-    this[right$] = right;
-    this[bottom$] = bottom;
-    this[minimum$] = minimum;
-    this[maintainBottomViewPadding$] = maintainBottomViewPadding;
-    this[child$] = child;
-    if (!(left != null)) dart.assertFailed(null, I[0], 50, 15, "left != null");
-    if (!(top != null)) dart.assertFailed(null, I[0], 51, 15, "top != null");
-    if (!(right != null)) dart.assertFailed(null, I[0], 52, 15, "right != null");
-    if (!(bottom != null)) dart.assertFailed(null, I[0], 53, 15, "bottom != null");
-    safe_area.SafeArea.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+  (text_formatter.MaxLengthEnforcement.new = function(index, _name) {
+    if (index == null) dart.nullFailed(I[0], 42, 6, "index");
+    if (_name == null) dart.nullFailed(I[0], 42, 6, "_name");
+    this.index = index;
+    this[_name$] = _name;
     ;
-  }).prototype = safe_area.SafeArea.prototype;
-  dart.addTypeTests(safe_area.SafeArea);
-  dart.addTypeCaches(safe_area.SafeArea);
-  dart.setMethodSignature(safe_area.SafeArea, () => ({
-    __proto__: dart.getMethods(safe_area.SafeArea.__proto__),
-    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }).prototype = text_formatter.MaxLengthEnforcement.prototype;
+  dart.addTypeTests(text_formatter.MaxLengthEnforcement);
+  dart.addTypeCaches(text_formatter.MaxLengthEnforcement);
+  dart.setLibraryUri(text_formatter.MaxLengthEnforcement, I[1]);
+  dart.setFieldSignature(text_formatter.MaxLengthEnforcement, () => ({
+    __proto__: dart.getFields(text_formatter.MaxLengthEnforcement.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
   }));
-  dart.setLibraryUri(safe_area.SafeArea, I[1]);
-  dart.setFieldSignature(safe_area.SafeArea, () => ({
-    __proto__: dart.getFields(safe_area.SafeArea.__proto__),
-    left: dart.finalFieldType(core.bool),
-    top: dart.finalFieldType(core.bool),
-    right: dart.finalFieldType(core.bool),
-    bottom: dart.finalFieldType(core.bool),
-    minimum: dart.finalFieldType(edge_insets.EdgeInsets),
-    maintainBottomViewPadding: dart.finalFieldType(core.bool),
-    child: dart.finalFieldType(framework.Widget)
-  }));
-  var left$0 = dart.privateName(safe_area, "SliverSafeArea.left");
-  var top$0 = dart.privateName(safe_area, "SliverSafeArea.top");
-  var right$0 = dart.privateName(safe_area, "SliverSafeArea.right");
-  var bottom$0 = dart.privateName(safe_area, "SliverSafeArea.bottom");
-  var minimum$0 = dart.privateName(safe_area, "SliverSafeArea.minimum");
-  var sliver$ = dart.privateName(safe_area, "SliverSafeArea.sliver");
-  safe_area.SliverSafeArea = class SliverSafeArea extends framework.StatelessWidget {
-    get left() {
-      return this[left$0];
-    }
-    set left(value) {
-      super.left = value;
-    }
-    get top() {
-      return this[top$0];
-    }
-    set top(value) {
-      super.top = value;
-    }
-    get right() {
-      return this[right$0];
-    }
-    set right(value) {
-      super.right = value;
-    }
-    get bottom() {
-      return this[bottom$0];
-    }
-    set bottom(value) {
-      super.bottom = value;
-    }
-    get minimum() {
-      return this[minimum$0];
-    }
-    set minimum(value) {
-      super.minimum = value;
-    }
-    get sliver() {
-      return this[sliver$];
-    }
-    set sliver(value) {
-      super.sliver = value;
-    }
-    build(context) {
-      if (context == null) dart.nullFailed(I[0], 195, 29, "context");
-      if (!dart.test(debug.debugCheckHasMediaQuery(context))) dart.assertFailed(null, I[0], 196, 12, "debugCheckHasMediaQuery(context)");
-      let padding = media_query.MediaQuery.of(context).padding;
-      return new basic.SliverPadding.new({padding: new edge_insets.EdgeInsets.only({left: math.max(core.double, dart.test(this.left) ? padding.left : 0.0, this.minimum.left), top: math.max(core.double, dart.test(this.top) ? padding.top : 0.0, this.minimum.top), right: math.max(core.double, dart.test(this.right) ? padding.right : 0.0, this.minimum.right), bottom: math.max(core.double, dart.test(this.bottom) ? padding.bottom : 0.0, this.minimum.bottom)}), sliver: media_query.MediaQuery.removePadding({context: context, removeLeft: this.left, removeTop: this.top, removeRight: this.right, removeBottom: this.bottom, child: this.sliver, $creationLocationd_0dea112b090073317d4: C[13] || CT.C13}), $creationLocationd_0dea112b090073317d4: C[21] || CT.C21});
-    }
-    debugFillProperties(properties) {
-      if (properties == null) dart.nullFailed(I[0], 217, 56, "properties");
-      super.debugFillProperties(properties);
-      properties.add(new diagnostics.FlagProperty.new("left", {value: this.left, ifTrue: "avoid left padding"}));
-      properties.add(new diagnostics.FlagProperty.new("top", {value: this.top, ifTrue: "avoid top padding"}));
-      properties.add(new diagnostics.FlagProperty.new("right", {value: this.right, ifTrue: "avoid right padding"}));
-      properties.add(new diagnostics.FlagProperty.new("bottom", {value: this.bottom, ifTrue: "avoid bottom padding"}));
+  dart.defineExtensionMethods(text_formatter.MaxLengthEnforcement, ['toString']);
+  text_formatter.MaxLengthEnforcement.none = C[0] || CT.C0;
+  text_formatter.MaxLengthEnforcement.enforced = C[1] || CT.C1;
+  text_formatter.MaxLengthEnforcement.truncateAfterCompositionEnds = C[2] || CT.C2;
+  text_formatter.MaxLengthEnforcement.values = C[3] || CT.C3;
+  text_formatter.TextInputFormatter = class TextInputFormatter extends core.Object {
+    static withFunction(formatFunction) {
+      if (formatFunction == null) dart.nullFailed(I[0], 95, 29, "formatFunction");
+      return new text_formatter._SimpleTextInputFormatter.new(formatFunction);
     }
   };
-  (safe_area.SliverSafeArea.new = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let left = opts && 'left' in opts ? opts.left : true;
-    if (left == null) dart.nullFailed(I[0], 158, 10, "left");
-    let top = opts && 'top' in opts ? opts.top : true;
-    if (top == null) dart.nullFailed(I[0], 159, 10, "top");
-    let right = opts && 'right' in opts ? opts.right : true;
-    if (right == null) dart.nullFailed(I[0], 160, 10, "right");
-    let bottom = opts && 'bottom' in opts ? opts.bottom : true;
-    if (bottom == null) dart.nullFailed(I[0], 161, 10, "bottom");
-    let minimum = opts && 'minimum' in opts ? opts.minimum : C[0] || CT.C0;
-    if (minimum == null) dart.nullFailed(I[0], 162, 10, "minimum");
-    let sliver = opts && 'sliver' in opts ? opts.sliver : null;
-    if (sliver == null) dart.nullFailed(I[0], 163, 19, "sliver");
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[left$0] = left;
-    this[top$0] = top;
-    this[right$0] = right;
-    this[bottom$0] = bottom;
-    this[minimum$0] = minimum;
-    this[sliver$] = sliver;
-    if (!(left != null)) dart.assertFailed(null, I[0], 164, 15, "left != null");
-    if (!(top != null)) dart.assertFailed(null, I[0], 165, 15, "top != null");
-    if (!(right != null)) dart.assertFailed(null, I[0], 166, 15, "right != null");
-    if (!(bottom != null)) dart.assertFailed(null, I[0], 167, 15, "bottom != null");
-    safe_area.SliverSafeArea.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+  (text_formatter.TextInputFormatter.new = function() {
     ;
-  }).prototype = safe_area.SliverSafeArea.prototype;
-  dart.addTypeTests(safe_area.SliverSafeArea);
-  dart.addTypeCaches(safe_area.SliverSafeArea);
-  dart.setMethodSignature(safe_area.SliverSafeArea, () => ({
-    __proto__: dart.getMethods(safe_area.SliverSafeArea.__proto__),
-    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }).prototype = text_formatter.TextInputFormatter.prototype;
+  dart.addTypeTests(text_formatter.TextInputFormatter);
+  dart.addTypeCaches(text_formatter.TextInputFormatter);
+  dart.setLibraryUri(text_formatter.TextInputFormatter, I[1]);
+  text_formatter._SimpleTextInputFormatter = class _SimpleTextInputFormatter extends text_formatter.TextInputFormatter {
+    formatEditUpdate(oldValue, newValue) {
+      let t1, t0;
+      if (oldValue == null) dart.nullFailed(I[0], 117, 22, "oldValue");
+      if (newValue == null) dart.nullFailed(I[0], 118, 22, "newValue");
+      t0 = oldValue;
+      t1 = newValue;
+      return this.formatFunction(t0, t1);
+    }
+  };
+  (text_formatter._SimpleTextInputFormatter.new = function(formatFunction) {
+    if (formatFunction == null) dart.nullFailed(I[0], 110, 34, "formatFunction");
+    this.formatFunction = formatFunction;
+    if (!(formatFunction != null)) dart.assertFailed(null, I[0], 111, 14, "formatFunction != null");
+    ;
+  }).prototype = text_formatter._SimpleTextInputFormatter.prototype;
+  dart.addTypeTests(text_formatter._SimpleTextInputFormatter);
+  dart.addTypeCaches(text_formatter._SimpleTextInputFormatter);
+  dart.setMethodSignature(text_formatter._SimpleTextInputFormatter, () => ({
+    __proto__: dart.getMethods(text_formatter._SimpleTextInputFormatter.__proto__),
+    formatEditUpdate: dart.fnType(text_input.TextEditingValue, [text_input.TextEditingValue, text_input.TextEditingValue])
   }));
-  dart.setLibraryUri(safe_area.SliverSafeArea, I[1]);
-  dart.setFieldSignature(safe_area.SliverSafeArea, () => ({
-    __proto__: dart.getFields(safe_area.SliverSafeArea.__proto__),
-    left: dart.finalFieldType(core.bool),
-    top: dart.finalFieldType(core.bool),
-    right: dart.finalFieldType(core.bool),
-    bottom: dart.finalFieldType(core.bool),
-    minimum: dart.finalFieldType(edge_insets.EdgeInsets),
-    sliver: dart.finalFieldType(framework.Widget)
+  dart.setLibraryUri(text_formatter._SimpleTextInputFormatter, I[1]);
+  dart.setFieldSignature(text_formatter._SimpleTextInputFormatter, () => ({
+    __proto__: dart.getFields(text_formatter._SimpleTextInputFormatter.__proto__),
+    formatFunction: dart.finalFieldType(dart.fnType(text_input.TextEditingValue, [text_input.TextEditingValue, text_input.TextEditingValue]))
   }));
-  dart.trackLibraries("packages/flutter/src/widgets/safe_area.dart", {
-    "package:flutter/src/widgets/safe_area.dart": safe_area
+  var filterPattern$ = dart.privateName(text_formatter, "FilteringTextInputFormatter.filterPattern");
+  var allow$ = dart.privateName(text_formatter, "FilteringTextInputFormatter.allow");
+  var replacementString$ = dart.privateName(text_formatter, "FilteringTextInputFormatter.replacementString");
+  text_formatter.FilteringTextInputFormatter = class FilteringTextInputFormatter extends text_formatter.TextInputFormatter {
+    get filterPattern() {
+      return this[filterPattern$];
+    }
+    set filterPattern(value) {
+      super.filterPattern = value;
+    }
+    get allow() {
+      return this[allow$];
+    }
+    set allow(value) {
+      super.allow = value;
+    }
+    get replacementString() {
+      return this[replacementString$];
+    }
+    set replacementString(value) {
+      super.replacementString = value;
+    }
+    formatEditUpdate(oldValue, newValue) {
+      if (oldValue == null) dart.nullFailed(I[0], 263, 22, "oldValue");
+      if (newValue == null) dart.nullFailed(I[0], 264, 22, "newValue");
+      return text_formatter._selectionAwareTextManipulation(newValue, dart.fn(substring => {
+        if (substring == null) dart.nullFailed(I[0], 268, 15, "substring");
+        return substring[$splitMapJoin](this.filterPattern, {onMatch: !dart.test(this.allow) ? dart.fn(match => {
+            if (match == null) dart.nullFailed(I[0], 271, 36, "match");
+            return this.replacementString;
+          }, T.MatchToString()) : null, onNonMatch: dart.test(this.allow) ? dart.fn(nonMatch => {
+            if (nonMatch == null) dart.nullFailed(I[0], 272, 39, "nonMatch");
+            return nonMatch[$isNotEmpty] ? this.replacementString : "";
+          }, T.StringToString()) : null});
+      }, T.StringToString()));
+    }
+  };
+  (text_formatter.FilteringTextInputFormatter.new = function(filterPattern, opts) {
+    if (filterPattern == null) dart.nullFailed(I[0], 150, 10, "filterPattern");
+    let allow = opts && 'allow' in opts ? opts.allow : null;
+    if (allow == null) dart.nullFailed(I[0], 151, 19, "allow");
+    let replacementString = opts && 'replacementString' in opts ? opts.replacementString : "";
+    if (replacementString == null) dart.nullFailed(I[0], 152, 10, "replacementString");
+    this[filterPattern$] = filterPattern;
+    this[allow$] = allow;
+    this[replacementString$] = replacementString;
+    if (!(filterPattern != null)) dart.assertFailed(null, I[0], 153, 15, "filterPattern != null");
+    if (!(allow != null)) dart.assertFailed(null, I[0], 154, 15, "allow != null");
+    if (!(replacementString != null)) dart.assertFailed(null, I[0], 155, 15, "replacementString != null");
+    ;
+  }).prototype = text_formatter.FilteringTextInputFormatter.prototype;
+  (text_formatter.FilteringTextInputFormatter.allow = function(filterPattern, opts) {
+    if (filterPattern == null) dart.nullFailed(I[0], 162, 10, "filterPattern");
+    let replacementString = opts && 'replacementString' in opts ? opts.replacementString : "";
+    if (replacementString == null) dart.nullFailed(I[0], 163, 10, "replacementString");
+    this[filterPattern$] = filterPattern;
+    this[replacementString$] = replacementString;
+    if (!(filterPattern != null)) dart.assertFailed(null, I[0], 164, 15, "filterPattern != null");
+    if (!(replacementString != null)) dart.assertFailed(null, I[0], 165, 15, "replacementString != null");
+    this[allow$] = true;
+    ;
+  }).prototype = text_formatter.FilteringTextInputFormatter.prototype;
+  (text_formatter.FilteringTextInputFormatter.deny = function(filterPattern, opts) {
+    if (filterPattern == null) dart.nullFailed(I[0], 173, 10, "filterPattern");
+    let replacementString = opts && 'replacementString' in opts ? opts.replacementString : "";
+    if (replacementString == null) dart.nullFailed(I[0], 174, 10, "replacementString");
+    this[filterPattern$] = filterPattern;
+    this[replacementString$] = replacementString;
+    if (!(filterPattern != null)) dart.assertFailed(null, I[0], 175, 15, "filterPattern != null");
+    if (!(replacementString != null)) dart.assertFailed(null, I[0], 176, 15, "replacementString != null");
+    this[allow$] = false;
+    ;
+  }).prototype = text_formatter.FilteringTextInputFormatter.prototype;
+  dart.addTypeTests(text_formatter.FilteringTextInputFormatter);
+  dart.addTypeCaches(text_formatter.FilteringTextInputFormatter);
+  dart.setMethodSignature(text_formatter.FilteringTextInputFormatter, () => ({
+    __proto__: dart.getMethods(text_formatter.FilteringTextInputFormatter.__proto__),
+    formatEditUpdate: dart.fnType(text_input.TextEditingValue, [text_input.TextEditingValue, text_input.TextEditingValue])
+  }));
+  dart.setLibraryUri(text_formatter.FilteringTextInputFormatter, I[1]);
+  dart.setFieldSignature(text_formatter.FilteringTextInputFormatter, () => ({
+    __proto__: dart.getFields(text_formatter.FilteringTextInputFormatter.__proto__),
+    filterPattern: dart.finalFieldType(core.Pattern),
+    allow: dart.finalFieldType(core.bool),
+    replacementString: dart.finalFieldType(core.String)
+  }));
+  dart.defineLazy(text_formatter.FilteringTextInputFormatter, {
+    /*text_formatter.FilteringTextInputFormatter.singleLineFormatter*/get singleLineFormatter() {
+      return new text_formatter.FilteringTextInputFormatter.deny("\n");
+    },
+    /*text_formatter.FilteringTextInputFormatter.digitsOnly*/get digitsOnly() {
+      return new text_formatter.FilteringTextInputFormatter.allow(core.RegExp.new("[0-9]"));
+    }
+  }, false);
+  text_formatter.BlacklistingTextInputFormatter = class BlacklistingTextInputFormatter extends text_formatter.FilteringTextInputFormatter {
+    get blacklistedPattern() {
+      return this.filterPattern;
+    }
+  };
+  (text_formatter.BlacklistingTextInputFormatter.new = function(blacklistedPattern, opts) {
+    if (blacklistedPattern == null) dart.nullFailed(I[0], 297, 13, "blacklistedPattern");
+    let replacementString = opts && 'replacementString' in opts ? opts.replacementString : "";
+    if (replacementString == null) dart.nullFailed(I[0], 298, 12, "replacementString");
+    text_formatter.BlacklistingTextInputFormatter.__proto__.deny.call(this, blacklistedPattern, {replacementString: replacementString});
+    ;
+  }).prototype = text_formatter.BlacklistingTextInputFormatter.prototype;
+  dart.addTypeTests(text_formatter.BlacklistingTextInputFormatter);
+  dart.addTypeCaches(text_formatter.BlacklistingTextInputFormatter);
+  dart.setGetterSignature(text_formatter.BlacklistingTextInputFormatter, () => ({
+    __proto__: dart.getGetters(text_formatter.BlacklistingTextInputFormatter.__proto__),
+    blacklistedPattern: core.Pattern
+  }));
+  dart.setLibraryUri(text_formatter.BlacklistingTextInputFormatter, I[1]);
+  dart.defineLazy(text_formatter.BlacklistingTextInputFormatter, {
+    /*text_formatter.BlacklistingTextInputFormatter.singleLineFormatter*/get singleLineFormatter() {
+      return new text_formatter.BlacklistingTextInputFormatter.new(core.RegExp.new("\\n"));
+    }
+  }, false);
+  text_formatter.WhitelistingTextInputFormatter = class WhitelistingTextInputFormatter extends text_formatter.FilteringTextInputFormatter {
+    get whitelistedPattern() {
+      return this.filterPattern;
+    }
+  };
+  (text_formatter.WhitelistingTextInputFormatter.new = function(whitelistedPattern) {
+    if (whitelistedPattern == null) dart.nullFailed(I[0], 328, 42, "whitelistedPattern");
+    if (!(whitelistedPattern != null)) dart.assertFailed(null, I[0], 329, 14, "whitelistedPattern != null");
+    text_formatter.WhitelistingTextInputFormatter.__proto__.allow.call(this, whitelistedPattern);
+    ;
+  }).prototype = text_formatter.WhitelistingTextInputFormatter.prototype;
+  dart.addTypeTests(text_formatter.WhitelistingTextInputFormatter);
+  dart.addTypeCaches(text_formatter.WhitelistingTextInputFormatter);
+  dart.setGetterSignature(text_formatter.WhitelistingTextInputFormatter, () => ({
+    __proto__: dart.getGetters(text_formatter.WhitelistingTextInputFormatter.__proto__),
+    whitelistedPattern: core.Pattern
+  }));
+  dart.setLibraryUri(text_formatter.WhitelistingTextInputFormatter, I[1]);
+  dart.defineLazy(text_formatter.WhitelistingTextInputFormatter, {
+    /*text_formatter.WhitelistingTextInputFormatter.digitsOnly*/get digitsOnly() {
+      return new text_formatter.WhitelistingTextInputFormatter.new(core.RegExp.new("\\d+"));
+    }
+  }, false);
+  var maxLength$ = dart.privateName(text_formatter, "LengthLimitingTextInputFormatter.maxLength");
+  var maxLengthEnforcement$ = dart.privateName(text_formatter, "LengthLimitingTextInputFormatter.maxLengthEnforcement");
+  var _name = dart.privateName(platform$, "_name");
+  text_formatter.LengthLimitingTextInputFormatter = class LengthLimitingTextInputFormatter extends text_formatter.TextInputFormatter {
+    get maxLength() {
+      return this[maxLength$];
+    }
+    set maxLength(value) {
+      super.maxLength = value;
+    }
+    get maxLengthEnforcement() {
+      return this[maxLengthEnforcement$];
+    }
+    set maxLengthEnforcement(value) {
+      super.maxLengthEnforcement = value;
+    }
+    static getDefaultMaxLengthEnforcement(platform = null) {
+      let t0;
+      if (true) {
+        return text_formatter.MaxLengthEnforcement.truncateAfterCompositionEnds;
+      } else {
+        switch (t0 = platform, t0 == null ? platform$.defaultTargetPlatform : t0) {
+          case C[4] || CT.C4:
+          case C[5] || CT.C5:
+          {
+            return text_formatter.MaxLengthEnforcement.enforced;
+          }
+          case C[6] || CT.C6:
+          case C[7] || CT.C7:
+          case C[8] || CT.C8:
+          case C[9] || CT.C9:
+          {
+            return text_formatter.MaxLengthEnforcement.truncateAfterCompositionEnds;
+          }
+          default:
+          {
+            dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+          }
+        }
+      }
+    }
+    static truncate(value, maxLength) {
+      if (value == null) dart.nullFailed(I[0], 462, 53, "value");
+      if (maxLength == null) dart.nullFailed(I[0], 462, 64, "maxLength");
+      let iterator = new characters_impl.StringCharacterRange.new(value.text);
+      if (dart.notNull(extensions['StringCharacters|get#characters'](value.text)[$length]) > dart.notNull(maxLength)) {
+        iterator.expandNext(maxLength);
+      }
+      let truncated = iterator.current;
+      return new text_input.TextEditingValue.new({text: truncated, selection: value.selection.copyWith({baseOffset: math.min(core.int, value.selection.start, truncated.length), extentOffset: math.min(core.int, value.selection.end, truncated.length)}), composing: !dart.test(value.composing.isCollapsed) && truncated.length > dart.notNull(value.composing.start) ? new ui.TextRange.new({start: value.composing.start, end: math.min(core.int, value.composing.end, truncated.length)}) : ui.TextRange.empty});
+    }
+    formatEditUpdate(oldValue, newValue) {
+      let t0;
+      if (oldValue == null) dart.nullFailed(I[0], 486, 22, "oldValue");
+      if (newValue == null) dart.nullFailed(I[0], 487, 22, "newValue");
+      let maxLength = this.maxLength;
+      if (maxLength == null || maxLength === -1 || dart.notNull(extensions['StringCharacters|get#characters'](newValue.text)[$length]) <= dart.notNull(maxLength)) {
+        return newValue;
+      }
+      if (!(dart.notNull(maxLength) > 0)) dart.assertFailed(null, I[0], 497, 12, "maxLength > 0");
+      switch (t0 = this.maxLengthEnforcement, t0 == null ? text_formatter.LengthLimitingTextInputFormatter.getDefaultMaxLengthEnforcement() : t0) {
+        case C[0] || CT.C0:
+        {
+          return newValue;
+        }
+        case C[1] || CT.C1:
+        {
+          if (extensions['StringCharacters|get#characters'](oldValue.text)[$length] == maxLength && dart.test(oldValue.selection.isCollapsed)) {
+            return oldValue;
+          }
+          return text_formatter.LengthLimitingTextInputFormatter.truncate(newValue, maxLength);
+        }
+        case C[2] || CT.C2:
+        {
+          if (extensions['StringCharacters|get#characters'](oldValue.text)[$length] == maxLength && !dart.test(oldValue.composing.isValid)) {
+            return oldValue;
+          }
+          if (dart.test(newValue.composing.isValid)) {
+            return newValue;
+          }
+          return text_formatter.LengthLimitingTextInputFormatter.truncate(newValue, maxLength);
+        }
+        default:
+        {
+          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+        }
+      }
+    }
+  };
+  (text_formatter.LengthLimitingTextInputFormatter.new = function(maxLength, opts) {
+    let maxLengthEnforcement = opts && 'maxLengthEnforcement' in opts ? opts.maxLengthEnforcement : null;
+    this[maxLength$] = maxLength;
+    this[maxLengthEnforcement$] = maxLengthEnforcement;
+    if (!(maxLength == null || maxLength === -1 || dart.notNull(maxLength) > 0)) dart.assertFailed(null, I[0], 371, 15, "maxLength == null || maxLength == -1 || maxLength > 0");
+    ;
+  }).prototype = text_formatter.LengthLimitingTextInputFormatter.prototype;
+  dart.addTypeTests(text_formatter.LengthLimitingTextInputFormatter);
+  dart.addTypeCaches(text_formatter.LengthLimitingTextInputFormatter);
+  dart.setMethodSignature(text_formatter.LengthLimitingTextInputFormatter, () => ({
+    __proto__: dart.getMethods(text_formatter.LengthLimitingTextInputFormatter.__proto__),
+    formatEditUpdate: dart.fnType(text_input.TextEditingValue, [text_input.TextEditingValue, text_input.TextEditingValue])
+  }));
+  dart.setLibraryUri(text_formatter.LengthLimitingTextInputFormatter, I[1]);
+  dart.setFieldSignature(text_formatter.LengthLimitingTextInputFormatter, () => ({
+    __proto__: dart.getFields(text_formatter.LengthLimitingTextInputFormatter.__proto__),
+    maxLength: dart.finalFieldType(dart.nullable(core.int)),
+    maxLengthEnforcement: dart.finalFieldType(dart.nullable(text_formatter.MaxLengthEnforcement))
+  }));
+  var TextRange_end = dart.privateName(ui, "TextRange.end");
+  var TextRange_start = dart.privateName(ui, "TextRange.start");
+  var TextSelection_isDirectional = dart.privateName(text_editing, "TextSelection.isDirectional");
+  var _name$0 = dart.privateName(ui, "_name");
+  var TextSelection_affinity = dart.privateName(text_editing, "TextSelection.affinity");
+  var TextSelection_extentOffset = dart.privateName(text_editing, "TextSelection.extentOffset");
+  var TextSelection_baseOffset = dart.privateName(text_editing, "TextSelection.baseOffset");
+  text_formatter._selectionAwareTextManipulation = function _selectionAwareTextManipulation(value, substringManipulation) {
+    let t0;
+    if (value == null) dart.nullFailed(I[0], 532, 20, "value");
+    if (substringManipulation == null) dart.nullFailed(I[0], 533, 37, "substringManipulation");
+    let selectionStartIndex = value.selection.start;
+    let selectionEndIndex = value.selection.end;
+    let manipulatedText = null;
+    let manipulatedSelection = null;
+    if (dart.notNull(selectionStartIndex) < 0 || dart.notNull(selectionEndIndex) < 0) {
+      manipulatedText = substringManipulation(value.text);
+    } else {
+      let beforeSelection = substringManipulation(value.text[$substring](0, selectionStartIndex));
+      let inSelection = substringManipulation(value.text[$substring](selectionStartIndex, selectionEndIndex));
+      let afterSelection = substringManipulation(value.text[$substring](selectionEndIndex));
+      manipulatedText = dart.notNull(beforeSelection) + dart.notNull(inSelection) + dart.notNull(afterSelection);
+      if (dart.notNull(value.selection.baseOffset) > dart.notNull(value.selection.extentOffset)) {
+        manipulatedSelection = value.selection.copyWith({baseOffset: beforeSelection.length + inSelection.length, extentOffset: beforeSelection.length});
+      } else {
+        manipulatedSelection = value.selection.copyWith({baseOffset: beforeSelection.length, extentOffset: beforeSelection.length + inSelection.length});
+      }
+    }
+    return new text_input.TextEditingValue.new({text: manipulatedText, selection: (t0 = manipulatedSelection, t0 == null ? C[10] || CT.C10 : t0), composing: manipulatedText == value.text ? value.composing : ui.TextRange.empty});
+  };
+  dart.trackLibraries("packages/flutter/src/services/text_formatter.dart", {
+    "package:flutter/src/services/text_formatter.dart": text_formatter
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["safe_area.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAwDa;;;;;;IAIA;;;;;;IAGA;;;;;;IAGA;;;;;;IAKM;;;;;;IAaN;;;;;;IAQE;;;;;;;UAGa;AACxB,qBAAO,8BAAwB,OAAO;AACjB,iBAAkB,0BAAG,OAAO;AACtC,oBAAU,AAAK,IAAD;AAEzB,UAAI,AAAK,AAAQ,AAAO,IAAhB,oBAAmB,OAAO,AAAK,AAAW,IAAZ,uBAAsB,iBAAO,iCACjE,AAA2D,UAAjD,AAAQ,OAAD,mBAAkB,AAAK,AAAY,IAAb;AAEzC,YAAO,iCACe,uCACZ,gCAAS,aAAO,AAAQ,OAAD,QAAQ,KAAK,AAAQ,yBAC7C,gCAAS,YAAM,AAAQ,OAAD,OAAO,KAAK,AAAQ,0BACxC,gCAAS,cAAQ,AAAQ,OAAD,SAAS,KAAK,AAAQ,6BAC7C,gCAAS,eAAS,AAAQ,OAAD,UAAU,KAAK,AAAQ,+BAExC,+CACP,OAAO,cACJ,sBACD,uBACE,0BACC,oBACP;IAGb;;UAGqD;AACd,MAA/B,0BAAoB,UAAU;AAC2C,MAA/E,AAAW,UAAD,KAAK,iCAAa,gBAAe,mBAAc;AACmB,MAA5E,AAAW,UAAD,KAAK,iCAAa,eAAc,kBAAa;AAC2B,MAAlF,AAAW,UAAD,KAAK,iCAAa,iBAAgB,oBAAe;AAC0B,MAArF,AAAW,UAAD,KAAK,iCAAa,kBAAiB,qBAAgB;IAC/D;;;QAvFO;QACA;;QACA;;QACA;;QACA;;QACA;;QACA;;QACS;;;IANT;IACA;IACA;IACA;IACA;IACA;IACS;UACJ,AAAK,IAAD;UACJ,AAAI,GAAD;UACH,AAAM,KAAD;UACL,AAAO,MAAD;AACb,sDAAW,GAAG;;EAAC;;;;;;;;;;;;;;;;;;;;;;;;;IAqHT;;;;;;IAIA;;;;;;IAGA;;;;;;IAGA;;;;;;IAKM;;;;;;IAMJ;;;;;;;UAGa;AACxB,qBAAO,8BAAwB,OAAO;AACrB,oBAAqB,AAAY,0BAAT,OAAO;AAChD,YAAO,uCACe,uCACZ,gCAAS,aAAO,AAAQ,OAAD,QAAQ,KAAK,AAAQ,yBAC7C,gCAAS,YAAM,AAAQ,OAAD,OAAO,KAAK,AAAQ,0BACxC,gCAAS,cAAQ,AAAQ,OAAD,SAAS,KAAK,AAAQ,6BAC7C,gCAAS,eAAS,AAAQ,OAAD,UAAU,KAAK,AAAQ,gCAEvC,+CACR,OAAO,cACJ,sBACD,uBACE,0BACC,oBACP;IAGb;;UAGqD;AACd,MAA/B,0BAAoB,UAAU;AAC2C,MAA/E,AAAW,UAAD,KAAK,iCAAa,gBAAe,mBAAc;AACmB,MAA5E,AAAW,UAAD,KAAK,iCAAa,eAAc,kBAAa;AAC2B,MAAlF,AAAW,UAAD,KAAK,iCAAa,iBAAgB,oBAAe;AAC0B,MAArF,AAAW,UAAD,KAAK,iCAAa,kBAAiB,qBAAgB;IAC/D;;;QAlEO;QACA;;QACA;;QACA;;QACA;;QACA;;QACS;;;IALT;IACA;IACA;IACA;IACA;IACS;UACJ,AAAK,IAAD;UACJ,AAAI,GAAD;UACH,AAAM,KAAD;UACL,AAAO,MAAD;AACb,4DAAW,GAAG;;EAAC","file":"../../../../../../../packages/flutter/src/widgets/safe_area.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["text_formatter.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAsDA;;;QAbK;;;;;EAaL;;;;;;;;;;;;;;;;UAwC4B;AAExB,YAAO,kDAA0B,cAAc;IACjD;;;;EACF;;;;;qBAkBqB,UACA;;UADA;UACA;AAEjB,WAAsB,QAAQ;WAAE,QAAQ;YAAjC,AAAc;IACvB;;;QAX+B;;UACpB,AAAe,cAAD;;EAAS;;;;;;;;;;;;;;;;IA8FpB;;;;;;IASH;;;;;;IA6CE;;;;;;qBAIM,UACA;UADA;UACA;AAEjB,YAAO,gDACL,QAAQ,EACR;YAAQ;AACN,cAAO,AAAU,UAAD,gBACd,8BACS,WAAC,cAAQ;gBAAO;AAAU;kCAAoB,4BAC3C,cAAQ;gBAAQ;AAAa,kBAAA,AAAS,SAAD,gBAAc,yBAAoB;mCAAK;;IAIhG;;;QA9HO;QACS;;QACT;;IAFA;IACS;IACT;UACK,AAAc,aAAD;UACb,AAAM,KAAD;UACL,AAAkB,iBAAD;;EAAS;;QAO/B;QACA;;IADA;IACA;UACK,AAAc,aAAD;UACb,AAAkB,iBAAD;IAClB,eAAE;;EAAI;;QAOV;QACA;;IADA;IACA;UACK,AAAc,aAAD;UACb,AAAkB,iBAAD;IAClB,eAAE;;EAAK;;;;;;;;;;;;;;;MAsGc,8DAAmB;YAA+B,qDAAK;;MAGvD,qDAAU;YAA+B,sDAAM,gBAAO;;;;;AAwBpD;IAAa;;;QATrC;QACD;;AACE,4EAAK,kBAAkB,sBAAqB,iBAAiB;;EAAC;;;;;;;;;MAc7B,iEAAmB;YACzD,uDAA+B,gBAAO;;;;;AAuBV;IAAa;;;QATR;UAC5B,AAAmB,kBAAD;AACnB,6EAAM,kBAAkB;;EAAC;;;;;;;;;MAcS,wDAAU;YAChD,uDAA+B,gBAAO;;;;;;;IAgEjC;;;;;;IAOiB;;;;;;0CAqBV;;AAEhB;AACE,cAA4B;;AAE5B,gBAAiB,KAAT,QAAQ,EAAR,aAAY;;;;AAGhB,kBAA4B;;;;;;;AAK5B,kBAA4B;;;;AARhC;;;;IAWJ;oBASkD,OAAW;UAAX;UAAW;AACtC,qBAAW,6CAAe,AAAM,KAAD;AACpD,UAAiC,aAAlB,AAAW,8CAAtB,AAAM,KAAD,gCAA0B,SAAS;AACZ,QAA9B,AAAS,QAAD,YAAY,SAAS;;AAElB,sBAAY,AAAS,QAAD;AAEjC,YAAO,4CACC,SAAS,aACJ,AAAM,AAAU,KAAX,iCACF,mBAAS,AAAM,AAAU,KAAX,kBAAkB,AAAU,SAAD,wBACvC,mBAAS,AAAM,AAAU,KAAX,gBAAgB,AAAU,SAAD,uBAEf,WAA5B,AAAM,AAAU,KAAX,2BAA0B,AAAU,AAAO,SAAR,uBAAU,AAAM,AAAU,KAAX,oBAC/D,6BACS,AAAM,AAAU,KAAX,uBACP,mBAAS,AAAM,AAAU,KAAX,gBAAgB,AAAU,SAAD,aAEpC;IAElB;qBAImB,UACA;;UADA;UACA;AAEN,sBAAiB;AAE5B,UAAI,AAAU,SAAD,YACX,AAAU,SAAD,KAAI,CAAC,KACkB,aAAlB,AAAW,8CAAzB,AAAS,QAAD,iCAA2B,SAAS;AAC5C,cAAO,SAAQ;;AAGjB,YAAiB,aAAV,SAAS,IAAG;AAEnB,cAA6B,gCAArB,aAAwB;;;AAE5B,gBAAO,SAAQ;;;;AAIf,cAAkB,AAAW,AAAO,8CAAhC,AAAS,QAAD,mBAA2B,SAAS,cAAI,AAAS,AAAU,QAAX;AAC1D,kBAAO,SAAQ;;AAIjB,gBAAO,0DAAS,QAAQ,EAAE,SAAS;;;;AAInC,cAAkB,AAAW,AAAO,8CAAhC,AAAS,QAAD,mBAA2B,SAAS,eAC7C,AAAS,AAAU,QAAX;AACT,kBAAO,SAAQ;;AAMjB,wBAAI,AAAS,AAAU,QAAX;AACV,kBAAO,SAAQ;;AAGjB,gBAAO,0DAAS,QAAQ,EAAE,SAAS;;;;AA3BvC;;;IA6BF;;kEA/JO;QACA;IADA;IACA;UACK,AAAU,AAA2B,SAA5B,YAAY,AAAU,SAAD,KAAI,CAAC,KAAe,aAAV,SAAS,IAAG;;EAAE;;;;;;;;;;;;;;;;;;;;4FAiKjD,OACiB;;QADjB;QACiB;AAExB,8BAAsB,AAAM,AAAU,KAAX;AAC3B,4BAAoB,AAAM,AAAU,KAAX;AAC5B;AACQ;AACf,QAAwB,aAApB,mBAAmB,IAAG,KAAuB,aAAlB,iBAAiB,IAAG;AACE,MAAnD,kBAAkB,AAAqB,qBAAA,CAAC,AAAM,KAAD;;AAEhC,4BAAkB,AAAqB,qBAAA,CAClD,AAAM,AAAK,KAAN,kBAAgB,GAAG,mBAAmB;AAEhC,wBAAc,AAAqB,qBAAA,CAC9C,AAAM,AAAK,KAAN,kBAAgB,mBAAmB,EAAE,iBAAiB;AAEhD,2BAAiB,AAAqB,qBAAA,CACjD,AAAM,AAAK,KAAN,kBAAgB,iBAAiB;AAEwB,MAAhE,kBAAkC,AAAc,aAA9B,eAAe,iBAAG,WAAW,iBAAG,cAAc;AAChE,UAA+B,aAA3B,AAAM,AAAU,KAAX,sCAAwB,AAAM,AAAU,KAAX;AAInC,QAHD,uBAAuB,AAAM,AAAU,KAAX,iCACd,AAAgB,AAAO,eAAR,UAAU,AAAY,WAAD,uBAClC,AAAgB,eAAD;;AAM9B,QAHD,uBAAuB,AAAM,AAAU,KAAX,iCACd,AAAgB,eAAD,uBACb,AAAgB,AAAO,eAAR,UAAU,AAAY,WAAD;;;AAIxD,UAAO,4CACC,eAAe,cACW,KAArB,oBAAoB,EAApB,+CACA,AAAgB,eAAD,IAAI,AAAM,KAAD,QAC7B,AAAM,KAAD,aACK;EAEpB","file":"../../../../../../../packages/flutter/src/services/text_formatter.dart.lib.js"}');
   // Exports:
   return {
-    src__widgets__safe_area: safe_area
+    src__services__text_formatter: text_formatter
   };
 }));
 
-//# sourceMappingURL=safe_area.dart.lib.js.map
+//# sourceMappingURL=text_formatter.dart.lib.js.map
